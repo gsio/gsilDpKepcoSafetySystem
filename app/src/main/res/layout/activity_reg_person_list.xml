@@ -1,0 +1,132 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+
+    <RelativeLayout 
+        android:id="@+id/menuBar"
+        android:background="#202528"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="10dp" >
+        
+  	    <ImageView android:id="@+id/backIcon"
+  	        android:layout_width="wrap_content"
+  	        android:layout_height="wrap_content"
+  	        android:layout_centerVertical="true"
+  	        android:src="@drawable/ic_back"/>
+  	    
+  	    <TextView
+  	        android:id="@+id/titleText"
+  	        android:layout_width="match_parent"
+  	        android:layout_height="wrap_content"
+  	        android:layout_centerVertical="true"
+  	        android:layout_toRightOf="@+id/backIcon"
+  	        android:gravity="center_horizontal"
+  	        android:text="근로자 리스트"
+  	        android:textColor="#ffffff"
+  	        android:textSize="17dp" />
+  	    
+    </RelativeLayout>
+    
+     <RelativeLayout 
+	    android:id="@+id/noImgeonelayer"
+	    android:layout_below="@+id/menuBar"
+	    android:layout_width="match_parent"
+	    android:layout_height="1dp"
+	    android:background="#202528">
+ 	</RelativeLayout>
+    
+     <LinearLayout 
+	    android:id="@+id/mainContentLayer"
+	    android:layout_below="@+id/noImgeonelayer"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:background="@drawable/back_paper"
+	    android:orientation="vertical"
+	    android:paddingLeft="30dp"
+	    android:paddingRight="30dp">
+  	    
+<LinearLayout 
+			    android:id="@+id/nameLayer"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginBottom="10dp"
+			    android:layout_marginTop="45dp"
+			    android:orientation="horizontal">
+			    
+			    <EditText android:id="@+id/searchnameBox"
+			        android:layout_width="0dp"
+			        android:layout_weight="0.7"
+			        android:layout_height="wrap_content"
+			        android:background="@drawable/edit_text"
+			        android:paddingLeft="5dp"
+			        android:textColor="#333333"
+			        android:maxLength="11"
+			        android:textSize="14dp"
+			        android:singleLine="true"
+			        android:paddingTop="10dp"
+			        android:paddingBottom="10dp"/>
+			    
+			    <Button android:id="@+id/searchBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="40dp"
+			        android:text="검색"
+			        android:textColor="#333333"
+			        android:textSize="14dp"
+			        android:paddingLeft="10dp"
+			        android:paddingRight="10dp"
+			        android:layout_marginLeft="15dp"
+			        android:background="@drawable/default_btn"/>
+
+			</LinearLayout>
+	     <ListView
+		        android:id="@+id/personlist" 
+		        android:layout_below="@+id/nameLayer"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"
+		        android:layout_marginBottom="20dp"
+		        android:layout_centerHorizontal="true" >
+		 </ListView>
+         
+	     
+         <LinearLayout 
+             android:id="@+id/buttonLaer"
+             android:layout_below="@+id/personlist"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             android:layout_alignParentBottom="true"
+             >
+			<RelativeLayout 
+			    android:id="@+id/noImgetwolayer"
+			    android:layout_width="match_parent"
+			    android:layout_height="1dp"
+			    android:background="#202528">
+		 	</RelativeLayout>
+		 	
+			<Button android:id="@+id/nextIcon"
+			    android:layout_below="@+id/noImgetwolayer"
+	               android:layout_width="80dp"
+	               android:layout_height="40.5dp"
+	               android:text="등록"
+	               android:textStyle="normal"
+	               android:textColor="#ffffff"
+	               android:layout_marginTop="10dp"
+	               android:gravity="center_vertical|left"
+	               android:paddingLeft="15dp"
+	               android:layout_centerVertical="true"
+	               android:layout_gravity="center_vertical|right"
+	               android:layout_marginBottom="30dp"
+	               android:background="@drawable/new_btn"/>
+             
+         </LinearLayout>
+         
+ 	</LinearLayout>
+     
+
+     
+</RelativeLayout>

@@ -1,0 +1,130 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:gravity="center_vertical"
+    android:background="#000000">
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical">
+        
+		<RelativeLayout 
+		        android:id="@+id/menuBar"
+		        android:background="#ff0033"
+		        android:layout_width="match_parent"
+		        android:layout_height="50dp"
+		        android:padding="2dp" >
+		  	    <TextView
+		  	        android:id="@+id/titleText"
+		  	        android:layout_width="match_parent"
+		  	        android:layout_height="wrap_content"
+		  	        android:layout_centerVertical="true"
+		  	        android:layout_toRightOf="@+id/backIcon"
+		  	        android:gravity="center_horizontal"
+		  	        android:text="응금 상황 알림"
+		  	        android:fontFamily="sans-serif-medium"
+		  	        android:textColor="#ffffff"
+		  	        android:textStyle="bold"
+		  	        android:textSize="25dp" />
+		  	    
+		    </RelativeLayout>
+		    
+		     <RelativeLayout 
+	    android:id="@+id/noImgeonelayer"
+	    android:layout_below="@+id/menuBar"
+	    android:layout_width="match_parent"
+	    android:layout_height="1dp"
+	    android:background="#ffffff">
+ 	</RelativeLayout>
+        
+        <TextView  android:id="@+id/dataText"
+		    android:layout_below="@+id/noreasonlayser"
+		    android:layout_width="match_parent"
+		    android:layout_height="180dp"
+		    android:layout_margin="0dp"
+		    
+		    android:gravity="center_vertical|center_horizontal"
+		    android:padding="10dp"
+		    android:textSize="17dp"
+		    android:fontFamily="sans-serif-medium"
+		    android:textStyle="bold"
+		    android:textColor="#ffffff"
+		    android:background="#ff0033"/>
+
+        <LinearLayout
+            android:layout_below="@+id/dataText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_gravity="right"
+            android:visibility="gone"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal">
+
+
+            
+            <Button
+                android:id="@+id/disasterButon"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:padding="5dp"
+                android:layout_marginLeft="10dp"
+                android:background="#ff0033"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="재해자\n연결"
+                android:textSize="12dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+            
+            <Button
+                android:id="@+id/carButon1"
+                android:layout_width="70dp"
+                android:layout_height="45dp"
+                android:padding="5dp"
+                android:layout_marginLeft="10dp"
+                android:background="#ff0033"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="구급차1\n연결"
+                android:textSize="12dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/carButon2"
+                android:layout_width="70dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:background="#ff0033"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="5dp"
+                android:text="지정병원\n연결"
+                android:textColor="@android:color/white"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/confirmButon"
+                android:layout_width="60dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:background="#ff0033"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="5dp"
+                android:text="확인"
+                android:textColor="@android:color/white"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        
+    </LinearLayout>
+		
+
+</RelativeLayout>

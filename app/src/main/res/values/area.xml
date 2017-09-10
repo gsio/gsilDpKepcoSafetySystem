@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+  xmlns:tools="http://schemas.android.com/tools"
+  tools:ignore="MissingTranslation">
+    <string-array translatable="false" name="singo">
+        <item>O형</item>
+        <item>A형</item>
+        <item>B형</item>
+        <item>AB형</item>
+	</string-array>
+	
+    
+    <string-array translatable="false" name="year">
+        <item>년도</item>
+        <item>2015</item>
+        <item>2016</item>
+        <item>2017</item>
+        <item>2018</item>
+        <item>2019</item>
+        <item>2020</item>
+        <item>2021</item>
+        <item>2022</item>
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+        <item>2026</item>
+        <item>2027</item>
+        <item>2028</item>
+        <item>2029</item>
+        <item>2030</item>
+	</string-array>
+    
+    
+    <string-array translatable="false" name="month">
+        <item>월</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+	</string-array>
+	
+    <string-array translatable="false" name="day">
+        <item>일</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+	</string-array>
+	
+    <string-array translatable="false" name="chasu">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+  	</string-array>
+  	
+    <string-array translatable="false" name="rank">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+  	</string-array>
+  	
+    <string-array translatable="false" name="juya">
+        <item>전체</item>
+        <item>주간</item>
+        <item>야간</item>
+        <item>주간/야간</item>
+  	</string-array>
+  	
+  	
+    <string-array translatable="false" name="tunel">
+        <item>터널선택</item>
+        <item>남포2터널 종점</item>
+        <item>남포3터널 시점</item>
+        <item>남포3터널 종점</item>
+  	</string-array>
+  	
+    <string-array translatable="false" name="sam">
+        <item>터널선택</item>
+        <item>남포2터널 종점</item>
+        <item>남포3터널 시점</item>
+  	</string-array>
+  	
+    <string-array translatable="false" name="jung">
+        <item>터널선택</item>
+        <item>남포3터널 종점</item>
+  	</string-array>
+  	
+    <string-array translatable="false" name="updown">
+        <item>상하선택</item>
+        <item>터널 상부</item>
+        <item>터널 하부</item>
+  	</string-array>
+  	
+    <string-array translatable="false" name="startend">
+        <item>시점/종점선택</item>
+        <item>시점</item>
+        <item>종점</item>
+        <item>해당없음</item>
+  	</string-array>
+
+    <string-array translatable="false" name="checkresult">
+        <item>점검결과선택</item>
+        <item>양호</item>
+        <item>불량</item>
+        <item>미흡</item>
+  	</string-array>
+  	
+    <string-array translatable="false" name="etcpersonlist">
+        <item>점검권고자</item>
+        <item>안전관리자</item>
+        <item>시공담당자</item>
+        <item>현장대리인</item>
+  	</string-array>
+    <!-- 
+    <string-array translatable="false" name="checkperson">
+        <item>점검자선택</item>
+        <item>협력업체</item>
+        <item>시공담당자</item>
+        <item>현장대리인</item>
+        <item>사업기술자</item>
+        <item>책임기술자</item>
+  	</string-array>
+ -->
+    
+    <string-array translatable="false" name="checkperson">
+        <item>점검자선택</item>
+        <item>협력업체</item>
+        <item>시공담당자</item>
+        <item>현장대리인</item>
+  	</string-array>
+  	
+    <string-array translatable="false" name="checkperson_sub">
+        <item>협력업체</item>
+  	</string-array>
+    	
+    <string-array translatable="false" name="process">
+        <item>천공</item>
+        <item>락볼트 설치/장약</item>
+        <item>발파</item>
+        <item>기계굴착</item>
+        <item>버력처리</item>
+        <item>부석정리</item>
+        <item>지보설치</item>
+        <item>숏크리트</item>
+        <item>보강공법</item>
+        <item>환기 및 대기</item>
+        <item>대기시간</item>
+        
+  	</string-array>
+  	
+    <string-array translatable="false" name="pattern">
+        <item>패턴선택</item>
+        <item>PD-1</item>
+        <item>PD-2</item>
+        <item>PD-3</item>
+        <item>PD-4</item>
+        <item>PD-5</item>
+        <item>PD-6</item>
+        <item>PD-6-1</item>
+  	</string-array>
+    
+    <string-array translatable="false" name="status">
+        <item>진행상태</item>
+        <item>평가표작성중</item>
+        <item>결재요청</item>
+        <item>팀장반려</item>
+        <item>팀장승인</item>
+        <item>현장소장반려</item>
+        <item>현장소장승인</item>
+        <item>반려</item>
+        <item>등록</item>
+  	</string-array>
+  	
+     <string-array translatable="false" name="checksign">
+        <item>계약형태선택</item>
+        <item>일대</item>
+        <item>월대</item>
+  	</string-array>
+    
+   <string-array translatable="false" name="workoption">
+        <item>작업선택</item>
+        <item>상차</item>
+        <item>하차</item>
+        <item>운반</item>
+        <item>굴착</item>
+        <item>착암</item>
+        <item>파쇄</item>
+        <item>준설</item>
+        <item>항타</item>
+        <item>항발</item>
+        <item>고르기</item>
+        <item>다짐</item>
+        <item>포장</item>
+        <item>타설</item>
+        <item>인양</item>
+        <item>적재</item>
+        <item>인상</item>
+        <item>설치</item>
+   </string-array> 
+   
+   
+  <string-array translatable="false" name="org">
+        <item>조직선택</item>
+        <item>현장복구책임자</item>
+        <item>상황실</item>
+        <item>현장복구지휘자</item>
+        <item>상황조</item>
+        <item>장비 동원조</item>
+        <item>인력 동원조</item>
+        <item>지원조</item>
+  	</string-array>
+</resources>

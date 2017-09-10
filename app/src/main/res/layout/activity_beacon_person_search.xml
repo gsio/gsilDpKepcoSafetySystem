@@ -1,0 +1,166 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+    <RelativeLayout 
+        android:id="@+id/menuBar"
+        android:background="#202528"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="10dp" >
+        
+  	    <ImageView android:id="@+id/backIcon"
+  	        android:layout_width="wrap_content"
+  	        android:layout_height="wrap_content"
+  	        android:layout_centerVertical="true"
+  	        android:src="@drawable/ic_back"/>
+  	    
+  	    <TextView
+  	        android:id="@+id/titleText"
+  	        android:layout_width="match_parent"
+  	        android:layout_height="wrap_content"
+  	        android:layout_centerVertical="true"
+  	        android:layout_toRightOf="@+id/backIcon"
+  	        android:gravity="center_horizontal"
+  	        android:text="비콘 배정관리"
+  	        android:textColor="#ffffff"
+  	        android:textSize="17dp" />
+    </RelativeLayout>
+    
+     <RelativeLayout 
+	    android:id="@+id/noImgeonelayer"
+	    android:layout_below="@+id/menuBar"
+	    android:layout_width="match_parent"
+	    android:layout_height="1dp"
+	    android:background="#202528">
+ 	</RelativeLayout>
+ 	
+    <LinearLayout
+         android:id="@+id/searchContainer"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/noImgeonelayer"
+         android:layout_marginTop="5dp"
+         android:orientation="vertical" >
+        
+        <Spinner
+	           android:id="@+id/searchnameBox"
+	           android:layout_width="match_parent"
+	           android:layout_height="40dp"
+	           android:layout_marginLeft="10dp"
+	           android:layout_marginRight="10dp"
+	           android:layout_marginBottom="5dp"
+	           android:paddingLeft="25dp"
+	           android:paddingRight="25dp"
+	           android:background="@drawable/btn_dropdown"/> 
+        
+	    <LinearLayout
+	         android:id="@+id/searchContainer1"
+	         android:layout_width="match_parent"
+	         android:layout_height="wrap_content"
+	         android:layout_below="@+id/noImgeonelayer"
+	         android:orientation="horizontal" >
+	        
+			<EditText
+			    android:id="@+id/nameBoxEditText"
+			    android:layout_width="match_parent"
+			    android:layout_weight="1"
+			    android:layout_height="40dp"
+			    android:layout_marginBottom="5dp"
+			    android:layout_marginLeft="10dp"
+			    android:layout_marginRight="10dp"
+			    android:background="@drawable/edittext"
+			    android:paddingLeft="10dp"
+			    android:singleLine="true"
+			    android:textColor="#333333"
+			    android:textSize="13dp" />
+			
+			<Button
+			    android:id="@+id/searchBtn"
+			    android:layout_width="wrap_content"
+			    android:layout_height="40dp"
+			    android:layout_marginRight="10dp"
+			    android:background="@drawable/edit_text"
+			    android:text="이름검색"
+			    android:textColor="#333333"
+			    android:textSize="13dp" />
+			
+		</LinearLayout> 
+    </LinearLayout>
+     
+    
+    <LinearLayout
+         android:id="@+id/tabContainer"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="5dp"
+         android:layout_below="@+id/searchContainer"
+         android:orientation="horizontal" >
+
+                <Button
+	            android:id="@+id/tab1"
+	            android:layout_width="80dp"
+	            android:layout_height="40dp"
+	            android:textColor="#333333"
+	            android:layout_marginLeft="5dp"
+	            android:textSize="13dp"
+	            android:text="관리자"
+	            android:background="@drawable/tap_c"/>
+                
+                <Button
+	            android:id="@+id/tab2"
+	            android:layout_width="80dp"
+	            android:layout_height="40dp"
+	            android:textColor="#333333"
+	            android:textSize="13dp"
+	            android:text="근로자"
+	            android:background="@drawable/tap_c"/>
+    </LinearLayout>
+    
+     <RelativeLayout 
+	    android:id="@+id/notwoImgeonelayer"
+	    android:layout_below="@+id/tabContainer"
+	    android:layout_width="match_parent"
+	    android:layout_height="1dp"
+	    android:background="#8d8d8d">
+ 	</RelativeLayout>
+    
+    <LinearLayout 
+	    android:id="@+id/mainContentLayer"
+	    android:layout_below="@+id/notwoImgeonelayer"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical">
+  	    
+        <RelativeLayout 
+            android:id="@+id/listArea"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	         android:layout_alignParentBottom="true"
+	         android:layout_centerHorizontal="true" >
+		     <ListView
+		         android:id="@+id/personchecklist"
+		         android:layout_width="match_parent"
+		         android:layout_height="match_parent"
+		         android:layout_weight="1"
+		         android:visibility="gone"
+		         android:layout_alignParentBottom="true"
+		         android:layout_centerHorizontal="true" >
+			 </ListView>
+			 
+		     <ListView
+		         android:id="@+id/managerList"
+		         android:layout_width="match_parent"
+		         android:layout_height="match_parent"
+		         android:layout_weight="1"
+		         android:layout_alignParentBottom="true"
+		         android:layout_centerHorizontal="true" >
+			 </ListView>
+        </RelativeLayout>
+	     
+ 	</LinearLayout>
+     
+</RelativeLayout>

@@ -1,0 +1,129 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+
+    <RelativeLayout 
+        android:id="@+id/menuBar"
+        android:background="#202528"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="10dp" >
+        
+  	    <ImageView android:id="@+id/backIcon"
+  	        android:layout_width="wrap_content"
+  	        android:layout_height="wrap_content"
+  	        android:layout_centerVertical="true"
+  	        android:src="@drawable/ic_back"/>
+  	    
+  	    <TextView
+  	        android:id="@+id/titleText"
+  	        android:layout_width="match_parent"
+  	        android:layout_height="wrap_content"
+  	        android:layout_centerVertical="true"
+  	        android:layout_toRightOf="@+id/backIcon"
+  	        android:gravity="center_horizontal"
+  	        android:text="비콘 배정관리"
+  	        android:textColor="#ffffff"
+  	        android:textSize="17dp" />
+  	    
+    </RelativeLayout>
+    
+     <RelativeLayout 
+	    android:id="@+id/noImgeonelayer"
+	    android:layout_below="@+id/menuBar"
+	    android:layout_width="match_parent"
+	    android:layout_height="1dp"
+	    android:background="#202528">
+ 	</RelativeLayout>
+    
+     <LinearLayout 
+	    android:id="@+id/mainContentLayer"
+	    android:layout_below="@+id/noImgeonelayer"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:background="@drawable/back_paper"
+	    android:orientation="vertical"
+	    android:paddingLeft="30dp"
+	    android:paddingRight="30dp">
+    <LinearLayout
+         android:id="@+id/searchContainer"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/noImgeonelayer"
+         android:layout_marginTop="35dp"
+         android:orientation="vertical" >
+ 			<Spinner
+	           android:id="@+id/searchnameBox"
+	           android:layout_width="match_parent"
+	           android:layout_height="40dp"
+	           android:layout_marginBottom="5dp"
+	           android:paddingLeft="25dp"
+	           android:paddingRight="25dp"
+	           
+	           android:background="@drawable/btn_dropdown"/>  
+         
+	    <LinearLayout
+	         android:id="@+id/searchContainer2"
+	         android:layout_width="match_parent"
+	         android:layout_height="wrap_content"
+	         android:layout_below="@+id/noImgeonelayer"
+	         
+	         android:orientation="horizontal" >
+	        
+			<EditText
+			    android:id="@+id/nameBoxEditText"
+			    android:layout_width="match_parent"
+			    android:layout_weight="1"
+			    android:layout_height="40dp"
+			    android:layout_marginBottom="5dp"
+			    android:background="@drawable/edittext"
+			    android:paddingLeft="10dp"
+			    android:singleLine="true"
+			    android:textColor="#333333"
+			    android:textSize="13dp" />
+			
+			<Button
+			    android:id="@+id/searchBtn"
+			    android:layout_width="wrap_content"
+			    android:layout_height="40dp"
+			    android:layout_marginLeft="5dp"
+			    android:background="@drawable/edit_text"
+			    android:text="검색"
+			    android:textColor="#333333"
+			    android:textSize="13dp" />
+			
+		</LinearLayout> 
+    
+    </LinearLayout>
+               
+		
+		<Button
+		    android:id="@+id/gubuncheckBtn"
+			android:layout_below="@+id/searchContainer"
+		    android:layout_width="wrap_content"
+		    android:layout_height="40dp"
+		    android:layout_marginBottom="5dp"
+		    android:background="@drawable/select_blue_btn"
+		    android:text="미배정"
+		    android:textColor="#ffffff"
+		    android:textSize="13dp" />
+    
+		
+	     <ListView
+		        android:id="@+id/personlist" 
+		        android:layout_below="@+id/gubuncheckBtn"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"
+		        android:layout_marginBottom="20dp"
+		        android:layout_centerHorizontal="true" >
+		 </ListView>
+         
+ 	</LinearLayout>
+     
+
+     
+</RelativeLayout>

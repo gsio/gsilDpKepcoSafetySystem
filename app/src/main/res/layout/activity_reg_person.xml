@@ -1,0 +1,425 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+
+    <RelativeLayout 
+        android:id="@+id/menuBar"
+        android:background="#202528"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="10dp" >
+        
+  	    <ImageView android:id="@+id/backIcon"
+  	        android:layout_width="wrap_content"
+  	        android:layout_height="wrap_content"
+  	        android:layout_centerVertical="true"
+  	        android:src="@drawable/ic_back"/>
+  	    
+  	    <TextView
+  	        android:id="@+id/titleText"
+  	        android:layout_width="match_parent"
+  	        android:layout_height="wrap_content"
+  	        android:layout_centerVertical="true"
+  	        android:layout_toRightOf="@+id/backIcon"
+  	        android:gravity="center_horizontal"
+  	        android:text="근로자관리"
+  	        android:textColor="#ffffff"
+  	        android:textSize="17dp" />
+  	    
+    </RelativeLayout>
+    
+     <RelativeLayout 
+	    android:id="@+id/noImgeonelayer"
+	    android:layout_below="@+id/menuBar"
+	    android:layout_width="match_parent"
+	    android:layout_height="1dp"
+	    android:background="#202528">
+ 	</RelativeLayout>
+    
+    <RelativeLayout
+       android:id="@+id/dataContentLayer"
+       android:layout_below="@+id/noImgeonelayer"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="@drawable/back_paper">
+  	   
+
+     
+     <ScrollView 
+        android:id="@+id/scrolllayer"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:fillViewport="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp">
+ 
+	     <RelativeLayout
+	        android:id="@+id/mainContentLayer"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp" >
+	         	  	    
+	
+			<TextView android:id="@+id/contTitle"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="업체"
+		        android:textSize="12dp"
+		        android:textColor="#333333"
+		        android:layout_alignParentLeft="true"/>
+			<LinearLayout 
+			    android:id="@+id/contLayer"
+			    android:layout_below="@+id/contTitle"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginBottom="10dp"
+			    android:layout_marginTop="3dp"
+			    android:orientation="horizontal">
+				<Spinner
+                    android:id="@+id/contselect"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:background="@drawable/btn_dropdown"/>
+			</LinearLayout> 
+	         
+			
+
+			<TextView android:id="@+id/nametitle"
+			    android:layout_below="@+id/contLayer"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="성명"
+		        android:textSize="12dp"
+		        android:textColor="#333333"
+		        android:layout_marginTop="15dp"
+		        android:layout_alignParentLeft="true"/>
+			<LinearLayout 
+			    android:id="@+id/nameLayer"
+			    android:layout_below="@+id/nametitle"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginBottom="10dp"
+			    android:layout_marginTop="3dp"
+			    android:orientation="horizontal">
+			    
+			    <EditText android:id="@+id/nameText"
+			        android:layout_width="0dp"
+			        android:layout_weight="0.7"
+			        android:layout_height="wrap_content"
+			        android:background="@drawable/edit_text"
+			        android:paddingLeft="5dp"
+			        android:textColor="#333333"
+			        android:textSize="14dp"/>
+			    
+				<TextView android:id="@+id/fortitle"
+				    android:layout_below="@+id/regpersontitle"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="외국인"
+			        android:textSize="13dp"
+			        android:layout_marginLeft="20dp"
+			        android:layout_marginRight="10dp"
+			        android:textColor="#333333"
+			        android:layout_alignParentLeft="true"/>
+			    
+				<ImageView
+                        android:id="@+id/forCheck"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/check_off" />
+			</LinearLayout>
+			
+			
+			
+			<TextView android:id="@+id/jumintitle"
+			    android:layout_below="@+id/nameLayer"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="주민번호 ( 외국인번호 )"
+		        android:textSize="12dp"
+		        android:textColor="#333333"
+		        android:layout_alignParentLeft="true"/>
+			<LinearLayout 
+			    android:id="@+id/juminLayer"
+			    android:layout_below="@+id/jumintitle"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginBottom="10dp"
+			    android:layout_marginTop="3dp"
+			    android:orientation="horizontal">
+			    
+			    <EditText android:id="@+id/frontText"
+			        android:layout_width="0dp"
+			        android:layout_weight="0.6"
+			        android:layout_height="wrap_content"
+			        android:background="@drawable/edit_text"
+			        android:paddingLeft="5dp"
+			        android:inputType="number"
+			        android:textColor="#333333"
+			        android:gravity="center_vertical|center_horizontal"
+			        android:maxLength="6"
+			        android:textSize="14dp"/>
+			    
+			    <EditText android:id="@+id/endText"
+			        android:layout_width="0dp"
+			        android:layout_weight="0.2"
+			        android:layout_height="wrap_content"
+			        android:background="@drawable/edit_text"
+			        android:paddingLeft="5dp"
+			        android:layout_marginLeft="15dp"
+			        android:inputType="number"
+			        android:textColor="#333333"
+			        android:gravity="center_vertical|center_horizontal"
+			        android:maxLength="1"
+			        android:textSize="14dp"/>
+			    
+			    <Button android:id="@+id/checkBlackBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="40dp"
+			        android:text="입사가능확인"
+			        android:textColor="#333333"
+			        android:textSize="12dp"
+			        android:paddingLeft="10dp"
+			        android:paddingRight="10dp"
+			        android:layout_marginLeft="15dp"
+			        android:background="@drawable/default_btn"/>
+			    
+			</LinearLayout>
+			
+			
+			<TextView android:id="@+id/phonetitle"
+			    android:layout_below="@+id/juminLayer"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="핸드폰"
+		        android:textSize="12dp"
+		        android:textColor="#333333"
+		        android:layout_alignParentLeft="true"/>
+			<LinearLayout 
+			    android:id="@+id/phoneLayer"
+			    android:layout_below="@+id/phonetitle"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginBottom="10dp"
+			    android:layout_marginTop="3dp"
+			    android:orientation="horizontal">
+			    
+			    <EditText android:id="@+id/phoneText"
+			        android:layout_width="0dp"
+			        android:layout_weight="0.7"
+			        android:layout_height="wrap_content"
+			        android:background="@drawable/edit_text"
+			        android:paddingLeft="5dp"
+			        android:inputType="number"
+			        android:textColor="#333333"
+			        android:maxLength="11"
+			        android:textSize="14dp"
+			        android:paddingTop="10dp"
+			        android:paddingBottom="10dp"
+			        android:hint="ex)01012345678"/>
+			    
+			    <Button android:id="@+id/duplicatePhoneBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="40dp"
+			        android:text="중복검사"
+			        android:textColor="#333333"
+			        android:textSize="14dp"
+			        android:paddingLeft="10dp"
+			        android:paddingRight="10dp"
+			        android:layout_marginLeft="15dp"
+			        android:background="@drawable/default_btn"/>
+
+			</LinearLayout>
+			
+			<LinearLayout 
+			    android:id="@+id/passtitleLayer"
+			    android:layout_below="@+id/phoneLayer"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal">
+			    
+				<TextView android:id="@+id/passtitle"
+			        android:layout_width="0dp"
+			        android:layout_weight="0.4"
+			        android:layout_height="wrap_content"
+			        android:text="여권번호"
+			        android:textSize="12dp"
+			        android:textColor="#333333"
+			        android:layout_alignParentLeft="true"/>			
+			
+				<TextView android:id="@+id/passtitle2"
+			        android:layout_width="0dp"
+			        android:layout_weight="0.4"
+			        android:layout_height="wrap_content"
+			        android:text="국적"
+			        android:textSize="12dp"
+			        android:textColor="#333333"
+			        android:layout_marginLeft="10dp"
+			        android:layout_alignParentLeft="true"/>	
+				
+			</LinearLayout>
+
+			<LinearLayout 
+			    android:id="@+id/passLayer"
+			    android:layout_below="@+id/passtitleLayer"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginBottom="10dp"
+			    android:layout_marginTop="3dp"
+			    android:orientation="horizontal">
+			    
+			    <EditText android:id="@+id/passnumberText"
+			        android:layout_width="0dp"
+			        android:layout_weight="0.4"
+			        android:layout_height="wrap_content"
+			        android:background="@drawable/edit_text"
+			        android:paddingLeft="5dp"
+			        android:textColor="#333333"
+			        android:textSize="14dp"
+			        android:enabled="false"
+			        android:alpha="0.5"/>
+			    
+			    <EditText android:id="@+id/contrynameText"
+			        android:layout_width="0dp"
+			        android:layout_weight="0.4"
+			        android:layout_height="wrap_content"
+			        android:textColor="#333333"
+			        android:textSize="14dp"
+			        android:paddingLeft="5dp"
+			        android:paddingRight="5dp"
+			        android:layout_marginLeft="10dp"
+			        android:enabled="false"
+			        android:alpha="0.5"
+			        android:background="@drawable/edit_text"/>
+
+			</LinearLayout>
+			
+			
+			<TextView android:id="@+id/firstdatetitle"
+			    android:layout_below="@+id/passLayer"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="채용일"
+		        android:textSize="12dp"
+		        android:textColor="#333333"
+		        android:layout_alignParentLeft="true"/>
+			<LinearLayout 
+			    android:id="@+id/firstdateLayer"
+			    android:layout_below="@+id/firstdatetitle"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginBottom="10dp"
+			    android:layout_marginTop="3dp"
+			    android:orientation="horizontal">
+				<Button
+                    android:id="@+id/firstdateBtn"
+                    android:text="채용일 선택"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:textColor="#333333"
+                    android:textSize="13dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:background="@drawable/edit_text"/>
+			</LinearLayout>
+			
+			
+			<TextView android:id="@+id/ranktitle"
+			    android:layout_below="@+id/firstdateLayer"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="직종"
+		        android:textSize="12dp"
+		        android:textColor="#333333"
+		        android:layout_alignParentLeft="true"/>
+			<LinearLayout 
+			    android:id="@+id/rankLayer"
+			    android:layout_below="@+id/ranktitle"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginBottom="10dp"
+			    android:layout_marginTop="3dp"
+			    android:orientation="horizontal">
+				<Spinner
+                    android:id="@+id/rankselect"
+			        android:layout_width="0dp"
+			        android:layout_weight="0.7"
+                    android:layout_height="40dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:background="@drawable/btn_dropdown"/>
+				
+				<TextView android:id="@+id/checktitle"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="직종변경"
+			        android:textSize="13dp"
+			        android:layout_marginLeft="20dp"
+			        android:layout_marginRight="10dp"
+			        android:textColor="#333333"
+			        android:layout_gravity="center_vertical"
+			        android:layout_alignParentLeft="true"/>
+			    
+				<ImageView
+                        android:id="@+id/wtypeCheck"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/check_off" />
+				
+			</LinearLayout>
+			
+			<TextView android:id="@+id/overtitle"
+			    android:layout_below="@+id/rankLayer"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="혈핵형"
+		        android:textSize="12dp"
+		        android:textColor="#333333"
+		        android:layout_alignParentLeft="true"/>
+			<LinearLayout 
+			    android:id="@+id/overLayer"
+			    android:layout_below="@+id/overtitle"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginBottom="10dp"
+			    android:layout_marginTop="3dp"
+			    android:orientation="horizontal">
+				<Spinner
+                    android:id="@+id/overselect"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="15dp"
+                    android:background="@drawable/btn_dropdown"/>
+			</LinearLayout>
+
+				
+			<Button android:id="@+id/completebtn"
+			    android:layout_below="@+id/overLayer"
+                android:layout_width="80dp"
+                android:layout_height="40.5dp"
+                android:text="등록"
+                android:textStyle="normal"
+                android:textColor="#ffffff"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical|left"
+                android:paddingLeft="15dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/new_btn"/>
+			
+	 	</RelativeLayout>
+         
+     </ScrollView>
+     
+    </RelativeLayout>
+     
+</RelativeLayout>

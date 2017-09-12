@@ -46,8 +46,8 @@ public class LoadingActivity extends BaseActivity {
             checkPermission();
         } else {
     		if( app.isLogin() ) {
-//    			Intent intent = new Intent(this, ReNewMenuActivity.class);
-//    			startActivity(intent);
+    			Intent intent = new Intent(this, PersonMenuActivity.class);
+    			startActivity(intent);
     			finish();
     		} else {
     			app.setPid(myDeviceId);
@@ -77,8 +77,8 @@ public class LoadingActivity extends BaseActivity {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // 권한 허가
             		if( app.isLogin() ) {
-//            			Intent intent = new Intent(this, ReNewMenuActivity.class);
-//            			startActivity(intent);
+            			Intent intent = new Intent(this, PersonMenuActivity.class);
+            			startActivity(intent);
             			finish();
             		} else {
             			app.setPid(myDeviceId);
@@ -132,8 +132,8 @@ public class LoadingActivity extends BaseActivity {
         } else {
             // 다음 부분은 항상 허용일 경우에 해당이 됩니다.
     		if( app.isLogin() ) {
-//    			Intent intent = new Intent(this, ReNewMenuActivity.class);
-//    			startActivity(intent);
+    			Intent intent = new Intent(this, PersonMenuActivity.class);
+    			startActivity(intent);
     			finish();
     		} else {
     			app.setPid(myDeviceId);

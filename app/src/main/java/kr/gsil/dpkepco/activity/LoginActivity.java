@@ -10,6 +10,7 @@ import kr.gsil.dpkepco.model.MobileVO;
 import kr.gsil.dpkepco.util.BackPressCloseHandler;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -135,8 +136,8 @@ public class LoginActivity extends BaseActivity {
 	
 	public void eventUpdateSignUpComplete() {
 		showToast("어서 오세요.");
-//		Intent intent = new Intent(this, ReNewMenuActivity.class);
-//		startActivity(intent);
+		Intent intent = new Intent(this, PersonMenuActivity.class);
+		startActivity(intent);
 		finish();		
 	}
 	

@@ -208,8 +208,8 @@ public class HttpUrl {
 	public static final int KEPCO_GET_TIMELY_VALUE_LIST						= 185;
 	public static final int KEPCO_GET_TIMELY_VALUE_BYID						= 186;
 	public static final int KEPCO_TIMELY_VALUE_INSERT						= 187;
-	public static final int KEPCO_TIMELY_VALUE_UPDATE						= 187;
-	public static final int KEPCO_TIMELY_VALUE_DELETE						= 187;
+	public static final int KEPCO_TIMELY_VALUE_UPDATE						= 188;
+	public static final int KEPCO_TIMELY_VALUE_DELETE						= 189;
 
 
 	

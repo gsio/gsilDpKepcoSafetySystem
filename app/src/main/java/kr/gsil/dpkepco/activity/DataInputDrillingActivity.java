@@ -122,7 +122,7 @@ public class DataInputDrillingActivity extends BaseActivity implements View.OnCl
                     public void run() {
                         String dateStr = btn_current_date.getText().toString();
                         final String result = api.insertDailyValue(getBaseContext(),dateStr
-                                , String.valueOf((int)mCDialog.getData()), app.getUserid());
+                                , String.valueOf((int)mCDialog.getData()), app.getId());
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 pHide();
@@ -173,7 +173,7 @@ public class DataInputDrillingActivity extends BaseActivity implements View.OnCl
         Intent intent = getIntent();
         inputType = intent.getIntExtra("inputType", 1);
         comeFrom = intent.getStringExtra("comeFrom");
-        Log.e("onCreate","inputType = "+inputType+" comeFrom = "+comeFrom);
+        //Log.e("onCreate","inputType = "+inputType+" comeFrom = "+comeFrom);
         if(comeFrom.equals("home")){
             target = new Intent(activity, MainActivity.class);
         }else {

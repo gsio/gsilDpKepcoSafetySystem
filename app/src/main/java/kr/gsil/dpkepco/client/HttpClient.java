@@ -73,7 +73,7 @@ public class HttpClient {
 	public ArrayList<TimelyValueVO> getTimelyValueList(final Context context, int type){
 		ArrayList<TimelyValueVO> timelylist = null;
 		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_GET_TIMELY_VALUE_LIST) + "?site_id=8&type="+type );
-		//Log.e("getTimelyValueList","result = "+result+" type = "+type);
+		Log.e("getTimelyValueList","result = "+result+" type = "+type);
 		if( result != null && !result.equals("") ) {
 
 			try {
@@ -383,7 +383,7 @@ public class HttpClient {
 	public ArrayList<DailyValueVO> getDailyValueList(final Context context){
 		ArrayList<DailyValueVO> daillylist = null;
 		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_GET_DRILLING_DAILY_VALUE) + "?site_id=8&type=-1" );
-
+		//Log.e("getTimelyValueList","result = "+result);
 		if( result != null && !result.equals("") ) {
 
 			try {
@@ -402,7 +402,7 @@ public class HttpClient {
 						dailyVo.setInput_date(items.getString("input_date"));
 						dailyVo.setValue(items.getDouble("value"));
 						dailyVo.setWritetime(items.getString("writetime"));
-						dailyVo.setUpdatetime(items.getString("updatetime"));
+						//dailyVo.setUpdatetime(items.getString("updatetime"));
 						dailyVo.setWriter_user_id(items.getString("writer_user_id"));
 						dailyVo.setWriter_user_name(items.getString("writer_user_name"));
 						dailyVo.setIsMobile(items.getInt("isMobile"));

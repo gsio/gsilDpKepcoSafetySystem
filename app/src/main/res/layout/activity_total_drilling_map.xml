@@ -5,7 +5,6 @@
     android:id="@+id/sv_map_pan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="kr.gsil.dpkepco.activity.TotalDrillingMapActivity">
     <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="match_parent"

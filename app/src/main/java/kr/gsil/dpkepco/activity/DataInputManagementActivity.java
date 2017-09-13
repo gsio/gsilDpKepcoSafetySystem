@@ -126,7 +126,7 @@ public class DataInputManagementActivity extends BaseActivity implements View.On
                     public void run() {
                         String dateStr = btn_current_date.getText().toString();
                         final String result = api.insertTimelyValue(getBaseContext(),String.valueOf(inputType)
-                                , String.valueOf((inputType == 3 || inputType == 5)? (int)mCDialog.getData() : mCDialog.getData()), app.getUserid());
+                                , String.valueOf((inputType == 3 || inputType == 5)? (int)mCDialog.getData() : mCDialog.getData()), app.getId());
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 pHide();

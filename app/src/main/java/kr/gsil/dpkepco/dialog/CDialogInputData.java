@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StyleRes;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -90,6 +91,7 @@ public class CDialogInputData extends Dialog {
         setDate(mDate);
         setData(mData);
         setClickListener(mLeftClickListener, mCenterClickListener, mRightClickListener);
+        //Log.e("onCreate","mData = "+mData+" id = "+id+" mDate = "+mDate);
     }
     private void setTitle(String title){
         cdialog_tv_title.setText(title);

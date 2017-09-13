@@ -4,8 +4,6 @@
     android:layout_height="match_parent" 
     android:background="#ffffff">
 
-
-    
     <RelativeLayout
         android:id="@+id/mainContentLayer"
         android:layout_width="match_parent"

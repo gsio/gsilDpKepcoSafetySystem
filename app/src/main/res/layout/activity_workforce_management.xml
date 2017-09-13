@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+app:layout_behavior="@string/appbar_scrolling_view_behavior"
+tools:context="kr.gsil.dpkepco.activity.WorkforceManagementActivity">
+
+<com.ssomai.android.scalablelayout.ScalableLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/slMain"
+    android:background="@android:color/white"
+    app:scale_base_height="1700"
+    app:scale_base_width="1080">
+
+
+    <Button android:id="@+id/btn_today_total_worker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/page_7_btxt_1"
+        android:textColor="#333333"
+        android:background="@drawable/btn_basic_selector"
+        app:scale_textsize="70"
+        app:scale_height="200"
+        app:scale_left="140"
+        app:scale_top="50"
+        app:scale_width="800" />
+
+    <Button android:id="@+id/btn_worker_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/page_7_btxt_2"
+        android:textColor="#333333"
+        android:background="@drawable/btn_basic_selector"
+        app:scale_textsize="70"
+        app:scale_height="200"
+        app:scale_left="140"
+        app:scale_top="300"
+        app:scale_width="800" />
+
+    <Button android:id="@+id/btn_beacon_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/page_7_btxt_3"
+        android:textColor="#333333"
+        android:background="@drawable/btn_basic_selector"
+        app:scale_textsize="70"
+        app:scale_height="200"
+        app:scale_left="140"
+        app:scale_top="550"
+        app:scale_width="800" />
+
+    <Button android:id="@+id/btn_beacon_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/page_7_btxt_4"
+        android:textColor="#333333"
+        android:background="@drawable/btn_basic_selector"
+        app:scale_textsize="70"
+        app:scale_height="200"
+        app:scale_left="140"
+        app:scale_top="800"
+        app:scale_width="800" />
+</com.ssomai.android.scalablelayout.ScalableLayout>
+
+</FrameLayout>

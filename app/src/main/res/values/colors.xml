@@ -4,4 +4,19 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="bg_main_panel_2">#EDEFEF</color>
+    <color name="bg_page">#F2F2F2</color>
+    <color name="box_border">#808080</color>
+    <color name="item_text">#000000</color>
+    <color name="item_bg_0">#FFFFFF</color>
+    <color name="item_bg_1">#F9F9F9</color>
+
+    <color name="page_6_title_bg">#14365E</color>
+    <color name="page_6_title_txt">#FFFFFF</color>
+    <color name="page_6_content_txt">#000000</color>
+    <color name="page_1_title_bg">#14365E</color>
+    <color name="page_1_title_txt">#FFFFFF</color>
+    <color name="page_1_content_txt">#000000</color>
+
+    <color name="test_txt">#0000ff</color>
+    <color name="page_data_input_content_txt">#000000</color>
 </resources>

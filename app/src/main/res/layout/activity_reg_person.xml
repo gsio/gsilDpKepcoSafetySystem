@@ -285,7 +285,7 @@
 			        android:textSize="14dp"
 			        android:enabled="false"
 			        android:alpha="0.5"/>
-			    
+
 			    <EditText android:id="@+id/contrynameText"
 			        android:layout_width="0dp"
 			        android:layout_weight="0.4"

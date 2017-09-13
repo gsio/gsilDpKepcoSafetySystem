@@ -32,11 +32,13 @@ public class UserSystemApplication extends Application {
     private boolean isLogin = false;
     private String pid = "";
     private String type = "";
+    private String userid = "";
     private String cont_id = "";
     private String site_id = "";
     private String tag_id = "";
     private String id = "";
     private String name = "";
+    private String cname = "";
     private String rtype = "";
     private String year = "";
     private String month = "";
@@ -117,7 +119,21 @@ public class UserSystemApplication extends Application {
 
     String selectItems = "";
 
+    KepcoMonitorVO kepcoMonitorVO = null;
+    KepcoSensorVO kepcoSensorVO = null;
 
+    public void setKepcoData(KepcoMonitorVO kepcoMonitorVO, KepcoSensorVO kepcoSensorVO){
+        this.kepcoMonitorVO = kepcoMonitorVO;
+        this.kepcoSensorVO = kepcoSensorVO;
+    }
+
+    public KepcoMonitorVO getKepcoMonitor(){
+        return kepcoMonitorVO;
+    }
+
+    public KepcoSensorVO getKepcoSensor(){
+        return kepcoSensorVO;
+    }
 
     public ArrayList<MobileUserVO> getBeaconlist() {
         return beaconlist;
@@ -711,6 +727,15 @@ public class UserSystemApplication extends Application {
     }
 
 
+    public String getUserid() {
+        return pref.getString("userid", userid);
+    }
+
+    public void setUserid(String userid) {
+        editer.putString("userid", userid);
+        editer.commit();
+    }
+
     public String getCont_id() {
         return pref.getString("cont_id", cont_id);
     }
@@ -736,6 +761,16 @@ public class UserSystemApplication extends Application {
 
     public void setRtype(String rtype) {
         editer.putString("rtype", rtype);
+        editer.commit();
+    }
+
+
+    public String getCname() {
+        return pref.getString("cname", cname);
+    }
+
+    public void setCname(String cname) {
+        editer.putString("cname", cname);
         editer.commit();
     }
 

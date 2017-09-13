@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.ResultReceiver;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -22,7 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends AppCompatActivity {
 	
 	public abstract void init();
 	public abstract void setData();

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"     android:oneshot="false">
+
+    <item android:drawable="@drawable/img_ani_pc_0" android:duration="100" />
+    <item android:drawable="@drawable/img_ani_pc_1" android:duration="100" />
+    <item android:drawable="@drawable/img_ani_pc_2" android:duration="100" />
+    <item android:drawable="@drawable/img_ani_pc_3" android:duration="100" />
+    <item android:drawable="@drawable/img_ani_pc_4" android:duration="100" />
+    <item android:drawable="@drawable/img_ani_pc_5" android:duration="100" />
+    <item android:drawable="@drawable/img_ani_pc_6" android:duration="100" />
+    <item android:drawable="@drawable/img_ani_pc_7" android:duration="100" />
+    <item android:drawable="@drawable/img_ani_pc_8" android:duration="100" />
+    <item android:drawable="@drawable/img_ani_pc_9" android:duration="100" />
+    <item android:drawable="@drawable/img_ani_pc_10" android:duration="100" />
+    <item android:drawable="@drawable/img_ani_pc_11" android:duration="100" />
+
+</animation-list>

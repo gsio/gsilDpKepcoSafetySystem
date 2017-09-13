@@ -31,7 +31,11 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import kr.gsil.dpkepco.UserSystemApplication;
 import kr.gsil.dpkepco.client.HttpUrl;
+import kr.gsil.dpkepco.model.DailyValueVO;
+import kr.gsil.dpkepco.model.KepcoMonitorVO;
+import kr.gsil.dpkepco.model.KepcoSensorVO;
 import kr.gsil.dpkepco.model.MobileInfoVO;
 import kr.gsil.dpkepco.model.MobileNoticeVO;
 import kr.gsil.dpkepco.model.MobileEquipVO;
@@ -45,8 +49,10 @@ import kr.gsil.dpkepco.model.MobileVO;
 import kr.gsil.dpkepco.model.MobileWorkerVO;
 import kr.gsil.dpkepco.model.MobileWtypeVO;
 import kr.gsil.dpkepco.model.ScheVO;
+import kr.gsil.dpkepco.model.TimelyValueVO;
 import kr.gsil.dpkepco.util.CustomJsonObject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -62,6 +68,456 @@ public class HttpClient {
 		if ( _instance != null ) return _instance;
 		return _instance = new HttpClient();
 	}
+
+
+	public ArrayList<TimelyValueVO> getTimelyValueList(final Context context, int type){
+		ArrayList<TimelyValueVO> timelylist = null;
+		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_GET_TIMELY_VALUE_LIST) + "?site_id=8&type="+type );
+		//Log.e("getTimelyValueList","result = "+result+" type = "+type);
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				timelylist = new ArrayList<TimelyValueVO>();
+				if( item.getString("result").equals("true") ) {
+					JSONArray jArr = new JSONArray(item.getString("list"));
+
+					for ( int i = 0; i < jArr.length(); i++ ){
+						CustomJsonObject items = new CustomJsonObject(jArr.getJSONObject(i));
+						TimelyValueVO timelyVo = new TimelyValueVO();
+						timelyVo.setId(items.getInt("id"));
+						timelyVo.setSite_id(items.getInt("site_id"));
+						timelyVo.setType(items.getInt("type"));
+						timelyVo.setValue(items.getDouble("value"));
+						timelyVo.setWrite_date(items.getString("write_date"));
+						timelyVo.setWritetime(items.getString("writetime"));
+						timelyVo.setWritetime_hms(items.getString("writetime_hms"));
+						timelyVo.setWriter_user_id(items.getString("writer_user_id"));
+						timelyVo.setWriter_user_name(items.getString("writer_user_name"));
+						timelyVo.setIsMobile(items.getInt("isMobile"));
+
+						timelylist.add(timelyVo);
+					}
+				} else {
+					timelylist = null;
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return timelylist;
+	}
+
+	public TimelyValueVO getTimelyValueById(final Context context, int type, int id){
+		TimelyValueVO timelyVo = null;
+		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_GET_TIMELY_VALUE_BYID) + "?site_id=8&type="+type+"&id="+id );
+
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				timelyVo = new TimelyValueVO();
+
+				timelyVo.setId(item.getInt("id"));
+				timelyVo.setSite_id(item.getInt("site_id"));
+				timelyVo.setType(item.getInt("type"));
+				timelyVo.setValue(item.getDouble("value"));
+				timelyVo.setWrite_date(item.getString("write_date"));
+				timelyVo.setWritetime(item.getString("writetime"));
+				timelyVo.setWritetime_hms(item.getString("writetime_hms"));
+				timelyVo.setWriter_user_id(item.getString("writer_user_id"));
+				timelyVo.setWriter_user_name(item.getString("writer_user_name"));
+				timelyVo.setIsMobile(item.getInt("isMobile"));
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return timelyVo;
+	}
+
+	public String insertTimelyValue( final Context context,
+									//String site_id,
+									String type,
+									String value,
+									String writer_user_id
+									//,String isMobile
+	)  {
+
+		String resultString = "";
+		String site_id = "8";
+		//String type = "-1";
+		String isMobile = "1";
+		ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("site_id", site_id));
+		params.add(new BasicNameValuePair("type", type ));
+		params.add(new BasicNameValuePair("value", value));
+		params.add(new BasicNameValuePair("writer_user_id", writer_user_id ));
+		params.add(new BasicNameValuePair("isMobile", isMobile ));
+
+		String result = postHttpParameterData( HttpUrl.getUrl( context, HttpUrl.KEPCO_TIMELY_VALUE_INSERT), params );
+		Log.i("KEPCO_TIMELY_VALUE_INSERT", result);
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				if( item.getString("result").equals("true") ) {
+					resultString  = "true";
+				} else {
+					resultString  = "";
+				}
+
+			} catch(Exception e) {
+				//e.printStackTrace();
+				return null;
+			}
+
+		}
+
+		return resultString;
+	}
+
+	public String updateTimelyValue( final Context context,
+									String id,
+									String value
+	)  {
+
+		String resultString = "";
+		String isMobile = "1";
+		ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("id", id));
+		params.add(new BasicNameValuePair("value", value));
+		params.add(new BasicNameValuePair("isMobile", isMobile ));
+
+		String result = postHttpParameterData( HttpUrl.getUrl( context, HttpUrl.KEPCO_TIMELY_VALUE_UPDATE), params );
+		Log.i("KEPCO_TIMELY_VALUE_UPDATE", result);
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				if( item.getString("result").equals("true") ) {
+					resultString  = "true";
+				} else {
+					resultString  = "";
+				}
+
+			} catch(Exception e) {
+				//e.printStackTrace();
+				return null;
+			}
+
+		}
+
+		return resultString;
+	}
+	public String deleteTimelyValue( final Context context,
+									String id)  {
+		String resultString = "";
+
+		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_TIMELY_VALUE_DELETE) + "?id=" + id);
+		Log.i("KEPCO_TIMELY_VALUE_DELETE", result);
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				if( item.getString("result").equals("true") ) {
+					resultString  = "true";
+				} else {
+					resultString  = "";
+				}
+
+			} catch(Exception e) {
+				//e.printStackTrace();
+				return null;
+			}
+		}
+
+		return resultString;
+	}
+	public String deleteDailyValue( final Context context,
+									String id)  {
+		String resultString = "";
+
+		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_DRILLING_DAILY_VALUE_DELETE) + "?id=" + id);
+		Log.i("KEPCO_DRILLING_DAILY_VALUE_DELETE", result);
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				if( item.getString("result").equals("true") ) {
+					resultString  = "true";
+				} else {
+					resultString  = "";
+				}
+
+			} catch(Exception e) {
+				//e.printStackTrace();
+				return null;
+			}
+		}
+
+		return resultString;
+	}
+
+	public String updateDailyValue( final Context context,
+									String id,
+									String value
+	)  {
+
+		String resultString = "";
+		String isMobile = "1";
+		ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("id", id));
+		params.add(new BasicNameValuePair("value", value));
+		params.add(new BasicNameValuePair("isMobile", isMobile ));
+
+		String result = postHttpParameterData( HttpUrl.getUrl( context, HttpUrl.KEPCO_DRILLING_DAILY_VALUE_UPDATE), params );
+		Log.i("KEPCO_DRILLING_DAILY_VALUE_UPDATE", result);
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				if( item.getString("result").equals("true") ) {
+					resultString  = "true";
+				} else {
+					resultString  = "";
+				}
+
+			} catch(Exception e) {
+				//e.printStackTrace();
+				return null;
+			}
+
+		}
+
+		return resultString;
+	}
+	public String insertDailyValue( final Context context,
+										  //String site_id,
+										  //String type,
+										  String input_date,
+										  String value,
+										  String writer_user_id
+										//,String isMobile
+										)  {
+
+		String resultString = "";
+		String site_id = "8";
+		String type = "-1";
+		String isMobile = "1";
+		ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("site_id", site_id));
+		params.add(new BasicNameValuePair("type", type ));
+		params.add(new BasicNameValuePair("input_date", input_date ));
+		params.add(new BasicNameValuePair("value", value));
+		params.add(new BasicNameValuePair("writer_user_id", writer_user_id ));
+		params.add(new BasicNameValuePair("isMobile", isMobile ));
+
+		String result = postHttpParameterData( HttpUrl.getUrl( context, HttpUrl.KEPCO_DRILLING_DAILY_VALUE_INSERT), params );
+		Log.i("KEPCO_DRILLING_DAILY_VALUE_INSERT", result);
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				if( item.getString("result").equals("true") ) {
+					resultString  = "true";
+				} else {
+					resultString  = "";
+				}
+
+			} catch(Exception e) {
+				//e.printStackTrace();
+				return null;
+			}
+
+		}
+
+		return resultString;
+	}
+
+
+	public DailyValueVO getDailyValueById(final Context context, int id){
+		DailyValueVO dailyVo = null;
+		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_GET_DRILLING_DAILY_VALUE_BYID) + "?site_id=8&type=-1&id="+id );
+
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				dailyVo = new DailyValueVO();
+
+				dailyVo.setId(item.getInt("id"));
+				dailyVo.setSite_id(item.getInt("site_id"));
+				dailyVo.setType(item.getInt("type"));
+				dailyVo.setInput_date(item.getString("input_date"));
+				dailyVo.setValue(item.getDouble("value"));
+				dailyVo.setWritetime(item.getString("writetime"));
+				dailyVo.setUpdatetime(item.getString("updatetime"));
+				dailyVo.setWriter_user_id(item.getString("writer_user_id"));
+				dailyVo.setWriter_user_name(item.getString("writer_user_name"));
+				dailyVo.setIsMobile(item.getInt("isMobile"));
+				dailyVo.setSum_value(item.getDouble("sum_value"));
+				dailyVo.setAvg_value(item.getDouble("avg_value"));
+				dailyVo.setDay_count(item.getInt("day_count"));
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dailyVo;
+	}
+
+	public ArrayList<DailyValueVO> getDailyValueList(final Context context){
+		ArrayList<DailyValueVO> daillylist = null;
+		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_GET_DRILLING_DAILY_VALUE) + "?site_id=8&type=-1" );
+
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				daillylist = new ArrayList<DailyValueVO>();
+				if( item.getString("result").equals("true") ) {
+					JSONArray jArr = new JSONArray(item.getString("list"));
+
+					for ( int i = 0; i < jArr.length(); i++ ){
+						CustomJsonObject items = new CustomJsonObject(jArr.getJSONObject(i));
+						DailyValueVO dailyVo = new DailyValueVO();
+						dailyVo.setId(items.getInt("id"));
+						dailyVo.setSite_id(items.getInt("site_id"));
+						dailyVo.setType(items.getInt("type"));
+						dailyVo.setInput_date(items.getString("input_date"));
+						dailyVo.setValue(items.getDouble("value"));
+						dailyVo.setWritetime(items.getString("writetime"));
+						dailyVo.setUpdatetime(items.getString("updatetime"));
+						dailyVo.setWriter_user_id(items.getString("writer_user_id"));
+						dailyVo.setWriter_user_name(items.getString("writer_user_name"));
+						dailyVo.setIsMobile(items.getInt("isMobile"));
+						dailyVo.setSum_value(items.getDouble("sum_value"));
+						dailyVo.setAvg_value(items.getDouble("avg_value"));
+						dailyVo.setDay_count(items.getInt("day_count"));
+
+						daillylist.add(dailyVo);
+					}
+				} else {
+					daillylist = null;
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return daillylist;
+	}
+	/**
+	 *
+	 모니터링 데이터 =>  /json/getKepcoData
+
+	 jo.put("monitorVO", new JSONObject(monitorVO));  --모니터 데이터
+	 jo.put("sensorVO", new JSONObject(sensorVO)); --환경데이터
+
+	 MonitorVO 데이터
+	 private double total_const;//총 연장
+	 private double total_meter;//누계굴진
+	 private double depth;//심도
+	 private double remain_meter;//잔량
+	 private double today_meter;//오늘(일) 굴진량
+	 private double this_mon_meter;//월 굴진량
+	 private double avg_meter;//평균 굴진량
+	 private double month_avg_meter;//월평균 굴진량
+
+	 //select * From kepco_section;
+	 //굴진거리에 따른 문구
+	 private String text1;//지층구분
+	 private String text2;//RMR암반등급
+	 private String text3;//그라우팅타입
+	 private String text4;//Target압력
+
+	 //select * From timely_value;
+	 //수시 입력 데이터
+	 private double value1;//염분농도
+	 private double value2;//막장압력
+	 private double value3;//오탁수 처리량
+	 private double value4;//굴진 상태
+	 private double value5;//총 인력
+
+	 sensorVO 데이터
+	 private double o2;//산소
+	 private double co;//일산화탄소
+	 private double h2s;//황화수소
+	 private double gas;//가연성가스
+	 */
+	public void getKepcoData( final Context context ){
+		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_GET_MONITORING_DATA) );
+
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+				CustomJsonObject monitorCO = null;
+				CustomJsonObject sensorCO = null;
+
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				Log.e("getKepcoData",item.getString("monitorVO"));
+				Log.e("getKepcoData",item.getString("sensorVO"));
+				if( item.getString("result").equals("true") ) {
+					monitorCO = new CustomJsonObject(item.getString("monitorVO"));
+					sensorCO = new CustomJsonObject(item.getString("sensorVO"));
+					KepcoMonitorVO kepcoMonitorVO = new KepcoMonitorVO();
+
+					kepcoMonitorVO.setValue1(Double.valueOf(monitorCO.getString("value1")));
+					kepcoMonitorVO.setValue2(Double.valueOf(monitorCO.getString("value2")));
+					kepcoMonitorVO.setValue3(Double.valueOf(monitorCO.getString("value3")));
+					kepcoMonitorVO.setValue4(Double.valueOf(monitorCO.getString("value4")));
+					kepcoMonitorVO.setValue5(Double.valueOf(monitorCO.getString("value5")));
+					//kepcoMonitorVO.setValue6(Double.valueOf(monitorCO.getString("value6")));
+
+					kepcoMonitorVO.setText1(String.valueOf(monitorCO.getString("text1")));
+					kepcoMonitorVO.setText2(String.valueOf(monitorCO.getString("text2")));
+					kepcoMonitorVO.setText3(String.valueOf(monitorCO.getString("text3")));
+					//kepcoMonitorVO.setText4(String.valueOf(monitorCO.getString("text4")));
+
+					kepcoMonitorVO.setTotal_const(Double.valueOf(monitorCO.getString("total_const")));
+					kepcoMonitorVO.setTotal_meter(Double.valueOf(monitorCO.getString("total_meter")));
+					kepcoMonitorVO.setDepth(Double.valueOf(monitorCO.getString("depth")));
+					kepcoMonitorVO.setRemain_meter(Double.valueOf(monitorCO.getString("remain_meter")));
+					kepcoMonitorVO.setToday_meter(Double.valueOf(monitorCO.getString("today_meter")));
+					kepcoMonitorVO.setThis_mon_meter(Double.valueOf(monitorCO.getString("this_mon_meter")));
+					kepcoMonitorVO.setAvg_meter(Double.valueOf(monitorCO.getString("avg_meter")));
+					kepcoMonitorVO.setMonth_avg_meter(Double.valueOf(monitorCO.getString("month_avg_meter")));
+
+					KepcoSensorVO kepcoSensorVO = new KepcoSensorVO();
+					kepcoSensorVO.setSite_id(String.valueOf(sensorCO.getString("site_id")));
+					kepcoSensorVO.setPlace_id(Integer.valueOf(sensorCO.getString("place_id")));
+					kepcoSensorVO.setO2(Double.valueOf(sensorCO.getString("o2")));
+					kepcoSensorVO.setCo(Double.valueOf(sensorCO.getString("co")));
+					kepcoSensorVO.setH2s(Double.valueOf(sensorCO.getString("h2s")));
+					kepcoSensorVO.setGas(Double.valueOf(sensorCO.getString("gas")));
+					kepcoSensorVO.setWritetime(String.valueOf(sensorCO.getString("writetime")));
+
+					((UserSystemApplication)context.getApplicationContext()).setKepcoData(kepcoMonitorVO, kepcoSensorVO);
+				} else {
+					//((UserSystemApplication)context.getApplicationContext()).setKepcoData(null, null);
+				}
+			} catch(Exception e) {
+
+				e.printStackTrace();
+			}
+		}
+	}
+
 	
 	public ArrayList<MobileEquipVO> preCheckList( final Context context, String level, String code1)  {
 		ArrayList<MobileEquipVO> devicelist = null;
@@ -994,7 +1450,7 @@ public class HttpClient {
 	}
 
 	
-	public String deleteEquipItem( final Context context, 
+	public String deleteEquipItem( final Context context,
 			String id)  {
 		String resultString = "";
 		

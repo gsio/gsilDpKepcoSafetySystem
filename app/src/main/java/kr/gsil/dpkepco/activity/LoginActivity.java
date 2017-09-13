@@ -119,6 +119,8 @@ public class LoginActivity extends BaseActivity {
 								app.setName(returnUser.getName());
 								app.setRtype(returnUser.getDcode());
 								app.setPhone(phone);
+								app.setUserid(returnUser.getUserid());
+								app.setCname(returnUser.getCname());
 								//app.setSite_name(returnUser.getSname());
 									eventUpdateSignUpComplete();
 							} else {
@@ -136,7 +138,7 @@ public class LoginActivity extends BaseActivity {
 	
 	public void eventUpdateSignUpComplete() {
 		showToast("어서 오세요.");
-		Intent intent = new Intent(this, PersonMenuActivity.class);
+		Intent intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
 		finish();		
 	}

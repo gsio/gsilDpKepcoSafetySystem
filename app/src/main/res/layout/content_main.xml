@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="kr.gsil.dpkepco.activity.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/slMain"
+        android:background="@android:color/white"
+        app:scale_base_height="1700"
+        app:scale_base_width="1080">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_panel_1"
+            android:orientation="horizontal"
+            app:scale_height="400"
+            app:scale_left="0"
+            app:scale_top="0"
+            app:scale_width="1080">
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_rounded_box"
+            android:orientation="horizontal"
+            app:scale_height="88"
+            app:scale_left="30"
+            app:scale_top="38"
+            app:scale_width="700"></LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:scale_height="80"
+            app:scale_left="50"
+            app:scale_top="42"
+            app:scale_width="80"
+            app:srcCompat="@drawable/img_weathers_2" />
+
+        <TextView
+            android:id="@+id/tv_weather_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textScaleX="0.8"
+            android:baselineAligned="false"
+            android:text="대체로 맑음"
+            app:scale_height="72"
+            app:scale_left="136"
+            app:scale_textsize="48"
+            app:scale_top="48"
+            app:scale_width="190" />
+
+        <TextView
+            android:id="@+id/tv_weather_subsi_do"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_subsi_do"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:textStyle="bold"
+            android:textScaleX="0.9"
+            android:baselineAligned="false"
+            android:text="00"
+            app:scale_height="72"
+            app:scale_left="315"
+            app:scale_textsize="68"
+            app:scale_top="40"
+            app:scale_width="150" />
+
+        <TextView
+            android:id="@+id/tv_weather_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_weather_percent_0"
+            android:gravity="right|top"
+            android:paddingRight="9dp"
+            android:textStyle="bold"
+            android:textScaleX="0.8"
+            android:baselineAligned="false"
+            android:text="00"
+            app:scale_height="72"
+            app:scale_left="475"
+            app:scale_textsize="68"
+            app:scale_top="40"
+            app:scale_width="233" />
+
+        <ImageView
+            android:id="@+id/img_drilling_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:scale_height="89"
+            app:scale_left="762"
+            app:scale_top="38"
+            app:scale_width="300"
+            app:srcCompat="@drawable/img_drilling_status_lv_0" />
+
+        <LinearLayout
+            android:id="@+id/ll_main_pan_item_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/img_main_pan_item_1"
+            android:orientation="vertical"
+            app:scale_height="178"
+            app:scale_left="30"
+            app:scale_top="172"
+            app:scale_width="283"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_main_pan_item_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/img_main_pan_item_2"
+            android:orientation="vertical"
+            app:scale_height="178"
+            app:scale_left="335"
+            app:scale_top="172"
+            app:scale_width="232"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_main_pan_item_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/img_main_pan_item_3"
+            android:orientation="vertical"
+            app:scale_height="178"
+            app:scale_left="589"
+            app:scale_top="172"
+            app:scale_width="232"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_main_pan_item_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/img_main_pan_item_4"
+            android:orientation="vertical"
+            app:scale_height="178"
+            app:scale_left="841"
+            app:scale_top="172"
+            app:scale_width="204"></LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_main_pan_item_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="00"
+            android:textStyle="bold"
+            app:scale_height="100"
+            app:scale_left="123"
+            app:scale_textsize="90"
+            app:scale_top="170"
+            app:scale_width="124" />
+
+        <TextView
+            android:id="@+id/tv_main_pan_item_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="00"
+            android:textStyle="bold"
+            app:scale_height="100"
+            app:scale_left="362"
+            app:scale_textsize="90"
+            app:scale_top="170"
+            app:scale_width="124" />
+
+        <TextView
+            android:id="@+id/tv_main_pan_item_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="00"
+            android:textStyle="bold"
+            app:scale_height="100"
+            app:scale_left="616"
+            app:scale_textsize="90"
+            app:scale_top="170"
+            app:scale_width="124" />
+
+        <TextView
+            android:id="@+id/tv_main_pan_item_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0"
+            android:textStyle="bold"
+            app:scale_height="100"
+            app:scale_left="868"
+            app:scale_textsize="90"
+            app:scale_top="170"
+            app:scale_width="124" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            app:scale_height="470"
+            app:scale_left="0"
+            app:scale_top="400"
+            app:scale_width="1080"></LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:scale_height="70"
+            app:scale_left="0"
+            app:scale_top="400"
+            app:scale_width="325"
+            app:srcCompat="@drawable/lavel_txt_menu_1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_main_panel_2"
+            android:orientation="horizontal"
+            app:scale_height="550"
+            app:scale_left="0"
+            app:scale_top="1140"
+            app:scale_width="1080"></LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:scale_height="70"
+            app:scale_left="0"
+            app:scale_top="1140"
+            app:scale_width="325"
+            app:srcCompat="@drawable/lavel_txt_menu_2" />
+
+        <ImageButton
+            android:id="@+id/btn_main_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_main1"
+            android:scaleType="fitXY"
+            app:scale_height="244"
+            app:scale_left="74"
+            app:scale_top="520"
+            app:scale_width="244"
+            app:srcCompat="@drawable/img_btn_1_ds" />
+
+        <ImageButton
+            android:id="@+id/btn_main_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_main1"
+            android:scaleType="fitXY"
+            app:scale_height="244"
+            app:scale_left="424"
+            app:scale_top="520"
+            app:scale_width="244"
+            app:srcCompat="@drawable/img_btn_2_cp" />
+
+        <ImageButton
+            android:id="@+id/btn_main_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_main1"
+            android:scaleType="fitXY"
+            app:scale_height="244"
+            app:scale_left="754"
+            app:scale_top="520"
+            app:scale_width="244"
+            app:srcCompat="@drawable/img_btn_3_tdm" />
+
+        <ImageButton
+            android:id="@+id/btn_main_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_main1"
+            android:scaleType="fitXY"
+            app:scale_height="244"
+            app:scale_left="74"
+            app:scale_top="820"
+            app:scale_width="244"
+            app:srcCompat="@drawable/img_btn_4_cctv" />
+
+        <ImageButton
+            android:id="@+id/btn_main_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_main1"
+            android:scaleType="fitXY"
+            app:scale_height="244"
+            app:scale_left="424"
+            app:scale_top="820"
+            app:scale_width="244"
+            app:srcCompat="@drawable/img_btn_5_lt" />
+
+        <ImageButton
+            android:id="@+id/btn_main_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_main1"
+            android:scaleType="fitXY"
+            app:scale_height="244"
+            app:scale_left="754"
+            app:scale_top="820"
+            app:scale_width="244"
+            app:srcCompat="@drawable/img_btn_6_we" />
+
+        <ImageButton
+            android:id="@+id/btn_main_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_main2"
+            android:scaleType="fitXY"
+            app:scale_height="244"
+            app:scale_left="74"
+            app:scale_top="1250"
+            app:scale_width="244"
+            app:srcCompat="@drawable/img_btn_7_wm" />
+
+        <ImageButton
+            android:id="@+id/btn_main_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_main2"
+            android:scaleType="fitXY"
+            app:scale_height="244"
+            app:scale_left="424"
+            app:scale_top="1250"
+            app:scale_width="244"
+            app:srcCompat="@drawable/img_btn_8_nm" />
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+
+
+</FrameLayout>

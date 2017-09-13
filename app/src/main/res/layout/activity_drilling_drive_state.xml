@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="kr.gsil.dpkepco.activity.DrillingDriveStateActivity">
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/slMain"
+        android:background="@android:color/white"
+        app:scale_base_height="1700"
+        app:scale_base_width="1080"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
+
+    <Button android:id="@+id/btn_drilling_state_0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:background="@drawable/bg_btn_drilling_state_lv_0_on"
+        app:scale_height="500"
+        app:scale_left="290"
+        app:scale_top="50"
+        app:scale_width="500" />
+
+    <Button android:id="@+id/btn_drilling_state_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:background="@drawable/bg_btn_drilling_state_lv_1_off"
+        app:scale_height="500"
+        app:scale_left="290"
+        app:scale_top="600"
+        app:scale_width="500" />
+
+    <Button android:id="@+id/btn_drilling_state_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:background="@drawable/bg_btn_drilling_state_lv_2_off"
+        app:scale_height="500"
+        app:scale_left="290"
+        app:scale_top="1150"
+        app:scale_width="500" />
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+</FrameLayout>

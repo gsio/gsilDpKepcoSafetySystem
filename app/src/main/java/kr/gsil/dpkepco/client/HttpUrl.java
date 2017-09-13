@@ -197,6 +197,21 @@ public class HttpUrl {
 	
 	public static final int CONSMAN_GET_SS_COUNT_DATA						= 177;
 	public static final int CONSMAN_DELETE_SS_LOCATION_DATA					= 178;
+
+	public static final int KEPCO_GET_MONITORING_DATA						= 179;
+	public static final int KEPCO_GET_DRILLING_DAILY_VALUE					= 180;
+	public static final int KEPCO_GET_DRILLING_DAILY_VALUE_BYID				= 181;
+	public static final int KEPCO_DRILLING_DAILY_VALUE_INSERT				= 182;
+	public static final int KEPCO_DRILLING_DAILY_VALUE_UPDATE				= 183;
+	public static final int KEPCO_DRILLING_DAILY_VALUE_DELETE				= 184;
+
+	public static final int KEPCO_GET_TIMELY_VALUE_LIST						= 185;
+	public static final int KEPCO_GET_TIMELY_VALUE_BYID						= 186;
+	public static final int KEPCO_TIMELY_VALUE_INSERT						= 187;
+	public static final int KEPCO_TIMELY_VALUE_UPDATE						= 187;
+	public static final int KEPCO_TIMELY_VALUE_DELETE						= 187;
+
+
 	
 	public static String getUrl(Context context, int idx) {
 		String apiUrl = String.format(context.getResources().getStringArray(R.array.gsilsafety_url)[idx]);

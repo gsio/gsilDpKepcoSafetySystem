@@ -38,7 +38,6 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="kr.gsil.dpkepco.C2D_MESSAGE" />
 
@@ -49,19 +48,19 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".UserSystemApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round">
         <activity
             android:name=".activity.LoadingActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" >
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -71,55 +70,93 @@
         <activity
             android:name=".activity.PopupActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.RegPersonListActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.RegPersonActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.BeaconManageActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.BeaconPersonSearchActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activity.PersonMenuActivity"
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.DrillingStatusActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Light"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.ContingencyPlanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Light"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.TotalDrillingMapActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Light"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.LocationInTunnelActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Light"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.WorkingEnvironmentActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Light"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.WorkforceManagementActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Light"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.NumericalManagementActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Light"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.DataInputManagementActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Light"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.DataInputDrillingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Light"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.DrillingDriveStateActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
         <receiver
             android:name="com.google.android.gcm.GCMBroadcastReceiver"
             android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />

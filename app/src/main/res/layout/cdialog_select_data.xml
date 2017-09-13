@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="kr.gsil.dpkepco.dialog.CDialogInputData">
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/slMain"
+        android:background="@null"
+        app:scale_base_height="1700"
+        app:scale_base_width="1080"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/cdialog_basic_bg"
+            app:scale_height="670"
+            app:scale_left="140"
+            app:scale_top="415"
+            app:scale_width="800"
+            ></LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/cdialog_basic_title"
+            app:scale_height="130"
+            app:scale_left="140"
+            app:scale_top="415"
+            app:scale_width="800"
+            ></LinearLayout>
+
+
+        <TextView
+            android:id="@+id/cdialog_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/drilling_state_title_txt"
+            android:textColor="@color/page_data_input_content_txt"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:scale_textsize="50"
+            app:scale_left="140"
+            app:scale_top="415"
+            app:scale_width="800"
+            app:scale_height="130"
+            />
+
+        <TextView
+            android:id="@+id/cdialog_tv_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/drilling_state_txt_0"
+            android:textColor="@color/page_data_input_content_txt"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:scale_textsize="50"
+            app:scale_left="140"
+            app:scale_top="605"
+            app:scale_width="800"
+            app:scale_height="130"
+            />
+
+        <TextView
+            android:id="@+id/cdialog_tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/page_popup_input_txt_3"
+            android:textColor="@color/page_data_input_content_txt"
+            android:gravity="center"
+            app:scale_textsize="50"
+            app:scale_left="140"
+            app:scale_top="760"
+            app:scale_width="800"
+            app:scale_height="130"
+            />
+        <Button android:id="@+id/cdialog_btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btxt_kyes"
+            android:textColor="#333333"
+            android:background="@drawable/cdialog_btn_basic_selector"
+            app:scale_textsize="50"
+            app:scale_height="130"
+            app:scale_left="190"
+            app:scale_top="915"
+            app:scale_width="330" />
+
+        <Button android:id="@+id/cdialog_btn_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btxt_kno"
+            android:textColor="#333333"
+            android:background="@drawable/cdialog_btn_basic_selector"
+            app:scale_textsize="50"
+            app:scale_height="130"
+            app:scale_left="560"
+            app:scale_top="915"
+            app:scale_width="330" />
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+
+
+</FrameLayout>

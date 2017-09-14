@@ -21,7 +21,7 @@ public class WorkforceManagementActivity extends BaseActivity implements View.On
         ((Button)findViewById(R.id.btn_today_total_worker)).setOnClickListener(this);
         ((Button)findViewById(R.id.btn_worker_list)).setOnClickListener(this);
         ((Button)findViewById(R.id.btn_beacon_list)).setOnClickListener(this);
-        ((Button)findViewById(R.id.btn_beacon_search)).setOnClickListener(this);
+        //((Button)findViewById(R.id.btn_beacon_search)).setOnClickListener(this);
         setData();
     }
 
@@ -80,19 +80,14 @@ public class WorkforceManagementActivity extends BaseActivity implements View.On
                 finish();
                 break;
             case R.id.btn_worker_list:
-/*                target = new Intent(this, RegPersonListActivity.class);
+                target = new Intent(this, RegPersonListActivity.class);
                 startActivity(target);
-                finish();*/
+                //finish();
                 break;
             case R.id.btn_beacon_list:
                 target = new Intent(this, BeaconManageActivity.class);
                 startActivity(target);
-                finish();
-                break;
-            case R.id.btn_beacon_search:
-                target = new Intent(this, BeaconPersonSearchActivity.class);
-                startActivity(target);
-                finish();
+                //finish();
                 break;
         }
     }

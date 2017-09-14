@@ -50,7 +50,7 @@ tools:context="kr.gsil.dpkepco.activity.WorkforceManagementActivity">
         app:scale_left="140"
         app:scale_top="550"
         app:scale_width="800" />
-
+<!--
     <Button android:id="@+id/btn_beacon_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,7 +61,7 @@ tools:context="kr.gsil.dpkepco.activity.WorkforceManagementActivity">
         app:scale_height="200"
         app:scale_left="140"
         app:scale_top="800"
-        app:scale_width="800" />
+        app:scale_width="800" /> -->
 </com.ssomai.android.scalablelayout.ScalableLayout>
 
 </FrameLayout>

@@ -122,6 +122,7 @@ public class LoginActivity extends BaseActivity {
 								app.setUserid(returnUser.getUserid());
 								app.setCname(returnUser.getCname());
 								//app.setSite_name(returnUser.getSname());
+								app.setWeatherCallCnt(0);//날씨 호출 용 카운트 초기값 설정
 									eventUpdateSignUpComplete();
 							} else {
 								showToast("로그인에 실패하였습니다.");

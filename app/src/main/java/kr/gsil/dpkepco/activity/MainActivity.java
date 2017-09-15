@@ -1,9 +1,16 @@
 package kr.gsil.dpkepco.activity;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,6 +26,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,12 +36,14 @@ import kr.gsil.dpkepco.base.BaseActivity;
 import kr.gsil.dpkepco.model.KepcoMonitorVO;
 import kr.gsil.dpkepco.model.KepcoSensorVO;
 import kr.gsil.dpkepco.util.BackPressCloseHandler;
+import kr.gsil.weather.WeatherInfoVO;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private BackPressCloseHandler backPressCloseHandler;
     KepcoMonitorVO kepcoMonitorVO = null;
     KepcoSensorVO kepcoSensorVO = null;
+    WeatherInfoVO weather = null;
 
     ImageView   img_weather = null;
     TextView    tv_weather_state = null;
@@ -49,9 +59,12 @@ public class MainActivity extends BaseActivity
     TextView	tv_nav_state = null;
 
     int drillingDriveState = DrillingDriveStateActivity.STATE_DRILLING;
+    int weatherCallCnt = 0;
+    String weather_addr = "";
 
     @Override
     public void init() {
+        weather_addr = getResources().getString(R.string.weather_addr);
         img_weather = (ImageView)findViewById(R.id.img_weather);
         tv_weather_state = (TextView)findViewById(R.id.tv_weather_state);
         tv_weather_subsi_do = (TextView)findViewById(R.id.tv_weather_subsi_do);
@@ -73,6 +86,12 @@ public class MainActivity extends BaseActivity
         startThread(new Runnable() {
             public void run() {
                 api.getKepcoData(getBaseContext());
+                if(weather == null) weather = api.getWeatherInfo(getBaseContext(), weather_addr);
+                weatherCallCnt = app.getWeatherCallCnt();
+                if(weatherCallCnt >= WEATHER_CALL_BASE_CNT) {
+                    weather = api.getWeatherInfo(getBaseContext(), weather_addr);
+                    weatherCallCnt = 0;
+                }
                 runOnUiThread(new Runnable() {
                     public void run() {
                         pHide();
@@ -121,6 +140,14 @@ public class MainActivity extends BaseActivity
                         if(kepcoSensorVO != null){
 
                         }
+                        if(weather != null){
+                            int id = getResources().getIdentifier("icon_weather_"+weather.getToday_code(), "drawable", getBaseContext().getPackageName());
+                            img_weather.setImageResource(id);
+                            tv_weather_state.setText(weather.getToday_text());
+                            tv_weather_subsi_do.setText(weather.getToday_temp());
+                            tv_weather_percent.setText(weather.getHumidity());
+                        }
+
                     }
                 });
             }
@@ -148,6 +175,9 @@ public class MainActivity extends BaseActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
+        getSupportActionBar().setDisplayShowCustomEnabled(false);
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -365,14 +395,20 @@ public class MainActivity extends BaseActivity
 
     private final Handler handler = new Handler();
     Runnable runnable = null;
+    static int WEATHER_CALL_BASE_CNT = 60; //1시간에 한번씩 호출
+
     private void doTheAutoRefresh() {
         runnable=new Runnable() {
             @Override
             public void run() {
                 setData();
-                Log.e("doTheAutoRefresh","doTheAutoRefresh ================");
-                app.setKepcoData(null, null);
+                Log.e("doTheAutoRefresh","doTheAutoRefresh ================weatherCallCnt = "+weatherCallCnt);
+                //app.setKepcoData(null, null);
+
                 doTheAutoRefresh();
+
+                app.setWeatherCallCnt(weatherCallCnt);
+                weatherCallCnt++;
             }
         };
         handler.postDelayed(runnable, 1000*60);

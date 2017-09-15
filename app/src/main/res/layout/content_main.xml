@@ -44,11 +44,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:scaleType="fitXY"
             app:scale_height="80"
             app:scale_left="50"
             app:scale_top="42"
             app:scale_width="80"
-            app:srcCompat="@drawable/img_weathers_2" />
+            app:srcCompat="@drawable/icon_weather_32" />
 
         <TextView
             android:id="@+id/tv_weather_state"

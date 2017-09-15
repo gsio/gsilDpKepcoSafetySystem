@@ -51,6 +51,8 @@ import kr.gsil.dpkepco.model.MobileWtypeVO;
 import kr.gsil.dpkepco.model.ScheVO;
 import kr.gsil.dpkepco.model.TimelyValueVO;
 import kr.gsil.dpkepco.util.CustomJsonObject;
+import kr.gsil.weather.Weather;
+import kr.gsil.weather.WeatherInfoVO;
 
 import android.app.Activity;
 import android.content.Context;
@@ -67,6 +69,48 @@ public class HttpClient {
 	{
 		if ( _instance != null ) return _instance;
 		return _instance = new HttpClient();
+	}
+
+	public WeatherInfoVO getWeatherInfo(final Context context, String addr){
+		WeatherInfoVO weather = null;
+		String result = getHttpData( Weather.getYahooUrl(addr) );
+		//Log.e("getWeatherInfo","result = "+result+" addr = "+addr);
+
+		if( result != null && !result.equals("") ) {
+			try{
+				weather = new WeatherInfoVO();
+				JSONObject jsonObj = new JSONObject(result);
+					CustomJsonObject item = new CustomJsonObject(jsonObj);
+					CustomJsonObject query = new CustomJsonObject(item.getString("query"));
+					CustomJsonObject results = new CustomJsonObject(query.getString("results"));
+
+					CustomJsonObject channel = new CustomJsonObject(results.getString("channel"));
+				weather.setWind(channel.getString("wind"));//channel.wind; //바람세기 등//,"wind":{"chill":"77","direction":"90","speed":"14"}
+				weather.setAstronomy(channel.getString("astronomy"));//channel.astronomy; //sunset,sunrise 시간//,"astronomy":{"sunrise":"6:14 am","sunset":"6:40 pm"}
+
+					CustomJsonObject location = new CustomJsonObject(channel.getString("location"));
+				weather.setCity(location.getString("city"));//location.city; //지역명 영문
+				weather.setCity(location.getString("region"));//location.region; //지역명 영문
+					CustomJsonObject atmosphere = new CustomJsonObject(channel.getString("atmosphere"));
+				weather.setHumidity(atmosphere.getString("humidity"));//atmosphere.humidity + '%'; //강수확률//<<<<<<<<<<
+					CustomJsonObject channel_item = new CustomJsonObject(channel.getString("item"));
+					CustomJsonObject condition = new CustomJsonObject(channel_item.getString("condition"));
+
+				//Math.round((condition.temp - 32)*5/9)  + '℃';  //화씨 -> 섭씨변환
+				int temp = Math.round((Integer.valueOf(condition.getString("temp")) - 32)*5/9);
+				weather.setToday_temp(String.valueOf(temp));//<<<<<<<<<<
+				String today_code = condition.getString("code");//<<<<<<<<<<
+				weather.setToday_code(today_code); //condition.code;
+				String condition_text = "";
+				//condition_text = condition.getString("text");
+				condition_text = Weather.w_condition_text[Integer.valueOf(today_code)];
+				weather.setToday_text(condition_text); //condition.text;//<<<<<<<<<<
+
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return weather;
 	}
 
 

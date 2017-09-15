@@ -212,6 +212,8 @@ public class HttpUrl {
 	public static final int KEPCO_TIMELY_VALUE_DELETE						= 189;
 
 
+
+
 	
 	public static String getUrl(Context context, int idx) {
 		String apiUrl = String.format(context.getResources().getStringArray(R.array.gsilsafety_url)[idx]);

@@ -16,6 +16,8 @@ import android.support.v4.app.NotificationCompat;
 import kr.gsil.dpkepco.model.*;
 
 import kr.gsil.dpkepco.model.MobileEquipVO;
+import kr.gsil.weather.WeatherInfoVO;
+
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -918,5 +920,25 @@ public class UserSystemApplication extends Application {
         noti.flags = Notification.FLAG_AUTO_CANCEL;
         nm.notify(id, noti);
 
+    }
+
+    /**
+     * Weather Info
+     */
+    private WeatherInfoVO weatherInfo = null;
+    public void setWeatjerInfo(WeatherInfoVO info){
+        this.weatherInfo = info;
+    }
+    public WeatherInfoVO getWeatjerInfo(){
+        return weatherInfo;
+    }
+    int weatherCallCnt = 0;
+    public int getWeatherCallCnt() {
+        return pref.getInt("weatherCallCnt", weatherCallCnt);
+    }
+
+    public void setWeatherCallCnt(int weatherCallCnt) {
+        editer.putInt("weatherCallCnt", weatherCallCnt);
+        editer.commit();
     }
 }

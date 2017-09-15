@@ -113,4 +113,6 @@
     <string name="nav_txt_9">로그아웃</string>
     <string name="nav_txt_00">입력메뉴</string>
     <string name="nav_txt_10">서브메뉴</string>
+
+    <string name="weather_addr">충청북도 당진시</string>
 </resources>

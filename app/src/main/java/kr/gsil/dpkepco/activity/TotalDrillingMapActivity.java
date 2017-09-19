@@ -169,6 +169,7 @@ public class TotalDrillingMapActivity extends BaseActivity{
     MapSliceAdapter mAdapter = null;
     public ImageView aniImageView = null;
     public int drillingMetter = 1;
+    String strPassStrata = "";
 
     @Override
     public void init() {
@@ -231,6 +232,7 @@ public class TotalDrillingMapActivity extends BaseActivity{
         if(kepcoMonitorVO != null){
             //kepcoMonitorVO
             drillingMetter = (int)kepcoMonitorVO.getTotal_meter();//double total_meter;//누계굴진
+            strPassStrata = kepcoMonitorVO.getText1();String text1;//지층구분 "지질 이상대";//
         }
         if(kepcoSensorVO != null){
 
@@ -284,9 +286,9 @@ public class TotalDrillingMapActivity extends BaseActivity{
             Display display = getWindowManager().getDefaultDisplay();
             int width = display.getWidth();
             final int height = display.getHeight();
-            //Log.e("onResume","width = "+width + " height = "+height);
+            Log.e("onResume","width = "+width + " height = "+height);
 
-            listview.setPositionInfo(drillingMetter, (float)width/1080);
+            listview.setPositionInfo(drillingMetter, (float)width/1080, strPassStrata);
             //scrollView.scrollTo(0, scrollView.getBottom());
             scrollView.post(new Runnable() {
 
@@ -294,7 +296,7 @@ public class TotalDrillingMapActivity extends BaseActivity{
                 public void run() {
                     // TODO Auto-generated method stub
                     //scrollView.fullScroll(ScrollView.FOCUS_DOWN);
-                    if(drillingMetter > 0) scrollView.scrollTo(0, drillingMetter - height/2);
+                    if(drillingMetter > 0) scrollView.scrollTo(0, (int)(drillingMetter*0.765) - height/2);
                 }
             });
         }

@@ -32,7 +32,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import kr.gsil.dpkepco.UserSystemApplication;
-import kr.gsil.dpkepco.client.HttpUrl;
 import kr.gsil.dpkepco.model.DailyValueVO;
 import kr.gsil.dpkepco.model.KepcoMonitorVO;
 import kr.gsil.dpkepco.model.KepcoSensorVO;
@@ -51,10 +50,9 @@ import kr.gsil.dpkepco.model.MobileWtypeVO;
 import kr.gsil.dpkepco.model.ScheVO;
 import kr.gsil.dpkepco.model.TimelyValueVO;
 import kr.gsil.dpkepco.util.CustomJsonObject;
-import kr.gsil.weather.Weather;
-import kr.gsil.weather.WeatherInfoVO;
+import kr.gsil.dpkepco.model.weather.Weather;
+import kr.gsil.dpkepco.model.weather.WeatherInfoVO;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

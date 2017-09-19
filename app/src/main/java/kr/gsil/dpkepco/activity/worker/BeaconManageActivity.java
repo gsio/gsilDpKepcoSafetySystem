@@ -1,14 +1,10 @@
-package kr.gsil.dpkepco.activity;
+package kr.gsil.dpkepco.activity.worker;
 
 import java.util.ArrayList;
 
 import kr.gsil.dpkepco.R;
-import kr.gsil.dpkepco.R.id;
-import kr.gsil.dpkepco.R.layout;
-import kr.gsil.dpkepco.activity.BeaconPersonSearchActivity.MyCustomAdapter;
 import kr.gsil.dpkepco.base.BaseActivity;
 import kr.gsil.dpkepco.model.MobileUserVO;
-import kr.gsil.dpkepco.model.MobileWorkerVO;
 import kr.gsil.dpkepco.util.ListViewAdapter;
 import kr.gsil.dpkepco.util.SoundSearcher;
 

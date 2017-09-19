@@ -1,4 +1,4 @@
-package kr.gsil.weather;
+package kr.gsil.dpkepco.model.weather;
 
 /**
  * Created by gsil on 2017. 9. 15..

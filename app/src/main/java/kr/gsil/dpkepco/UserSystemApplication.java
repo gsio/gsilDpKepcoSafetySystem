@@ -16,7 +16,7 @@ import android.support.v4.app.NotificationCompat;
 import kr.gsil.dpkepco.model.*;
 
 import kr.gsil.dpkepco.model.MobileEquipVO;
-import kr.gsil.weather.WeatherInfoVO;
+import kr.gsil.dpkepco.model.weather.WeatherInfoVO;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;

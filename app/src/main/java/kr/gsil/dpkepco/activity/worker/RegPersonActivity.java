@@ -1,11 +1,5 @@
-package kr.gsil.dpkepco.activity;
+package kr.gsil.dpkepco.activity.worker;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,28 +10,16 @@ import java.util.Locale;
 
 import kr.gsil.dpkepco.R;
 import kr.gsil.dpkepco.base.BaseActivity;
-import kr.gsil.dpkepco.model.MobileEquipVO;
 import kr.gsil.dpkepco.model.MobileUserVO;
 import kr.gsil.dpkepco.model.MobileWorkerVO;
 import kr.gsil.dpkepco.model.MobileWtypeVO;
-import kr.gsil.dpkepco.util.ImageOption;
-import kr.gsil.dpkepco.util.Utility;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.DocumentsContract;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,12 +29,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ImageView.ScaleType;
 
 public class RegPersonActivity extends BaseActivity {
 

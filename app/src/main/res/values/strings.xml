@@ -31,6 +31,7 @@
     <string name="page_title_07">인력관리</string>
     <string name="page_title_08">수치관리</string>
 
+
     <string name="page_main_txt_1">모니터링 메뉴</string>
     <string name="page_main_txt_2">관리자 입력 메뉴</string>
 
@@ -72,9 +73,10 @@
     <string name="basic_mark_6">등급</string>
 
     <string name="page_7_btxt_1">총 인력 입력</string>
-    <string name="page_7_btxt_2">근로자 리스트</string>
-    <string name="page_7_btxt_3">비콘 관리</string>
-    <string name="page_7_btxt_4">비콘 검색</string>
+    <string name="page_7_btxt_2">근로자 안전관리</string>
+<!--    <string name="page_7_btxt_3">비콘 관리</string>
+    <string name="page_7_btxt_4">비콘 검색</string>-->
+
 
     <string name="page_8_btxt_1">굴진량</string>
     <string name="page_8_btxt_2">굴진 상태</string>
@@ -115,4 +117,5 @@
     <string name="nav_txt_10">서브메뉴</string>
 
     <string name="weather_addr">충청북도 당진시</string>
+
 </resources>

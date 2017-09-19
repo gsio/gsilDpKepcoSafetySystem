@@ -1,4 +1,4 @@
-package kr.gsil.dpkepco.activity;
+package kr.gsil.dpkepco.activity.worker;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.AdapterView;

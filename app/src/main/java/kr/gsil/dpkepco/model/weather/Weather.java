@@ -1,9 +1,6 @@
-package kr.gsil.weather;
+package kr.gsil.dpkepco.model.weather;
 
 import android.util.Log;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 /**
  * Created by gsil on 2017. 9. 15..

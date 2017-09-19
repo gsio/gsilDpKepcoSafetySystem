@@ -1,16 +1,8 @@
 package kr.gsil.dpkepco.activity;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,11 +14,9 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,7 +26,7 @@ import kr.gsil.dpkepco.base.BaseActivity;
 import kr.gsil.dpkepco.model.KepcoMonitorVO;
 import kr.gsil.dpkepco.model.KepcoSensorVO;
 import kr.gsil.dpkepco.util.BackPressCloseHandler;
-import kr.gsil.weather.WeatherInfoVO;
+import kr.gsil.dpkepco.model.weather.WeatherInfoVO;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {

@@ -73,22 +73,27 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activity.RegPersonListActivity"
+            android:name=".activity.worker.RegPersonListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activity.RegPersonActivity"
+            android:name=".activity.worker.PersonMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Light"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.worker.RegPersonActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activity.BeaconManageActivity"
+            android:name=".activity.worker.BeaconManageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activity.BeaconPersonSearchActivity"
+            android:name=".activity.worker.BeaconPersonSearchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />

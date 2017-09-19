@@ -2,7 +2,6 @@ package kr.gsil.dpkepco.activity;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 
 import kr.gsil.dpkepco.R;
 import kr.gsil.dpkepco.base.BaseActivity;
+import kr.gsil.dpkepco.activity.worker.PersonMenuActivity;
 
 public class WorkforceManagementActivity extends BaseActivity implements View.OnClickListener{
 
@@ -19,9 +19,7 @@ public class WorkforceManagementActivity extends BaseActivity implements View.On
     @Override
     public void init() {
         ((Button)findViewById(R.id.btn_today_total_worker)).setOnClickListener(this);
-        ((Button)findViewById(R.id.btn_worker_list)).setOnClickListener(this);
-        ((Button)findViewById(R.id.btn_beacon_list)).setOnClickListener(this);
-        //((Button)findViewById(R.id.btn_beacon_search)).setOnClickListener(this);
+        ((Button)findViewById(R.id.btn_person_menu)).setOnClickListener(this);
         setData();
     }
 
@@ -79,15 +77,10 @@ public class WorkforceManagementActivity extends BaseActivity implements View.On
                 startActivity(target);
                 finish();
                 break;
-            case R.id.btn_worker_list:
-                target = new Intent(this, RegPersonListActivity.class);
+            case R.id.btn_person_menu:
+                target = new Intent(this, PersonMenuActivity.class);
                 startActivity(target);
-                //finish();
-                break;
-            case R.id.btn_beacon_list:
-                target = new Intent(this, BeaconManageActivity.class);
-                startActivity(target);
-                //finish();
+                finish();
                 break;
         }
     }

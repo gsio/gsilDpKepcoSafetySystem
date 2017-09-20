@@ -240,15 +240,18 @@
             android:orientation="horizontal"
             app:scale_height="550"
             app:scale_left="0"
-            app:scale_top="1140"
-            app:scale_width="1080"></LinearLayout>
+            app:scale_top="1060"
+            app:scale_width="1080">
+
+        </LinearLayout>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:scale_height="70"
             app:scale_left="0"
-            app:scale_top="1140"
+            app:scale_top="1060"
             app:scale_width="325"
             app:srcCompat="@drawable/lavel_txt_menu_2" />
 
@@ -260,7 +263,7 @@
             android:scaleType="fitXY"
             app:scale_height="244"
             app:scale_left="74"
-            app:scale_top="520"
+            app:scale_top="500"
             app:scale_width="244"
             app:srcCompat="@drawable/img_btn_1_ds" />
 
@@ -272,7 +275,7 @@
             android:scaleType="fitXY"
             app:scale_height="244"
             app:scale_left="424"
-            app:scale_top="520"
+            app:scale_top="500"
             app:scale_width="244"
             app:srcCompat="@drawable/img_btn_2_cp" />
 
@@ -284,7 +287,7 @@
             android:scaleType="fitXY"
             app:scale_height="244"
             app:scale_left="754"
-            app:scale_top="520"
+            app:scale_top="500"
             app:scale_width="244"
             app:srcCompat="@drawable/img_btn_3_tdm" />
 
@@ -296,7 +299,7 @@
             android:scaleType="fitXY"
             app:scale_height="244"
             app:scale_left="74"
-            app:scale_top="820"
+            app:scale_top="778"
             app:scale_width="244"
             app:srcCompat="@drawable/img_btn_4_cctv" />
 
@@ -308,7 +311,7 @@
             android:scaleType="fitXY"
             app:scale_height="244"
             app:scale_left="424"
-            app:scale_top="820"
+            app:scale_top="778"
             app:scale_width="244"
             app:srcCompat="@drawable/img_btn_5_lt" />
 
@@ -320,7 +323,7 @@
             android:scaleType="fitXY"
             app:scale_height="244"
             app:scale_left="754"
-            app:scale_top="820"
+            app:scale_top="778"
             app:scale_width="244"
             app:srcCompat="@drawable/img_btn_6_we" />
 
@@ -332,7 +335,7 @@
             android:scaleType="fitXY"
             app:scale_height="244"
             app:scale_left="74"
-            app:scale_top="1250"
+            app:scale_top="1160"
             app:scale_width="244"
             app:srcCompat="@drawable/img_btn_7_wm" />
 
@@ -344,10 +347,23 @@
             android:scaleType="fitXY"
             app:scale_height="244"
             app:scale_left="424"
-            app:scale_top="1250"
+            app:scale_top="1160"
             app:scale_width="244"
             app:srcCompat="@drawable/img_btn_8_nm" />
     </com.ssomai.android.scalablelayout.ScalableLayout>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btm_bar"
+            app:scale_base_height="100"
+            app:scale_base_width="1080">
+            </com.ssomai.android.scalablelayout.ScalableLayout>
+    </LinearLayout>
 </FrameLayout>

@@ -18,7 +18,7 @@
         <ImageView android:id="@+id/biglogo"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/toplogo"/>
+            android:src="@drawable/gsil_logo_fullver"/>
         
         <LinearLayout 
             android:id="@+id/idlayer"

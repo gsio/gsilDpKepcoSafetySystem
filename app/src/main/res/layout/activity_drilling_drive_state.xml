@@ -4,45 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context="kr.gsil.dpkepco.activity.DrillingDriveStateActivity">
-    <com.ssomai.android.scalablelayout.ScalableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/slMain"
-        android:background="@android:color/white"
-        app:scale_base_height="1800"
-        app:scale_base_width="1080"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">
 
-    <Button android:id="@+id/btn_drilling_state_0"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-        android:background="@drawable/bg_btn_drilling_state_lv_0_on"
-        app:scale_height="500"
-        app:scale_left="290"
-        app:scale_top="50"
-        app:scale_width="500" />
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            app:scale_base_height="500"
+            app:scale_base_width="500">
 
-    <Button android:id="@+id/btn_drilling_state_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:background="@drawable/bg_btn_drilling_state_lv_1_off"
-        app:scale_height="500"
-        app:scale_left="290"
-        app:scale_top="600"
-        app:scale_width="500" />
+        <Button
+            android:id="@+id/btn_drilling_state_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_drilling_state_lv_0_on"
+            android:text=""
+            app:scale_height="500"
+            app:scale_left="0"
+            app:scale_top="0"
+            app:scale_width="500" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
 
-    <Button android:id="@+id/btn_drilling_state_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:background="@drawable/bg_btn_drilling_state_lv_2_off"
-        app:scale_height="500"
-        app:scale_left="290"
-        app:scale_top="1150"
-        app:scale_width="500" />
-    </com.ssomai.android.scalablelayout.ScalableLayout>
+
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            app:scale_base_height="500"
+            app:scale_base_width="500">
+
+        <Button
+            android:id="@+id/btn_drilling_state_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_drilling_state_lv_1_off"
+            android:text=""
+            app:scale_height="500"
+            app:scale_left="0"
+            app:scale_top="0"
+            app:scale_width="500" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+
+
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            app:scale_base_height="500"
+            app:scale_base_width="500">
+
+            <Button
+                android:id="@+id/btn_drilling_state_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_btn_drilling_state_lv_2_off"
+                android:text=""
+                app:scale_height="500"
+                app:scale_left="0"
+                app:scale_top="0"
+                app:scale_width="500" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+    </LinearLayout>
 </FrameLayout>

@@ -13,10 +13,11 @@ import android.widget.TextView;
 
 import kr.gsil.dpkepco.R;
 import kr.gsil.dpkepco.base.BaseActivity;
+import kr.gsil.dpkepco.dialog.CDialogReferenceValue;
 import kr.gsil.dpkepco.model.KepcoMonitorVO;
 import kr.gsil.dpkepco.model.KepcoSensorVO;
 
-public class WorkingEnvironmentActivity extends BaseActivity {
+public class WorkingEnvironmentActivity extends BaseActivity implements View.OnClickListener {
 
     public WorkingEnvironmentActivity activity = null;
     KepcoMonitorVO kepcoMonitorVO = null;
@@ -44,21 +45,27 @@ public class WorkingEnvironmentActivity extends BaseActivity {
         tv_data_20  = (TextView)findViewById(R.id.tv_data_20);
         iv_status_20  = (ImageView)findViewById(R.id.iv_status_20);
         btn_info_20  = (Button)findViewById(R.id.btn_info_20);
+        btn_info_20.setOnClickListener(this);
         tv_data_30  = (TextView)findViewById(R.id.tv_data_30);
         iv_status_30  = (ImageView)findViewById(R.id.iv_status_30);
         btn_info_30  = (Button)findViewById(R.id.btn_info_30);
+        btn_info_30.setOnClickListener(this);
         tv_data_40  = (TextView)findViewById(R.id.tv_data_40);
         iv_status_40  = (ImageView)findViewById(R.id.iv_status_40);
         btn_info_40  = (Button)findViewById(R.id.btn_info_40);
+        btn_info_40.setOnClickListener(this);
         tv_data_50  = (TextView)findViewById(R.id.tv_data_50);
         iv_status_50  = (ImageView)findViewById(R.id.iv_status_50);
         btn_info_50  = (Button)findViewById(R.id.btn_info_50);
+        btn_info_50.setOnClickListener(this);
         tv_data_60  = (TextView)findViewById(R.id.tv_data_60);
         iv_status_60  = (ImageView)findViewById(R.id.iv_status_60);
         btn_info_60  = (Button)findViewById(R.id.btn_info_60);
+        btn_info_60.setOnClickListener(this);
         tv_data_70  = (TextView)findViewById(R.id.tv_data_70);
         iv_status_70  = (ImageView)findViewById(R.id.iv_status_70);
         btn_info_70  = (Button)findViewById(R.id.btn_info_70);
+        btn_info_70.setOnClickListener(this);
         setData();
     }
 
@@ -226,4 +233,28 @@ public class WorkingEnvironmentActivity extends BaseActivity {
         startActivity(target);
         finish();
     }
+
+    CDialogReferenceValue mCDialog = null;
+    @Override
+    public void onClick(View v) {
+        Intent target = null;
+        switch(v.getId()){
+            case R.id.btn_info_70:
+//                mCDialog = new CDialogReferenceValue(this, 7, "", "1.0", cancleClickListener);
+//                mCDialog.show();
+                break;
+            case R.id.btn_info_60:
+
+                break;
+        }
+    }
+
+    private View.OnClickListener cancleClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            /*Toast.makeText(getApplicationContext(), "오른쪽버튼 Click!!",
+                    Toast.LENGTH_SHORT).show();*/
+            mCDialog.dismiss();
+        }
+    };
 }

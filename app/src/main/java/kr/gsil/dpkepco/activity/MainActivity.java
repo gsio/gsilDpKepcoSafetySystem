@@ -3,6 +3,7 @@ package kr.gsil.dpkepco.activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -320,6 +321,28 @@ public class MainActivity extends BaseActivity
                 finish();
                 break;
             case R.id.btn_main_4:
+                PackageManager pm = getPackageManager();
+                Intent intent = pm.getLaunchIntentForPackage("com.mcu.iVMS");
+                if( intent != null  ) {
+                    startActivity(intent);
+                } else {
+
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setTitle("cctv앱설치")
+                            .setMessage("cctv 앱이 필요합니다.\n설치 하시겠습니까?")
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setPositiveButton("설치", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    Intent i = new Intent(Intent.ACTION_VIEW);
+                                    Uri u = Uri.parse("https://play.google.com/store/apps/details?id=com.mcu.iVMS");
+                                    i.setData(u);
+                                    startActivity(i);
+                                }})
+                            .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                }}).show();
+
+                }
                 break;
             case R.id.btn_main_5:
                 target = new Intent(this, LocationInTunnelActivity.class);

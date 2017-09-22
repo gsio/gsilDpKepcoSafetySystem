@@ -2,10 +2,14 @@ package kr.gsil.dpkepco.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StyleRes;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -41,11 +45,28 @@ public class CDialogReferenceValue extends Dialog {
         super.onCreate(savedInstanceState);
 
         // 다이얼로그 외부 화면 흐리게 표현
-        WindowManager.LayoutParams lpWindow = new WindowManager.LayoutParams();
-        lpWindow.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        lpWindow.dimAmount = 0.8f;
-        getWindow().setAttributes(lpWindow);
-
+        WindowManager.LayoutParams wlp = new WindowManager.LayoutParams();
+        wlp.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+        wlp.dimAmount = 0.8f;
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.GINGERBREAD_MR1) {
+            wlp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+            wlp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        } else {
+            wlp.width = WindowManager.LayoutParams.MATCH_PARENT;
+            wlp.height = WindowManager.LayoutParams.MATCH_PARENT;
+        }
+        getWindow().setAttributes(wlp);
         setContentView(R.layout.cdialog_reference_value);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        Rect dialogBounds = new Rect();
+        getWindow().getDecorView().getHitRect(dialogBounds);
+
+        if (!dialogBounds.contains((int) ev.getX(), (int) ev.getY())) {
+            this.dismiss();
+        }
+        return super.dispatchTouchEvent(ev);
     }
 }

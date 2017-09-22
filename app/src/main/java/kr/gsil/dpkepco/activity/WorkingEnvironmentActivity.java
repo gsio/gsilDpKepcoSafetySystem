@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import kr.gsil.dpkepco.R;
@@ -40,6 +41,14 @@ public class WorkingEnvironmentActivity extends BaseActivity implements View.OnC
     TextView tv_data_70  = null;
     ImageView iv_status_70  = null;
     Button btn_info_70  = null;
+
+    LinearLayout ll_ref_val_20 = null;
+    LinearLayout ll_ref_val_30 = null;
+    LinearLayout ll_ref_val_40 = null;
+    LinearLayout ll_ref_val_50 = null;
+    LinearLayout ll_ref_val_60 = null;
+    LinearLayout ll_ref_val_70 = null;
+    boolean isViewRefVal = false;
     @Override
     public void init() {
         tv_data_20  = (TextView)findViewById(R.id.tv_data_20);
@@ -66,6 +75,14 @@ public class WorkingEnvironmentActivity extends BaseActivity implements View.OnC
         iv_status_70  = (ImageView)findViewById(R.id.iv_status_70);
         btn_info_70  = (Button)findViewById(R.id.btn_info_70);
         btn_info_70.setOnClickListener(this);
+
+        ll_ref_val_20 = (LinearLayout)findViewById(R.id.ll_ref_val_20);
+        ll_ref_val_30 = (LinearLayout)findViewById(R.id.ll_ref_val_30);
+        ll_ref_val_40 = (LinearLayout)findViewById(R.id.ll_ref_val_40);
+        ll_ref_val_50 = (LinearLayout)findViewById(R.id.ll_ref_val_50);
+        ll_ref_val_60 = (LinearLayout)findViewById(R.id.ll_ref_val_60);
+        ll_ref_val_70 = (LinearLayout)findViewById(R.id.ll_ref_val_70);
+
         setData();
     }
 
@@ -203,7 +220,7 @@ public class WorkingEnvironmentActivity extends BaseActivity implements View.OnC
         // Custom Actionbar를 사용하기 위해 CustomEnabled을 true 시키고 필요 없는 것은 false 시킨다
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(false);            //액션바 아이콘을 업 네비게이션 형태로 표시합니다.
-        actionBar.setDisplayShowTitleEnabled(false);        //액션바에 표시되는 제목의 표시유무를 설정합니다.
+        actionBar.setDisplayShowTitleEnabled(false);            //액션바에 표시되는 제목의 표시유무를 설정합니다.
         actionBar.setDisplayShowHomeEnabled(false);            //홈 아이콘을 숨김처리합니다.
 
         //layout을 가지고 와서 actionbar에 포팅을 시킵니다.
@@ -234,27 +251,42 @@ public class WorkingEnvironmentActivity extends BaseActivity implements View.OnC
         finish();
     }
 
-    CDialogReferenceValue mCDialog = null;
     @Override
     public void onClick(View v) {
-        Intent target = null;
+        LinearLayout target = null;
         switch(v.getId()){
-            case R.id.btn_info_70:
-//                mCDialog = new CDialogReferenceValue(this, 7, "", "1.0", cancleClickListener);
-//                mCDialog.show();
+            case R.id.btn_info_20:
+                setHelpPopup((isViewRefVal)?null:ll_ref_val_20);
+                break;
+            case R.id.btn_info_30:
+                setHelpPopup((isViewRefVal)?null:ll_ref_val_30);
+                break;
+            case R.id.btn_info_40:
+                setHelpPopup((isViewRefVal)?null:ll_ref_val_40);
+                break;
+            case R.id.btn_info_50:
+                setHelpPopup((isViewRefVal)?null:ll_ref_val_50);
                 break;
             case R.id.btn_info_60:
-
+                setHelpPopup((isViewRefVal)?null:ll_ref_val_60);
+                break;
+            case R.id.btn_info_70:
+                setHelpPopup((isViewRefVal)?null:ll_ref_val_70);
                 break;
         }
     }
 
-    private View.OnClickListener cancleClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            /*Toast.makeText(getApplicationContext(), "오른쪽버튼 Click!!",
-                    Toast.LENGTH_SHORT).show();*/
-            mCDialog.dismiss();
+    private void setHelpPopup(LinearLayout target){
+        ll_ref_val_20.setVisibility(View.GONE);
+        ll_ref_val_30.setVisibility(View.GONE);
+        ll_ref_val_40.setVisibility(View.GONE);
+        ll_ref_val_50.setVisibility(View.GONE);
+        ll_ref_val_60.setVisibility(View.GONE);
+        ll_ref_val_70.setVisibility(View.GONE);
+        isViewRefVal = false;
+        if(target != null){
+            target.setVisibility(View.VISIBLE);
+            isViewRefVal = true;
         }
-    };
+    }
 }

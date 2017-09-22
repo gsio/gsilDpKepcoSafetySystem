@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="kr.gsil.dpkepco.dialog.CDialogInputData">
+
+
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/slMain"
+            android:background="@null"
+            app:scale_base_height="1200"
+            app:scale_base_width="900">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/cdialog_sos_bg"
+                app:scale_height="1200"
+                app:scale_left="0"
+                app:scale_top="0"
+                app:scale_width="900"
+                ></LinearLayout>
+
+            <ImageButton
+                android:id="@+id/cdialog_btn_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_sos_call"
+                app:scale_height="627"
+                app:scale_left="200"
+                app:scale_top="70"
+                app:scale_width="500" />
+
+            <ImageButton
+                android:id="@+id/cdialog_btn_alimi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_sos_item_alimi"
+                android:background="@drawable/bg_btn_sos_item"
+                android:scaleType="fitXY"
+                app:scale_height="400"
+                app:scale_left="40"
+                app:scale_top="700"
+                app:scale_width="400" />
+
+            <ImageButton
+                android:id="@+id/cdialog_btn_mission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_sos_item_mission"
+                android:background="@drawable/bg_btn_sos_item"
+                android:scaleType="fitXY"
+                app:scale_height="400"
+                app:scale_left="460"
+                app:scale_top="700"
+                app:scale_width="400" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+    </LinearLayout>
+
+
+</FrameLayout>

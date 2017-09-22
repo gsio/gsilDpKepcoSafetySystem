@@ -350,6 +350,18 @@
             app:scale_top="1160"
             app:scale_width="244"
             app:srcCompat="@drawable/img_btn_8_nm" />
+
+        <ImageButton
+            android:id="@+id/btn_main_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_main3"
+            android:scaleType="fitXY"
+            app:scale_height="244"
+            app:scale_left="754"
+            app:scale_top="1160"
+            app:scale_width="244"
+            app:srcCompat="@drawable/img_btn_9_sos" />
     </com.ssomai.android.scalablelayout.ScalableLayout>
 
 

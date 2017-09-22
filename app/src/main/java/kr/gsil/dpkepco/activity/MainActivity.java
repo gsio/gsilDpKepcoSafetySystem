@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import kr.gsil.dpkepco.R;
 import kr.gsil.dpkepco.base.BaseActivity;
+import kr.gsil.dpkepco.dialog.CDialogAlertSos;
 import kr.gsil.dpkepco.model.KepcoMonitorVO;
 import kr.gsil.dpkepco.model.KepcoSensorVO;
 import kr.gsil.dpkepco.util.BackPressCloseHandler;
@@ -158,6 +159,7 @@ public class MainActivity extends BaseActivity
         ((ImageButton)findViewById(R.id.btn_main_6)).setOnClickListener(this);
         ((ImageButton)findViewById(R.id.btn_main_7)).setOnClickListener(this);
         ((ImageButton)findViewById(R.id.btn_main_8)).setOnClickListener(this);
+        ((ImageButton)findViewById(R.id.btn_main_9)).setOnClickListener(this);
         init();
         backPressCloseHandler = new BackPressCloseHandler(this);
     }
@@ -366,6 +368,10 @@ public class MainActivity extends BaseActivity
                 startActivity(target);
                 finish();
                 break;
+            case R.id.btn_main_9:
+                mCDialog = new CDialogAlertSos(this, alimiClickListener , sosOkClickListener , missionClickListener);
+                mCDialog.show();
+                break;
         }
     }
 
@@ -426,4 +432,27 @@ public class MainActivity extends BaseActivity
         };
         handler.postDelayed(runnable, 1000*60);
     }
+
+    CDialogAlertSos mCDialog = null;
+    private View.OnClickListener alimiClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            showToast("서비스 준비중 입니다.");
+            mCDialog.dismiss();
+        }
+    };
+    private View.OnClickListener missionClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            showToast("서비스 준비중 입니다.");
+            mCDialog.dismiss();
+        }
+    };
+    private View.OnClickListener sosOkClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            showToast("서비스 준비중 입니다.");
+            mCDialog.dismiss();
+        }
+    };
 }

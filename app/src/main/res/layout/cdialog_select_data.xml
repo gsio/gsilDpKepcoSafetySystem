@@ -19,7 +19,6 @@
         <com.ssomai.android.scalablelayout.ScalableLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:id="@+id/slMain"
             android:background="@null"
             app:scale_base_height="670"

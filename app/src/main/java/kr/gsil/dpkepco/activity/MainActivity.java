@@ -362,7 +362,7 @@ public class MainActivity extends BaseActivity
                 break;
             case R.id.btn_main_4:
                 PackageManager pm = getPackageManager();
-                Intent intent = pm.getLaunchIntentForPackage("com.mcu.iVMS");
+                Intent intent = pm.getLaunchIntentForPackage("com.fnsys.mprms");
                 if( intent != null  ) {
                     startActivity(intent);
                 } else {
@@ -374,7 +374,7 @@ public class MainActivity extends BaseActivity
                             .setPositiveButton("설치", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
                                     Intent i = new Intent(Intent.ACTION_VIEW);
-                                    Uri u = Uri.parse("https://play.google.com/store/apps/details?id=com.mcu.iVMS");
+                                    Uri u = Uri.parse("https://play.google.com/store/apps/details?id=com.fnsys.mprms");
                                     i.setData(u);
                                     startActivity(i);
                                 }})

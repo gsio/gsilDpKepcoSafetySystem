@@ -50,7 +50,7 @@ public class LoadingActivity extends BaseActivity {
     			startActivity(intent);
     			finish();
     		} else {
-    			app.setPid(myDeviceId);
+    			//app.setPid(myDeviceId);
     			Intent intent = new Intent(this, LoginActivity.class);
     			startActivity(intent);
     			finish();
@@ -81,7 +81,7 @@ public class LoadingActivity extends BaseActivity {
 						startActivity(intent);
             			finish();
             		} else {
-            			app.setPid(myDeviceId);
+            			//app.setPid(myDeviceId);
             			Intent intent = new Intent(this, LoginActivity.class);
             			startActivity(intent);
             			finish();
@@ -136,7 +136,7 @@ public class LoadingActivity extends BaseActivity {
 				startActivity(intent);
     			finish();
     		} else {
-    			app.setPid(myDeviceId);
+    			//app.setPid(myDeviceId);
     			Intent intent = new Intent(this, LoginActivity.class);
     			startActivity(intent);
     			finish();

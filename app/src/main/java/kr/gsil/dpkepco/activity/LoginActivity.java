@@ -11,6 +11,7 @@ import kr.gsil.dpkepco.util.BackPressCloseHandler;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -36,8 +37,8 @@ public class LoginActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-//		phone=getPhoneNumber();
-//		registerGcm();
+		phone=getPhoneNumber();
+		registerGcm();
 		init();
 		backPressCloseHandler = new BackPressCloseHandler(this);
 	}
@@ -92,14 +93,14 @@ public class LoginActivity extends BaseActivity {
 	
 	public void eventStartLogin( final String userid, final String userpw  ) {
 		
-//		if( regId == null || regId.equals("") ) {
-//			if (Build.VERSION.SDK_INT > 23) {
-//				registerGcm();
-//			} else {
-//				registerGcm();
-//				return;
-//			}
-//		}
+		if( regId == null || regId.equals("") ) {
+			if (Build.VERSION.SDK_INT > 23) {
+				registerGcm();
+			} else {
+				registerGcm();
+				return;
+			}
+		}
 		
 		pShow();
 		startThread(new Runnable() {

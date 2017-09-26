@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="kr.gsil.dpkepco.dialog.CDialogInputData">
+
+
+
+    <LinearLayout
+        android:layout_width="290dp"
+        android:layout_height="450dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@drawable/cdialog_basic_bg"
+        android:orientation="vertical">
+
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/slMain"
+            android:background="@null"
+            app:scale_base_height="410"
+            app:scale_base_width="1080">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#D4D4D4"
+                app:scale_left="25"
+                app:scale_top="400"
+                app:scale_width="1030"
+                app:scale_height="3"
+                ></LinearLayout>
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:background="@drawable/layout_rounded_edit_box"
+                android:textStyle="bold"
+                android:gravity="center"
+                app:scale_textsize="50"
+                app:scale_left="20"
+                app:scale_top="20"
+                app:scale_width="700"
+                app:scale_height="100"
+                />
+            <Button
+                android:id="@+id/btn_alphabet_kor_search"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="검색"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="730" app:scale_top="20"
+                app:scale_width="160" app:scale_height="100"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_close"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="닫기"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="900" app:scale_top="20"
+                app:scale_width="160" app:scale_height="100"/>
+            <!--buttons-->
+            <Button
+                android:id="@+id/btn_alphabet_kor_0"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="ㄱ"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="20" app:scale_top="130"
+                app:scale_width="165" app:scale_height="80"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_1"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="ㄴ"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="195" app:scale_top="130"
+                app:scale_width="165" app:scale_height="80"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_2"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="ㄷ"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="371" app:scale_top="130"
+                app:scale_width="165" app:scale_height="80"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_3"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="ㄹ"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="546" app:scale_top="130"
+                app:scale_width="165" app:scale_height="80"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_4"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="ㅁ"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="722" app:scale_top="130"
+                app:scale_width="165" app:scale_height="80"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_5"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="ㅂ"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="897" app:scale_top="130"
+                app:scale_width="165" app:scale_height="80"/>
+
+            <Button
+                android:id="@+id/btn_alphabet_kor_6"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="ㅅ"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="20" app:scale_top="220"
+                app:scale_width="165" app:scale_height="80"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_7"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="ㅇ"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="195" app:scale_top="220"
+                app:scale_width="165" app:scale_height="80"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_8"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="ㅈ"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="371" app:scale_top="220"
+                app:scale_width="165" app:scale_height="80"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_9"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="ㅊ"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="546" app:scale_top="220"
+                app:scale_width="165" app:scale_height="80"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_10"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="ㅋ"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="722" app:scale_top="220"
+                app:scale_width="165" app:scale_height="80"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_11"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="ㅌ"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="897" app:scale_top="220"
+                app:scale_width="165" app:scale_height="80"/>
+
+            <Button
+                android:id="@+id/btn_alphabet_kor_12"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="ㅍ"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="20" app:scale_top="310"
+                app:scale_width="165" app:scale_height="80"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_13"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="ㅎ"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="195" app:scale_top="310"
+                app:scale_width="165" app:scale_height="80"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_14"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="a-Z"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="371" app:scale_top="310"
+                app:scale_width="165" app:scale_height="80"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_15"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="0-9"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="546" app:scale_top="310"
+                app:scale_width="165" app:scale_height="80"/>
+            <Button
+                android:id="@+id/btn_alphabet_kor_16"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/cdialog_btn_basic_selector"
+                android:text="모두"
+                android:textColor="#333333" app:scale_textsize="50"
+                app:scale_left="722" app:scale_top="310"
+                app:scale_width="340" app:scale_height="80"/>
+
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+
+        <ListView
+            android:id="@+id/lv_data_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+
+
+
+</FrameLayout>

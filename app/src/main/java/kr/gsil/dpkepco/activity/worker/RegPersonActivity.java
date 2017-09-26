@@ -142,6 +142,7 @@ public class RegPersonActivity extends BaseActivity {
             			passnumberText.setAlpha((float) 0.5);
             			contrynameText.setEnabled(false);
             			contrynameText.setAlpha((float) 0.5);
+
             		currentClick = 0;
             	}
 			}
@@ -628,7 +629,7 @@ public class RegPersonActivity extends BaseActivity {
 		pShow();
 		startThread(new Runnable() {
 			public void run() {
-				wlist = api.workTypeList(getBaseContext(),"3");
+				wlist = api.workTypeList(getBaseContext(),"");
 				if( wlist == null ) wlist = new ArrayList<MobileWtypeVO>();
 				runOnUiThread(new Runnable() {
 					public void run() {

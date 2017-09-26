@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import kr.gsil.dpkepco.R;
+import kr.gsil.dpkepco.activity.worker.VipBeaconManageActivity;
 import kr.gsil.dpkepco.base.BaseActivity;
 import kr.gsil.dpkepco.dialog.CDialogAlertSos;
 import kr.gsil.dpkepco.model.KepcoMonitorVO;
@@ -46,6 +47,7 @@ public class MainActivity extends BaseActivity
     TextView	tv_main_pan_item_2 = null;
     TextView	tv_main_pan_item_3 = null;
     TextView	tv_main_pan_item_4 = null;
+    TextView	tv_main_pan_item_5 = null;
 
     TextView	tv_nav_name = null;
     TextView	tv_nav_state = null;
@@ -66,6 +68,7 @@ public class MainActivity extends BaseActivity
         tv_main_pan_item_2 = (TextView)findViewById(R.id.tv_main_pan_item_2);
         tv_main_pan_item_3 = (TextView)findViewById(R.id.tv_main_pan_item_3);
         tv_main_pan_item_4 = (TextView)findViewById(R.id.tv_main_pan_item_4);
+        tv_main_pan_item_5 = (TextView)findViewById(R.id.tv_main_pan_item_5);
 
         setData();
     }
@@ -78,6 +81,7 @@ public class MainActivity extends BaseActivity
         startThread(new Runnable() {
             public void run() {
                 api.getKepcoData(getBaseContext());
+                api.getMainRecoData(getBaseContext(), 8);
                 if(weather == null) weather = api.getWeatherInfo(getBaseContext(), weather_addr);
                 weatherCallCnt = app.getWeatherCallCnt();
                 if(weatherCallCnt >= WEATHER_CALL_BASE_CNT) {
@@ -151,6 +155,12 @@ public class MainActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initBasicUI();
+        ((ImageButton)findViewById(R.id.btn_main_pan_item_1)).setOnClickListener(this);
+        ((ImageButton)findViewById(R.id.btn_main_pan_item_2)).setOnClickListener(this);
+        ((ImageButton)findViewById(R.id.btn_main_pan_item_3)).setOnClickListener(this);
+        ((ImageButton)findViewById(R.id.btn_main_pan_item_4)).setOnClickListener(this);
+        ((ImageButton)findViewById(R.id.btn_main_pan_item_5)).setOnClickListener(this);
+
         ((ImageButton)findViewById(R.id.btn_main_1)).setOnClickListener(this);
         ((ImageButton)findViewById(R.id.btn_main_2)).setOnClickListener(this);
         ((ImageButton)findViewById(R.id.btn_main_3)).setOnClickListener(this);
@@ -258,6 +268,11 @@ public class MainActivity extends BaseActivity
             target.putExtra("comeFrom", "home");
             startActivity(target);
             finish();
+        } else if (id == R.id.nav_direct_11) {
+            target = new Intent(this, VipBeaconManageActivity.class);
+            target.putExtra("comeFrom", "home");
+            startActivity(target);
+            finish();
         } else if (id == R.id.nav_direct_2) {
             target = new Intent(this, DataInputDrillingActivity.class);
             target.putExtra("inputType", 1);//type 1 굴진량
@@ -307,6 +322,21 @@ public class MainActivity extends BaseActivity
     public void onClick(View v) {
         Intent target = null;
         switch(v.getId()){
+            case R.id.btn_main_pan_item_1:
+                showToast("서비스 준비중 입니다.");
+                break;
+            case R.id.btn_main_pan_item_2:
+                showToast("서비스 준비중 입니다.");
+                break;
+            case R.id.btn_main_pan_item_3:
+                showToast("서비스 준비중 입니다.");
+                break;
+            case R.id.btn_main_pan_item_4:
+                showToast("서비스 준비중 입니다.");
+                break;
+            case R.id.btn_main_pan_item_5:
+                showToast("서비스 준비중 입니다.");
+                break;
             case R.id.btn_main_1:
                 target = new Intent(this, DrillingStatusActivity.class);
                 startActivity(target);

@@ -57,6 +57,7 @@ public class PersonMenuActivity extends BaseActivity implements View.OnClickList
 	public void init() {
 		((Button)findViewById(R.id.btn_reg_person)).setOnClickListener(this);
 		((Button)findViewById(R.id.btn_beacon_manage)).setOnClickListener(this);
+		((Button)findViewById(R.id.btn_vip_beacon_manage)).setOnClickListener(this);
 		setData();
 	}
 
@@ -78,6 +79,11 @@ public class PersonMenuActivity extends BaseActivity implements View.OnClickList
 				target = new Intent(this, BeaconManageActivity.class);
 				startActivity(target);
 				//finish();
+				break;
+			case R.id.btn_vip_beacon_manage:
+				target = new Intent(this, VipBeaconManageActivity.class);
+				target.putExtra("comeFrom", "page");
+				startActivity(target);
 				break;
 		}
 	}

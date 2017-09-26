@@ -39,6 +39,18 @@
 			app:scale_top="300"
 			app:scale_width="800" />
 
+		<Button android:id="@+id/btn_vip_beacon_manage"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/worker_mpage_btxt_3"
+			android:textColor="#333333"
+			android:background="@drawable/btn_basic_selector"
+			app:scale_textsize="70"
+			app:scale_height="200"
+			app:scale_left="140"
+			app:scale_top="550"
+			app:scale_width="800" />
+
 	</com.ssomai.android.scalablelayout.ScalableLayout>
 
 </FrameLayout>

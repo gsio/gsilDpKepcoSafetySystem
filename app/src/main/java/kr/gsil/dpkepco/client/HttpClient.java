@@ -69,6 +69,20 @@ public class HttpClient {
 		return _instance = new HttpClient();
 	}
 
+	public void getMainRecoData(final Context context, int site_id){
+		ArrayList<TimelyValueVO> timelylist = null;
+		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_GET_TIMELY_VALUE_LIST) + "?site_id=8" );
+		Log.e("getMainRecoData","result = "+result+" site_id = "+site_id);
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	public WeatherInfoVO getWeatherInfo(final Context context, String addr){
 		WeatherInfoVO weather = null;
 		String result = getHttpData( Weather.getYahooUrl(addr) );
@@ -356,7 +370,7 @@ public class HttpClient {
 
 		String resultString = "";
 		String site_id = "8";
-		String type = "-1";
+		String type = "1";
 		String isMobile = "1";
 		ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("site_id", site_id));
@@ -524,12 +538,14 @@ public class HttpClient {
 					kepcoMonitorVO.setValue3(Double.valueOf(monitorCO.getString("value3")));
 					kepcoMonitorVO.setValue4(Double.valueOf(monitorCO.getString("value4")));
 					kepcoMonitorVO.setValue5(Double.valueOf(monitorCO.getString("value5")));
-					//kepcoMonitorVO.setValue6(Double.valueOf(monitorCO.getString("value6")));
+					if(monitorCO.has("value6")) kepcoMonitorVO.setValue6(Double.valueOf(monitorCO.getString("value6")));
+					else kepcoMonitorVO.setValue6(Double.valueOf("0.0"));
 
 					kepcoMonitorVO.setText1(String.valueOf(monitorCO.getString("text1")));
 					kepcoMonitorVO.setText2(String.valueOf(monitorCO.getString("text2")));
 					kepcoMonitorVO.setText3(String.valueOf(monitorCO.getString("text3")));
-					//kepcoMonitorVO.setText4(String.valueOf(monitorCO.getString("text4")));
+					if(monitorCO.has("text4")) kepcoMonitorVO.setText4(String.valueOf(monitorCO.getString("text4")));
+					else kepcoMonitorVO.setText4(String.valueOf("0.0"));
 
 					kepcoMonitorVO.setTotal_const(Double.valueOf(monitorCO.getString("total_const")));
 					kepcoMonitorVO.setTotal_meter(Double.valueOf(monitorCO.getString("total_meter")));
@@ -4623,7 +4639,7 @@ public class HttpClient {
 	
 	public ArrayList<MobileUserVO> getContList( final Context context, String site_id  )  {
 		ArrayList<MobileUserVO> wlist = null;
-		
+
 		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.CONSMAN_CONT_LIST)+ "?site_id=" + site_id);
 		Log.i("CONSMAN_CONT_LIST", result);
 		if( result != null && !result.equals("") ) {

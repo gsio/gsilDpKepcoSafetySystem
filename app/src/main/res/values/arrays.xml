@@ -204,6 +204,7 @@
         <item>http://14.63.198.88/KEPCO/json/insertTimelyValue</item>//데이터 입력
         <item>http://14.63.198.88/KEPCO/json/updateTimelyValue</item>//데이터 수정
         <item>http://14.63.198.88/KEPCO/json/deleteTimelyValue</item>//데이터 삭제
+        <item>http://14.63.198.88/KEPCO/json/recodata</item>//recodata
 
     </string-array>
 </resources>

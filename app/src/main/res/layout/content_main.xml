@@ -114,49 +114,65 @@
             app:scale_width="300"
             app:srcCompat="@drawable/img_drilling_status_lv_0" />
 
-        <LinearLayout
-            android:id="@+id/ll_main_pan_item_1"
+        <ImageButton
+            android:id="@+id/btn_main_pan_item_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/img_main_pan_item_1"
-            android:orientation="vertical"
-            app:scale_height="178"
+            android:background="@drawable/bg_btn_main_top_a"
+            android:scaleType="fitXY"
             app:scale_left="30"
             app:scale_top="172"
-            app:scale_width="283"></LinearLayout>
+            app:scale_height="192"
+            app:scale_width="246"
+            app:srcCompat="@drawable/img_btn_main_top_1" />
 
-        <LinearLayout
-            android:id="@+id/ll_main_pan_item_2"
+        <ImageButton
+            android:id="@+id/btn_main_pan_item_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/img_main_pan_item_2"
-            android:orientation="vertical"
-            app:scale_height="178"
-            app:scale_left="335"
+            android:background="@drawable/bg_btn_main_top_a"
+            android:scaleType="fitXY"
+            app:scale_left="294"
             app:scale_top="172"
-            app:scale_width="232"></LinearLayout>
+            app:scale_height="192"
+            app:scale_width="246"
+            app:srcCompat="@drawable/img_btn_main_top_2" />
 
-        <LinearLayout
-            android:id="@+id/ll_main_pan_item_3"
+        <ImageButton
+            android:id="@+id/btn_main_pan_item_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/img_main_pan_item_3"
-            android:orientation="vertical"
-            app:scale_height="178"
-            app:scale_left="589"
+            android:background="@drawable/bg_btn_main_top_b"
+            android:scaleType="fitXY"
+            app:scale_left="562"
             app:scale_top="172"
-            app:scale_width="232"></LinearLayout>
+            app:scale_height="192"
+            app:scale_width="154"
+            app:srcCompat="@drawable/img_btn_main_top_3" />
 
-        <LinearLayout
-            android:id="@+id/ll_main_pan_item_4"
+        <ImageButton
+            android:id="@+id/btn_main_pan_item_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/img_main_pan_item_4"
-            android:orientation="vertical"
-            app:scale_height="178"
-            app:scale_left="841"
+            android:background="@drawable/bg_btn_main_top_b"
+            android:scaleType="fitXY"
+            app:scale_left="730"
             app:scale_top="172"
-            app:scale_width="204"></LinearLayout>
+            app:scale_height="192"
+            app:scale_width="154"
+            app:srcCompat="@drawable/img_btn_main_top_4" />
+
+        <ImageButton
+            android:id="@+id/btn_main_pan_item_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_main_top_b"
+            android:scaleType="fitXY"
+            app:scale_left="896"
+            app:scale_top="172"
+            app:scale_height="192"
+            app:scale_width="154"
+            app:srcCompat="@drawable/img_btn_main_top_5" />
 
         <TextView
             android:id="@+id/tv_main_pan_item_1"
@@ -167,7 +183,7 @@
             android:text="00"
             android:textStyle="bold"
             app:scale_height="100"
-            app:scale_left="123"
+            app:scale_left="113"
             app:scale_textsize="90"
             app:scale_top="170"
             app:scale_width="124" />
@@ -180,8 +196,9 @@
             android:gravity="center"
             android:text="00"
             android:textStyle="bold"
+            android:textColor="#1071B9"
             app:scale_height="100"
-            app:scale_left="362"
+            app:scale_left="338"
             app:scale_textsize="90"
             app:scale_top="170"
             app:scale_width="124" />
@@ -195,7 +212,7 @@
             android:text="00"
             android:textStyle="bold"
             app:scale_height="100"
-            app:scale_left="616"
+            app:scale_left="562"
             app:scale_textsize="90"
             app:scale_top="170"
             app:scale_width="124" />
@@ -209,7 +226,21 @@
             android:text="0"
             android:textStyle="bold"
             app:scale_height="100"
-            app:scale_left="868"
+            app:scale_left="730"
+            app:scale_textsize="90"
+            app:scale_top="170"
+            app:scale_width="124" />
+
+        <TextView
+            android:id="@+id/tv_main_pan_item_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0"
+            android:textStyle="bold"
+            app:scale_height="100"
+            app:scale_left="896"
             app:scale_textsize="90"
             app:scale_top="170"
             app:scale_width="124" />
@@ -362,6 +393,8 @@
             app:scale_top="1160"
             app:scale_width="244"
             app:srcCompat="@drawable/img_btn_9_sos" />
+
+
     </com.ssomai.android.scalablelayout.ScalableLayout>
 
 

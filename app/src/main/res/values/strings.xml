@@ -105,6 +105,7 @@
     <string name="drilling_state_txt_2">기계 정비</string>
 
     <string name="nav_txt_1">총 인력 입력</string>
+    <string name="nav_txt_11">외부방문용 비콘배정</string>
     <string name="nav_txt_2">굴진량</string>
     <string name="nav_txt_3">굴진 상태</string>
     <string name="nav_txt_4">막장 압력</string>

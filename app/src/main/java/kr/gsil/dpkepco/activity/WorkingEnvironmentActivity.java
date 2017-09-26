@@ -153,7 +153,7 @@ public class WorkingEnvironmentActivity extends BaseActivity implements View.OnC
                 iv_status_60.setImageResource(R.drawable.item_status_1);//주의
             }
             tv_data_60.setText(String.format("%,d", val3));//double value3;//오탁수 처리량
-            float val6 = 1.0f;//(float)kepcoMonitorVO.getValue6();
+            float val6 = (float)kepcoMonitorVO.getValue6();
             if(val6 < 2){
                 iv_status_70.setImageResource(R.drawable.item_status_0);//평시
             }else if(val6 > 2.5){
@@ -165,9 +165,9 @@ public class WorkingEnvironmentActivity extends BaseActivity implements View.OnC
         }
         if(kepcoSensorVO != null){
             float o2 = (float)kepcoSensorVO.getO2();
-            if(o2 < 18){
+            if(o2 > 18){
                 iv_status_20.setImageResource(R.drawable.item_status_0);//평시
-            }else if(o2 > 23.5){
+            }else if(o2 >= 23.5){
                 iv_status_20.setImageResource(R.drawable.item_status_2);//위험
             }else{
                 iv_status_20.setImageResource(R.drawable.item_status_1);//주의

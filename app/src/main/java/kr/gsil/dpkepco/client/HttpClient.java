@@ -47,6 +47,7 @@ import kr.gsil.dpkepco.model.MobileUserVO;
 import kr.gsil.dpkepco.model.MobileVO;
 import kr.gsil.dpkepco.model.MobileWorkerVO;
 import kr.gsil.dpkepco.model.MobileWtypeVO;
+import kr.gsil.dpkepco.model.KepcoRecoDataVO;
 import kr.gsil.dpkepco.model.ScheVO;
 import kr.gsil.dpkepco.model.TimelyValueVO;
 import kr.gsil.dpkepco.util.CustomJsonObject;
@@ -69,14 +70,79 @@ public class HttpClient {
 		return _instance = new HttpClient();
 	}
 
-	public void getMainRecoData(final Context context, int site_id){
-		ArrayList<TimelyValueVO> timelylist = null;
-		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_GET_TIMELY_VALUE_LIST) + "?site_id=8" );
-		Log.e("getMainRecoData","result = "+result+" site_id = "+site_id);
+	public ArrayList<MobileUserVO> getUserListByContType(final Context context, int site_id, int cont_type){
+		ArrayList<MobileUserVO> wlist = null;
+		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_GET_USER_LIST_BY_CONTTYPE) + "?site_id=8&cont_type=99" );
+		Log.e("getUserListByContType","result = "+result+" site_id = "+site_id+" cont_type = "+cont_type);
+		Log.i("KEPCO_GET_USER_LIST_BY_CONTTYPE", result);
 		if( result != null && !result.equals("") ) {
 
 			try {
 				JSONObject jsonObj = new JSONObject(result);
+
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				wlist = new ArrayList<MobileUserVO>();
+				if( item.getString("result").equals("true") ) {
+					JSONArray jArr = new JSONArray(item.getString("item"));
+					for ( int i = 0; i < jArr.length(); i++ ){
+						CustomJsonObject items = new CustomJsonObject(jArr.getJSONObject(i));
+						MobileUserVO mobileVo = new MobileUserVO();
+						mobileVo.setCont_id(items.getString("cont_id"));
+						mobileVo.setId(items.getString("id"));
+						if(items.has("recoid")) mobileVo.setRecoid(items.getString("recoid"));
+						mobileVo.setName(items.getString("name"));
+						if(items.has("cname")) mobileVo.setCname(items.getString("cname"));
+						if(items.has("gubun")) mobileVo.setGubun(items.getString("gubun"));
+						else mobileVo.setGubun("99");
+						mobileVo.setUserid(items.getString("userid"));
+						mobileVo.setGrade(items.getString("grade"));
+						mobileVo.setUseyn(items.getString("useyn"));
+						if(items.has("countdata")) mobileVo.setCountdata(items.getString("countdata"));
+						wlist.add(mobileVo);
+					}
+				} else {
+					wlist = null;
+				}
+
+			} catch(Exception e) {
+
+				e.printStackTrace();
+				return null;
+			}
+
+		}
+
+		return wlist;
+	}
+
+	public void getRecoData(final Context context, int site_id){
+		KepcoRecoDataVO recoData = null;
+		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_MAIN_RECO_DATA) + "?site_id=8" );
+		Log.e("getMainRecoData","result = "+result+" site_id = "+site_id);
+		recoData = new KepcoRecoDataVO();
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+
+				JSONArray jArr = new JSONArray(item.getString("item"));
+				for ( int i = 0; i < jArr.length(); i++ ) {
+					CustomJsonObject items = new CustomJsonObject(jArr.getJSONObject(i));
+					/*터널내 근로자 : t_gubun이 1,2인것(1:근로자,2;장비)
+					터널내 관리자 : t_gubun이 3,4,5 인 것 count(3:관리자,4:감리단,5:발주처)
+					터널내 외부방문자 : t_gubun이 6인것 count	*/
+					if(items.has("t_gubun")){
+						recoData.addCountTotal();
+						int t_gubun = items.getInt("t_gubun");
+						switch(t_gubun){
+							case 1:case 2:recoData.addCountWorker();break;
+							case 3:case 4:case 5:recoData.addCountManager();break;
+							case 6:recoData.addCountVip();break;
+						}
+					}
+				}
+				((UserSystemApplication)context.getApplicationContext()).setKepcoRecoData(recoData);
 			} catch(Exception e) {
 				e.printStackTrace();
 			}

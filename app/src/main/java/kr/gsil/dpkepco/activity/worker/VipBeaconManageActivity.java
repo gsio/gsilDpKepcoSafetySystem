@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import kr.gsil.dpkepco.R;
 import kr.gsil.dpkepco.activity.MainActivity;
 import kr.gsil.dpkepco.base.BaseActivity;
+import kr.gsil.dpkepco.dialog.CDialogVipNameBeacon;
 import kr.gsil.dpkepco.model.MobileUserVO;
 import kr.gsil.dpkepco.util.ListViewAdapter;
 
@@ -36,6 +37,7 @@ public class VipBeaconManageActivity extends BaseActivity {
 
     String comeFrom = "page";
     String contName = "";
+    private CDialogVipNameBeacon mCDialog = null;
     @Override
     public void init() {
         listview= (ListView) findViewById(R.id.personlist);
@@ -51,7 +53,7 @@ public class VipBeaconManageActivity extends BaseActivity {
         pShow();
         startThread(new Runnable() {
             public void run() {
-                list = api.getBeaconManagerList(getBaseContext(), "", app.getSite_id(), contName);
+                list = api.getUserListByContType(getBaseContext(), Integer.parseInt(app.getSite_id()), 99);
                 if( list == null ) list = new ArrayList<MobileUserVO>();
                 runOnUiThread(new Runnable() {
                     public void run() {
@@ -159,18 +161,21 @@ public class VipBeaconManageActivity extends BaseActivity {
                     .findViewById(R.id.statusname);
             if( list != null && list.size() > 0 ) {
 
-                listTitleText.setText("비콘 번호 : " + list.get(position).getId());
+                listTitleText.setText("아이디 : " + list.get(position).getUserid());
                 String infor = "";
 
                 if( list.get(position).getName().equals("") ) {
                     subTitleText.setVisibility(View.GONE);
                 } else {
                     subTitleText.setVisibility(View.VISIBLE);
-                    infor = "배정자 : " + list.get(position).getName() + " / " + list.get(position).getCname();
+                    infor = "이름 : " + list.get(position).getName();// + " / " + list.get(position).getCname();
                     subTitleText.setText(infor);
                 }
 
-                if( list.get(position).getGubun().equals("1") ) {
+                if( list.get(position).getGubun().equals("99") ) {
+                    statusTitleText.setText("VIP");
+                    statusTitleText.setTextColor(Color.BLUE);
+                } else if( list.get(position).getGubun().equals("1") ) {
                     statusTitleText.setText("관리자");
                     statusTitleText.setTextColor(Color.BLUE);
                 } else if( list.get(position).getGubun().equals("2") ) {
@@ -252,5 +257,91 @@ public class VipBeaconManageActivity extends BaseActivity {
                 });
             }
         });
+    }
+
+
+    private View.OnClickListener leftClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            /*Toast.makeText(getApplicationContext(), "왼쪽버튼 Click!!",
+                    Toast.LENGTH_SHORT).show();*/
+            if(mCDialog.getId() > -1){
+                pShow();
+                startThread(new Runnable() {
+
+                    public void run() {
+
+                        final String result = "";//final String result = api.deleteDailyValue(getBaseContext(),String.valueOf(mCDialog.getId()));
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                pHide();
+                                if( result != null && result != "" ) {
+                                    setData();
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+            mCDialog.dismiss();
+        }
+    };
+
+    private View.OnClickListener centerClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            /*Toast.makeText(getApplicationContext(), "가운데버튼 Click!!",
+                    Toast.LENGTH_SHORT).show();*/
+            if(mCDialog.isNew()){
+                pShow();
+                startThread(new Runnable() {
+
+                    public void run() {
+                        //String dateStr = btn_current_date.getText().toString();
+                        final String result = "";//final String result = api.insertDailyValue(getBaseContext(),dateStr, String.valueOf((int)mCDialog.getData()), app.getId());
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                pHide();
+                                if( result != null && result != "" ) {
+                                    setData();
+                                }
+                            }
+                        });
+                    }
+                });
+            }else{
+                pShow();
+                startThread(new Runnable() {
+
+                    public void run() {
+                        final String result = "";//final String result = api.updateDailyValue(getBaseContext(),String.valueOf(mCDialog.getId()) ,String.valueOf((int)mCDialog.getData()));
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                pHide();
+                                if( result != null && result != "" ) {
+                                    setData();
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+            mCDialog.dismiss();
+        }
+    };
+    private View.OnClickListener rightClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            /*Toast.makeText(getApplicationContext(), "오른쪽버튼 Click!!",
+                    Toast.LENGTH_SHORT).show();*/
+            mCDialog.dismiss();
+        }
+    };
+    private void openPopup(String date, String value, boolean isNew, int id){
+        int titleId = R.string.vip_name_beacon_title;
+
+        mCDialog = new CDialogVipNameBeacon(this, isNew, titleId, date, value, (isNew)?R.string.page_popup_input_txt_1: R.string.page_popup_input_txt_2,
+                (isNew)?null:leftClickListener, centerClickListener, rightClickListener, id);
+        mCDialog.show();
     }
 }

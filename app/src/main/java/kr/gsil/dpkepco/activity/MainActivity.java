@@ -27,6 +27,7 @@ import kr.gsil.dpkepco.activity.worker.VipBeaconManageActivity;
 import kr.gsil.dpkepco.base.BaseActivity;
 import kr.gsil.dpkepco.dialog.CDialogAlertSos;
 import kr.gsil.dpkepco.model.KepcoMonitorVO;
+import kr.gsil.dpkepco.model.KepcoRecoDataVO;
 import kr.gsil.dpkepco.model.KepcoSensorVO;
 import kr.gsil.dpkepco.util.BackPressCloseHandler;
 import kr.gsil.dpkepco.model.weather.WeatherInfoVO;
@@ -36,6 +37,7 @@ public class MainActivity extends BaseActivity
     private BackPressCloseHandler backPressCloseHandler;
     KepcoMonitorVO kepcoMonitorVO = null;
     KepcoSensorVO kepcoSensorVO = null;
+    KepcoRecoDataVO kepcoRecoDataVO = null;
     WeatherInfoVO weather = null;
 
     ImageView   img_weather = null;
@@ -81,7 +83,7 @@ public class MainActivity extends BaseActivity
         startThread(new Runnable() {
             public void run() {
                 api.getKepcoData(getBaseContext());
-                api.getMainRecoData(getBaseContext(), 8);
+                api.getRecoData(getBaseContext(), 8);
                 if(weather == null) weather = api.getWeatherInfo(getBaseContext(), weather_addr);
                 weatherCallCnt = app.getWeatherCallCnt();
                 if(weatherCallCnt >= WEATHER_CALL_BASE_CNT) {
@@ -93,6 +95,8 @@ public class MainActivity extends BaseActivity
                         pHide();
                         kepcoMonitorVO = app.getKepcoMonitor();
                         kepcoSensorVO = app.getKepcoSensor();
+                        kepcoRecoDataVO = app.getKepcoRecoData();
+
                         /**
                          private double total_const;//총 연장
                          private double total_meter;//누계굴진
@@ -129,9 +133,7 @@ public class MainActivity extends BaseActivity
                             }else{
                                 img_drilling_status.setImageResource(R.drawable.img_drilling_status_lv_2);
                             }
-                            //터널 내 근로자
-                            //지상부 근로자
-                            //관리자
+
                         }
                         if(kepcoSensorVO != null){
 
@@ -143,6 +145,12 @@ public class MainActivity extends BaseActivity
                             tv_weather_subsi_do.setText(weather.getToday_temp());
                             tv_weather_percent.setText(weather.getHumidity());
                         }
+                        if(kepcoRecoDataVO == null) kepcoRecoDataVO = new KepcoRecoDataVO();
+                        tv_main_pan_item_2.setText(String.valueOf(kepcoRecoDataVO.getCountTotal()));//터널 내 총 인원
+                        tv_main_pan_item_3.setText(String.valueOf(kepcoRecoDataVO.getCountWorker()));//터널 내 근로자
+                        tv_main_pan_item_4.setText(String.valueOf(kepcoRecoDataVO.getCountManager()));//터널 내 관리자
+                        tv_main_pan_item_5.setText(String.valueOf(kepcoRecoDataVO.getCountVip()));//외부 방문자
+
 
                     }
                 });

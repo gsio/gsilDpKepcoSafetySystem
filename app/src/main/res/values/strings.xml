@@ -7,7 +7,7 @@
     <string name="btxt_empty_time">00:00:00</string>
     <string name="btxt_empty_value">0000.00</string>
     <string name="btxt_empty_name">김수암무</string>
-
+    <string name="btxt_init">초기화</string>
     <string name="btxt_del">삭제</string>
     <string name="btxt_yes">확인</string>
     <string name="btxt_no">취소</string>
@@ -118,5 +118,10 @@
     <string name="nav_txt_10">서브메뉴</string>
 
     <string name="weather_addr">충청북도 당진시</string>
+
+    <string name="vip_name_beacon_title">VIP 이름/비콘 적용</string>
+    <string name="vip_name_beacon_txt_1">VIP 이름</string>
+    <string name="vip_name_beacon_txt_2">입력하시겠습니까?</string>
+    <string name="vip_name_beacon_txt_3">수정하시겠습니까?</string>
 
 </resources>

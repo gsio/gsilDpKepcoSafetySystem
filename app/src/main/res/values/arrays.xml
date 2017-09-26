@@ -205,6 +205,7 @@
         <item>http://14.63.198.88/KEPCO/json/updateTimelyValue</item>//데이터 수정
         <item>http://14.63.198.88/KEPCO/json/deleteTimelyValue</item>//데이터 삭제
         <item>http://14.63.198.88/KEPCO/json/recodata</item>//recodata
+        <item>http://14.63.198.88/KEPCO/json/getUserListByContType</item>//VIP site_id 는 8 , cont_type은 99
 
     </string-array>
 </resources>

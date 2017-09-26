@@ -124,10 +124,12 @@ public class UserSystemApplication extends Application {
     KepcoMonitorVO kepcoMonitorVO = null;
     KepcoSensorVO kepcoSensorVO = null;
 
+    KepcoRecoDataVO kepcoRecoDataVO = null;
     public void setKepcoData(KepcoMonitorVO kepcoMonitorVO, KepcoSensorVO kepcoSensorVO){
         this.kepcoMonitorVO = kepcoMonitorVO;
         this.kepcoSensorVO = kepcoSensorVO;
     }
+
 
     public KepcoMonitorVO getKepcoMonitor(){
         return kepcoMonitorVO;
@@ -135,6 +137,14 @@ public class UserSystemApplication extends Application {
 
     public KepcoSensorVO getKepcoSensor(){
         return kepcoSensorVO;
+    }
+
+    public void setKepcoRecoData(KepcoRecoDataVO kepcoRecoDataVO){
+        this.kepcoRecoDataVO = kepcoRecoDataVO;
+    }
+
+    public KepcoRecoDataVO getKepcoRecoData(){
+        return this.kepcoRecoDataVO;
     }
 
     public ArrayList<MobileUserVO> getBeaconlist() {

@@ -177,6 +177,11 @@
 
         <service android:name=".GCMIntentService" />
 
+        <activity
+            android:name=".activity.MainTopPersonListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Light"
+            android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 
 </manifest>

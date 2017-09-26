@@ -68,6 +68,8 @@ public class LoginActivity extends BaseActivity {
 		TelephonyManager mgr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE); 
 		//
 		String phone = mgr.getLine1Number();
+		if(phone == null) return "";
+
 		if( phone.indexOf("+82") == 0 ) {
 			phone = "0" + phone.substring(3);
 		}

@@ -114,6 +114,47 @@ public class HttpClient {
 
 		return wlist;
 	}
+	public ArrayList<MobileUserVO> getRecoDataAll(final Context context, int site_id){
+		ArrayList<MobileUserVO> wlist = null;
+		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_MAIN_RECO_DATA) + "?site_id=8" );
+		Log.e("getMainRecoData","result = "+result+" site_id = "+site_id);
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				wlist = new ArrayList<MobileUserVO>();
+				if( item.getString("result").equals("true") ) {
+					JSONArray jArr = new JSONArray(item.getString("item"));
+					for ( int i = 0; i < jArr.length(); i++ ){
+						CustomJsonObject items = new CustomJsonObject(jArr.getJSONObject(i));
+						MobileUserVO mobileVo = new MobileUserVO();
+						if(items.has("cont_id")) mobileVo.setCont_id(items.getString("cont_id"));
+						if(items.has("id")) mobileVo.setId(items.getString("id"));
+						if(items.has("recoid")) mobileVo.setRecoid(items.getString("recoid"));
+						mobileVo.setName(items.getString("name"));
+						if(items.has("t_name")) mobileVo.setT_name(items.getString("t_name"));
+						if(items.has("cname")) mobileVo.setCname(items.getString("cname"));
+						if(items.has("gubun")) mobileVo.setGubun(items.getString("gubun"));
+						else mobileVo.setGubun("99");
+						if(items.has("t_gubun")) mobileVo.setT_gubun(items.getString("t_gubun"));
+						if(items.has("userid")) mobileVo.setUserid(items.getString("userid"));
+						if(items.has("grade")) mobileVo.setGrade(items.getString("grade"));
+						if(items.has("useyn")) mobileVo.setUseyn(items.getString("useyn"));
+						if(items.has("countdata")) mobileVo.setCountdata(items.getString("countdata"));
+						wlist.add(mobileVo);
+					}
+				} else {
+					wlist = null;
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return wlist;
+	}
 
 	public void getRecoData(final Context context, int site_id){
 		KepcoRecoDataVO recoData = null;

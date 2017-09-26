@@ -334,16 +334,32 @@ public class MainActivity extends BaseActivity
                 showToast("서비스 준비중 입니다.");
                 break;
             case R.id.btn_main_pan_item_2:
-                showToast("서비스 준비중 입니다.");
+                //showToast("서비스 준비중 입니다.");
+                target = new Intent(this, MainTopPersonListActivity.class);
+                target.putExtra("persionCnt", kepcoRecoDataVO.getCountTotal());//터널 내 총 인원
+                target.putExtra("kind", "kind_2");
+                startActivity(target);
                 break;
             case R.id.btn_main_pan_item_3:
-                showToast("서비스 준비중 입니다.");
+                //showToast("서비스 준비중 입니다.");
+                target = new Intent(this, MainTopPersonListActivity.class);
+                target.putExtra("persionCnt", kepcoRecoDataVO.getCountWorker());//터널 내 근로자
+                target.putExtra("kind", "kind_3");
+                startActivity(target);
                 break;
             case R.id.btn_main_pan_item_4:
-                showToast("서비스 준비중 입니다.");
+                //showToast("서비스 준비중 입니다.");
+                target = new Intent(this, MainTopPersonListActivity.class);
+                target.putExtra("persionCnt", kepcoRecoDataVO.getCountManager());//터널 내 관리자
+                target.putExtra("kind", "kind_4");
+                startActivity(target);
                 break;
             case R.id.btn_main_pan_item_5:
-                showToast("서비스 준비중 입니다.");
+                //showToast("서비스 준비중 입니다.");
+                target = new Intent(this, MainTopPersonListActivity.class);
+                target.putExtra("persionCnt", kepcoRecoDataVO.getCountVip());//외부 방문자
+                target.putExtra("kind", "kind_5");
+                startActivity(target);
                 break;
             case R.id.btn_main_1:
                 target = new Intent(this, DrillingStatusActivity.class);

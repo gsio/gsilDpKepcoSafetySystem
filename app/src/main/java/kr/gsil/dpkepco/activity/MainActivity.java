@@ -377,6 +377,7 @@ public class MainActivity extends BaseActivity
                 finish();
                 break;
             case R.id.btn_main_4:
+
                 PackageManager pm = getPackageManager();
                 Intent intent = pm.getLaunchIntentForPackage("com.fnsys.mprms");
                 if( intent != null  ) {
@@ -458,6 +459,7 @@ public class MainActivity extends BaseActivity
                         showToast("로그아웃 되었습니다.");
 
                         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         finish();
                     }})

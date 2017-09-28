@@ -8,15 +8,18 @@ import kr.gsil.dpkepco.base.BaseActivity;
 import kr.gsil.dpkepco.model.MobileUserVO;
 import kr.gsil.dpkepco.model.MobileVO;
 import kr.gsil.dpkepco.util.BackPressCloseHandler;
+import kr.gsil.dpkepco.util.Utility;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -32,6 +35,7 @@ public class LoginActivity extends BaseActivity {
 	
 	Button loginbtn = null;
 	String regId  = "";
+	String webViewUserAgent = "";
 	private BackPressCloseHandler backPressCloseHandler;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,8 @@ public class LoginActivity extends BaseActivity {
 				eventLogin();
 			}
 		});
+		WebView webView = new WebView(this);
+		webViewUserAgent = webView.getSettings().getUserAgentString();
 	}
 
 	@Override
@@ -126,7 +132,10 @@ public class LoginActivity extends BaseActivity {
 								app.setCname(returnUser.getCname());
 								//app.setSite_name(returnUser.getSname());
 								app.setWeatherCallCnt(0);//날씨 호출 용 카운트 초기값 설정
-									eventUpdateSignUpComplete();
+
+								RunAppversion task = new RunAppversion(returnUser.getUserid());
+								task.execute();
+
 							} else {
 								showToast("로그인에 실패하였습니다.");
 							}
@@ -134,10 +143,37 @@ public class LoginActivity extends BaseActivity {
 							showToast("아이디/패스워드를 확인해주세요");
 						}
 						pHide();
+
+
 					}
 				});
 			}
 		});
+	}
+
+	private class RunAppversion extends AsyncTask<Void, Void, Integer> {
+		String userid = "";
+		public RunAppversion(String userid){
+			this.userid = userid;
+		}
+		@Override
+		protected Integer doInBackground(Void... params) {
+			int msg = 0;
+			Context context = getApplicationContext();
+			String app_ver = Utility.getAppVersion(context);;
+			String android_ver = android.os.Build.VERSION.SDK_INT + ":" + Build.VERSION.RELEASE;
+			String etc = webViewUserAgent;
+			String browser_ver = "";
+
+			api.updateVersionInfo(context, userid, app_ver, android_ver, browser_ver, etc);
+
+			return msg;
+		}
+
+		@Override
+		protected void onPostExecute(Integer msg){
+			eventUpdateSignUpComplete();
+		}
 	}
 	
 	public void eventUpdateSignUpComplete() {

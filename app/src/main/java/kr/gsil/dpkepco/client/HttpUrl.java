@@ -212,8 +212,9 @@ public class HttpUrl {
 	public static final int KEPCO_TIMELY_VALUE_DELETE						= 189;
 	public static final int KEPCO_MAIN_RECO_DATA							= 190;
 	public static final int KEPCO_GET_USER_LIST_BY_CONTTYPE					= 191;
-
-
+	public static final int KEPCO_UPDATE_VIP_USER_NAME						= 192;
+	public static final int GET_APP_VERSION_CHECK							= 193;
+	public static final int CONSMAN_INSERT_APP_VERSION_CHECK				= 194;
 
 
 	

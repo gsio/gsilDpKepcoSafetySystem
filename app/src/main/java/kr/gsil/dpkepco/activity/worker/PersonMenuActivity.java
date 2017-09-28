@@ -23,6 +23,7 @@ public class PersonMenuActivity extends BaseActivity implements View.OnClickList
 		setContentView(R.layout.activity_person_menu);
 		activity = this;
 		backIntent = new Intent(activity, WorkforceManagementActivity.class);
+
 		setToolbar();
 		init();
 	}
@@ -84,6 +85,7 @@ public class PersonMenuActivity extends BaseActivity implements View.OnClickList
 				target = new Intent(this, VipBeaconManageActivity.class);
 				target.putExtra("comeFrom", "page");
 				startActivity(target);
+				finish();
 				break;
 		}
 	}

@@ -55,10 +55,13 @@ public class MobileUserVO {
 	private String status;
 	private String title;
 	private String index;
-	
-	
-	
-	
+
+	private String age;
+	private String btype;
+	private String cont_name;
+
+
+
 	public String getIndex() {
 		return index;
 	}
@@ -353,6 +356,31 @@ public class MobileUserVO {
 	public void setSname(String sname) {
 		this.sname = sname;
 	}
-	
-	
+
+
+	public String getAge() {
+		return age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
+	}
+
+	public String getBtype() {
+		return btype;
+	}
+
+	public void setBtype(String btype) {
+		this.btype = btype;
+	}
+
+	public String getCont_name() {
+		return cont_name;
+	}
+
+	public void setCont_name(String cont_name) {
+		this.cont_name = cont_name;
+	}
+
+
 }

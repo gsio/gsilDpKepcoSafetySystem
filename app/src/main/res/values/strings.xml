@@ -47,7 +47,7 @@
 
     <string name="page_2_txt_1">통과지층</string>
     <string name="page_2_txt_2">그라우팅 타입</string>
-    <string name="page_2_txt_3">PRM 안반등급</string>
+    <string name="page_2_txt_3">PRM 암반등급</string>
     <string name="page_2_txt_4">등급</string>
     <string name="page_2_txt_5">염분농도</string>
     <string name="page_2_txt_6">Target 압력</string>

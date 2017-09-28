@@ -128,8 +128,8 @@ public class MainTopPersonListActivity extends BaseActivity {
         ((Button) actionbar.findViewById(R.id.btn_title_left)).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent target = new Intent(activity, MainActivity.class);
-                startActivity(target);
+                //Intent target = new Intent(activity, MainActivity.class);
+                //startActivity(target);
                 finish();
             }
         });
@@ -163,8 +163,8 @@ public class MainTopPersonListActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent target = new Intent(activity, MainActivity.class);
-        startActivity(target);
+        //Intent target = new Intent(activity, MainActivity.class);
+        //startActivity(target);
         finish();
     }
 
@@ -189,20 +189,23 @@ public class MainTopPersonListActivity extends BaseActivity {
                     .findViewById(R.id.statusname);
             if( templist != null && templist.size() > 0 ) {
 
-                listTitleText.setText("이름 : " + templist.get(position).getName());
+                String name = "이름 : " + templist.get(position).getName();
+                if(!templist.get(position).getBtype().equals("")) name += " / " + templist.get(position).getBtype()+"형";
+                if(!templist.get(position).getAge().equals("")) name += " (" + templist.get(position).getAge()+"세)";
+                listTitleText.setText(name);
                 String infor = "";
 
-                if( templist.get(position).getName().equals("") ) {
+                if( templist.get(position).getT_name().equals("") ) {
                     subTitleText.setVisibility(View.GONE);
                 } else {
                     subTitleText.setVisibility(View.VISIBLE);
-                    infor = "직종 : " + templist.get(position).getT_name();// + " / " + list.get(position).getCname();
+                    infor = "직종 : " + templist.get(position).getT_name() + " / 회사 : " + list.get(position).getCont_name();
                     subTitleText.setText(infor);
                 }
                     /*터널내 근로자 : t_gubun이 1,2인것(1:근로자,2;장비)
 					터널내 관리자 : t_gubun이 3,4,5 인 것 count(3:관리자,4:감리단,5:발주처)
 					터널내 외부방문자 : t_gubun이 6인것 count	*/
-                if( list.get(position).getT_gubun().equals("1")) {
+                if( templist.get(position).getT_gubun().equals("1")) {
                     statusTitleText.setText("근로자");
                     statusTitleText.setTextColor(Color.BLACK);
                 } else if( templist.get(position).getT_gubun().equals("2") ) {
@@ -232,15 +235,15 @@ public class MainTopPersonListActivity extends BaseActivity {
                 @Override
                 public boolean onLongClick(View v) {
                     // TODO Auto-generated method stub
-/*                    if( !list.get(position).getName().equals("")  ) {
+/*                    if( !templist.get(position).getName().equals("")  ) {
                         new AlertDialog.Builder(VipBeaconManageActivity.this)
                                 .setTitle("비콘배정자 초기화")
-                                .setMessage(  list.get(position).getName().toString()+" 배정자를 초기화하시겠습니까?")
+                                .setMessage(  templist.get(position).getName().toString()+" 배정자를 초기화하시겠습니까?")
                                 .setIcon(android.R.drawable.ic_dialog_alert)
                                 .setPositiveButton("초기화", new DialogInterface.OnClickListener() {
 
                                     public void onClick(DialogInterface dialog, int whichButton) {
-                                        eventUpdateBeaconManager( list.get(position).getId());
+                                        eventUpdateBeaconManager( templist.get(position).getId());
                                     }})
                                 .setNegativeButton("취소", null).show();
                     }*/

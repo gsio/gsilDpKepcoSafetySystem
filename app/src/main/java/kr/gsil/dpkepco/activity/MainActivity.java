@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import kr.gsil.dpkepco.R;
 import kr.gsil.dpkepco.activity.worker.VipBeaconManageActivity;
@@ -489,8 +490,31 @@ public class MainActivity extends BaseActivity
     private View.OnClickListener sosOkClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            showToast("서비스 준비중 입니다.");
-            mCDialog.dismiss();
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("응급구조요청")
+                    .setMessage("응급 구조 비상 전화를 사용하시겠습니까?")
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton("요청", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            warningpush();
+                            mCDialog.dismiss();
+                        }})
+                    .setNegativeButton("취소", null).show();
+
         }
     };
+
+
+    public void warningpush() {
+        startThread(new Runnable() {
+            public void run() {
+                api.waringPush(MainActivity.this, app.getSite_id(), app.getCont_id(),app.getName(),app.getPhone(), app.getId(),"1");
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "응급 구조 요청을 하였습니다.", Toast.LENGTH_SHORT);
+                    }
+                });
+            }
+        });
+    }
 }

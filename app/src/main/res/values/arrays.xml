@@ -209,6 +209,7 @@
         <item>http://14.63.198.88/KEPCO/json/updateUserName</item>//
         <item>http://14.63.198.88/KEPCO/json/getAppVersionCheck</item>
         <item>http://14.63.198.88/KEPCO/json/insertAppVersionCheck</item>
+        <item>http://14.63.198.88/KEPCO/json/getAcceptPhoneList</item>
 
     </string-array>
 </resources>

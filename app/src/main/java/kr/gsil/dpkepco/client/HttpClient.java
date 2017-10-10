@@ -32,6 +32,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import kr.gsil.dpkepco.UserSystemApplication;
+import kr.gsil.dpkepco.model.AcceptPhoneVO;
 import kr.gsil.dpkepco.model.DailyValueVO;
 import kr.gsil.dpkepco.model.KepcoMonitorVO;
 import kr.gsil.dpkepco.model.KepcoSensorVO;
@@ -68,6 +69,39 @@ public class HttpClient {
 	{
 		if ( _instance != null ) return _instance;
 		return _instance = new HttpClient();
+	}
+
+	public AcceptPhoneVO getAcceptPhoneList( final Context context, String user_id) {
+		AcceptPhoneVO acceptPhone = null;
+
+		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.GET_ACCEPT_PHONE_LIST) + "?user_id=" + user_id);
+		Log.e("getAcceptPhoneList","result = "+result+" user_id = "+user_id);
+		Log.i("GET_ACCEPT_PHONE_LIST", result);
+		if( result != null && !result.equals("") ) {
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+				acceptPhone = new AcceptPhoneVO();
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				if( item.getString("result").equals("true") ) {
+					if( item.getString("needDiff").equals("true") ) {
+						ArrayList<String> list = new ArrayList<String>();
+						String[] array = item.getString("list").replace("[","").replace("]","").split(",");
+						for ( int i = 0; i < array.length; i++ ){
+							list.add(array[i].replaceAll("-", ""));
+						}
+						acceptPhone.setNeedDiff(true);
+						acceptPhone.setList(list);
+					}
+				}
+
+			} catch(Exception e) {
+				//e.printStackTrace();
+				return null;
+			}
+
+		}
+
+		return acceptPhone;
 	}
 
 	public String updateVersionInfo(final Context context, String user_id

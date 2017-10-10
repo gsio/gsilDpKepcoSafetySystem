@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.google.android.gcm.GCMRegistrar;
 import kr.gsil.dpkepco.R;
 import kr.gsil.dpkepco.base.BaseActivity;
+import kr.gsil.dpkepco.model.AcceptPhoneVO;
 import kr.gsil.dpkepco.model.MobileUserVO;
 import kr.gsil.dpkepco.model.MobileVO;
 import kr.gsil.dpkepco.util.BackPressCloseHandler;
@@ -133,7 +134,7 @@ public class LoginActivity extends BaseActivity {
 								//app.setSite_name(returnUser.getSname());
 								app.setWeatherCallCnt(0);//날씨 호출 용 카운트 초기값 설정
 
-								RunAppversion task = new RunAppversion(returnUser.getUserid());
+								RunAppversion task = new RunAppversion(userid);
 								task.execute();
 
 							} else {
@@ -158,7 +159,7 @@ public class LoginActivity extends BaseActivity {
 		}
 		@Override
 		protected Integer doInBackground(Void... params) {
-			int msg = 0;
+			int msg = 1;
 			Context context = getApplicationContext();
 			String app_ver = Utility.getAppVersion(context);;
 			String android_ver = android.os.Build.VERSION.SDK_INT + ":" + Build.VERSION.RELEASE;
@@ -166,13 +167,43 @@ public class LoginActivity extends BaseActivity {
 			String browser_ver = "";
 
 			api.updateVersionInfo(context, userid, app_ver, android_ver, browser_ver, etc);
+			//설정 정보 가져와 비교하기
+			String setting_accept_phone = context.getResources().getString(R.string.setting_accept_phone);
+			if(setting_accept_phone != null && !setting_accept_phone.equals("") && setting_accept_phone.toUpperCase().equals("TRUE")){
+				AcceptPhoneVO acceptPhone = api.getAcceptPhoneList(context, userid);
 
+				if(acceptPhone == null) msg = 0;//logout
+				else{
+					if(!acceptPhone.isNeedDiff()) msg = 1;//login
+					else{
+						if(phone.equals("")) msg = 2;//logout
+						else if(acceptPhone.isContainPhoneNumber(phone)) msg = 1;//login
+						else msg = 3;//logout
+					}
+				}
+			}
 			return msg;
 		}
 
 		@Override
 		protected void onPostExecute(Integer msg){
-			eventUpdateSignUpComplete();
+			switch(msg){
+				case 0:
+					showToast("장애가 발생하였습니다. 다시 시도해 주세요.");
+					initLoginInfo();
+					break;
+				case 1://정상 로그인
+					eventUpdateSignUpComplete();
+					break;
+				case 2:
+					showToast("핸드폰 번호가 있는 폰에서만 로그인 가능한 아이디 입니다.");
+					initLoginInfo();
+					break;
+				case 3:
+					showToast("인증되지 않은 전화번호입니다. 담당자에게 문의해 주세요.");
+					initLoginInfo();
+					break;
+			}
 		}
 	}
 	
@@ -181,6 +212,20 @@ public class LoginActivity extends BaseActivity {
 		Intent intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
 		finish();		
+	}
+
+	public void initLoginInfo(){
+		app.setLogin(false);
+		app.setAutoLogin(false);
+		app.setId("");
+		app.setType("");
+		app.setCont_id("");
+		app.setSite_id("");
+		app.setName("");
+		app.setRtype("");
+		app.setPhone("");
+		app.setUserid("");
+		app.setCname("");
 	}
 	
     @Override

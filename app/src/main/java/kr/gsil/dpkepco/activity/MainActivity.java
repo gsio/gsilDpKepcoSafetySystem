@@ -425,7 +425,7 @@ public class MainActivity extends BaseActivity
                 finish();
                 break;
             case R.id.btn_main_9:
-                mCDialog = new CDialogAlertSos(this, alimiClickListener , sosOkClickListener , missionClickListener);
+                mCDialog = new CDialogAlertSos(this, null , sosOkClickListener , null);
                 mCDialog.show();
                 break;
         }
@@ -491,7 +491,7 @@ public class MainActivity extends BaseActivity
     }
 
     CDialogAlertSos mCDialog = null;
-    private View.OnClickListener alimiClickListener = new View.OnClickListener() {
+/*    private View.OnClickListener alimiClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             showToast("서비스 준비중 입니다.");
@@ -505,7 +505,7 @@ public class MainActivity extends BaseActivity
             showToast("서비스 준비중 입니다.");
             mCDialog.dismiss();
         }
-    };
+    };*/
     private View.OnClickListener sosOkClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

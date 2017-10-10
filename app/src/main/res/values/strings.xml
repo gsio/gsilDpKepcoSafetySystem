@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">스마트 안전관리 시스템</string>
-
+    <string name="setting_accept_phone">true</string>
     <string name="btxt_title_reg">등록&#160;&#160;</string>
     <string name="btxt_input_data">데이타 입력</string>
     <string name="btxt_empty_date">0000-00-00</string>

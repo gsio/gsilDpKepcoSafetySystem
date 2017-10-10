@@ -215,6 +215,7 @@ public class HttpUrl {
 	public static final int KEPCO_UPDATE_VIP_USER_NAME						= 192;
 	public static final int GET_APP_VERSION_CHECK							= 193;
 	public static final int CONSMAN_INSERT_APP_VERSION_CHECK				= 194;
+	public static final int GET_ACCEPT_PHONE_LIST							= 195;
 
 
 	

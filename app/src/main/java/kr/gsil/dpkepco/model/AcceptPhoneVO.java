@@ -28,6 +28,6 @@ public class AcceptPhoneVO {
     }
 
     public boolean isContainPhoneNumber(String phoneNumber){
-        return list.contains(phoneNumber);
+        return list.contains("\""+phoneNumber+"\"");
     }
 }

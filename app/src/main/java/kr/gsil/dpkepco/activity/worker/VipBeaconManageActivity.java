@@ -64,7 +64,7 @@ public class VipBeaconManageActivity extends BaseActivity {
                                 templist.add(m);
                             }
 
-                            app.setBeaconlist(list);
+                            //app.setBeaconlist(list);
                         }
                         rAdapter.notifyDataSetChanged();
                     }
@@ -161,14 +161,14 @@ public class VipBeaconManageActivity extends BaseActivity {
                     .findViewById(R.id.statusname);
             if( list != null && list.size() > 0 ) {
 
-                listTitleText.setText("아이디 : " + list.get(position).getUserid());
+                listTitleText.setText("이름 : " + list.get(position).getName());
                 String infor = "";
 
                 if( list.get(position).getName().equals("") ) {
                     subTitleText.setVisibility(View.GONE);
                 } else {
                     subTitleText.setVisibility(View.VISIBLE);
-                    infor = "이름 : " + list.get(position).getName();// + " / " + list.get(position).getCname();
+                    infor = "아이디 : " + list.get(position).getUserid();// + " / " + list.get(position).getCname();
                     subTitleText.setText(infor);
                 }
 
@@ -205,7 +205,7 @@ public class VipBeaconManageActivity extends BaseActivity {
                                 .setPositiveButton("초기화", new DialogInterface.OnClickListener() {
 
                                     public void onClick(DialogInterface dialog, int whichButton) {
-                                        eventUpdateBeaconManager( list.get(position).getId());
+                                        eventUpdateBeaconManager( list.get(position).getId(), list.get(position).getUserid().toUpperCase());
                                     }})
                                 .setNegativeButton("취소", null).show();
                     }
@@ -220,7 +220,8 @@ public class VipBeaconManageActivity extends BaseActivity {
                 public void onClick(View v) {
                     if (!list.isEmpty() && !list.get(position).getName().equals("") ) {
                         //
-                        showToast("선택 되었습니다.");
+                        //showToast("선택 되었습니다.");
+                        openPopup("", list.get(position).getName(), false, list.get(position).getId(), list.get(position).getUserid());
                     }
                 }
             });
@@ -235,14 +236,14 @@ public class VipBeaconManageActivity extends BaseActivity {
 
     }
 
-    private void eventUpdateBeaconManager( final String id) {
+    private void eventUpdateBeaconManager( final String id, final String user_name) {
         if( app.getName().equals("GSIL") ) {
             return;
         }
         pShow();
         startThread(new Runnable() {
             public void run() {
-                final String result = "";//api.updateBeaconManager(getBaseContext(), id, "", "");
+                final String result = api.updateUserName(getBaseContext(), id, user_name);
                 runOnUiThread(new Runnable() {
                     public void run() {
                         pHide();
@@ -265,17 +266,18 @@ public class VipBeaconManageActivity extends BaseActivity {
         public void onClick(View v) {
             /*Toast.makeText(getApplicationContext(), "왼쪽버튼 Click!!",
                     Toast.LENGTH_SHORT).show();*/
-            if(mCDialog.getId() > -1){
+            if(mCDialog.getId() != ""){
                 pShow();
                 startThread(new Runnable() {
 
                     public void run() {
 
-                        final String result = "";//final String result = api.deleteDailyValue(getBaseContext(),String.valueOf(mCDialog.getId()));
+                        final String result = api.updateUserName(getBaseContext(), mCDialog.getId(), mCDialog.getUserid().toUpperCase());
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 pHide();
                                 if( result != null && result != "" ) {
+                                    showToast("정상 초기화 되었습니다.");
                                     setData();
                                 }
                             }
@@ -292,40 +294,27 @@ public class VipBeaconManageActivity extends BaseActivity {
         public void onClick(View v) {
             /*Toast.makeText(getApplicationContext(), "가운데버튼 Click!!",
                     Toast.LENGTH_SHORT).show();*/
-            if(mCDialog.isNew()){
-                pShow();
-                startThread(new Runnable() {
-
-                    public void run() {
-                        //String dateStr = btn_current_date.getText().toString();
-                        final String result = "";//final String result = api.insertDailyValue(getBaseContext(),dateStr, String.valueOf((int)mCDialog.getData()), app.getId());
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                pHide();
-                                if( result != null && result != "" ) {
-                                    setData();
-                                }
-                            }
-                        });
-                    }
-                });
-            }else{
-                pShow();
-                startThread(new Runnable() {
-
-                    public void run() {
-                        final String result = "";//final String result = api.updateDailyValue(getBaseContext(),String.valueOf(mCDialog.getId()) ,String.valueOf((int)mCDialog.getData()));
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                pHide();
-                                if( result != null && result != "" ) {
-                                    setData();
-                                }
-                            }
-                        });
-                    }
-                });
+            if(mCDialog.getData().equals("")){
+                showToast("입력값이 없습니다. 이름을 입력해 주세요.");
+                return;
             }
+
+            pShow();
+            startThread(new Runnable() {
+
+                public void run() {
+                    final String result = api.updateUserName(getBaseContext(), mCDialog.getId(), mCDialog.getData());
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            pHide();
+                            if( result != null && result != "" ) {
+                                showToast("변경 되었습니다.");
+                                setData();
+                            }
+                        }
+                    });
+                }
+            });
             mCDialog.dismiss();
         }
     };
@@ -337,11 +326,11 @@ public class VipBeaconManageActivity extends BaseActivity {
             mCDialog.dismiss();
         }
     };
-    private void openPopup(String date, String value, boolean isNew, int id){
+    private void openPopup(String date, String value, boolean isNew, String id, String userid){
         int titleId = R.string.vip_name_beacon_title;
 
         mCDialog = new CDialogVipNameBeacon(this, isNew, titleId, date, value, (isNew)?R.string.page_popup_input_txt_1: R.string.page_popup_input_txt_2,
-                (isNew)?null:leftClickListener, centerClickListener, rightClickListener, id);
+                (isNew)?null:leftClickListener, centerClickListener, rightClickListener, id, userid);
         mCDialog.show();
     }
 }

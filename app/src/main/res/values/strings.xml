@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">스마트 안전관리 시스템</string>
-
+    <string name="setting_accept_phone">true</string>
     <string name="btxt_title_reg">등록&#160;&#160;</string>
     <string name="btxt_input_data">데이타 입력</string>
     <string name="btxt_empty_date">0000-00-00</string>
@@ -47,7 +47,7 @@
 
     <string name="page_2_txt_1">통과지층</string>
     <string name="page_2_txt_2">그라우팅 타입</string>
-    <string name="page_2_txt_3">PRM 안반등급</string>
+    <string name="page_2_txt_3">PRM 암반등급</string>
     <string name="page_2_txt_4">등급</string>
     <string name="page_2_txt_5">염분농도</string>
     <string name="page_2_txt_6">Target 압력</string>
@@ -74,7 +74,7 @@
 
     <string name="page_7_btxt_1">총 인력 입력</string>
     <string name="page_7_btxt_2">근로자 안전관리</string>
-<!--    <string name="page_7_btxt_3">비콘 관리</string>
+    <!--    <string name="page_7_btxt_3">비콘 관리</string>
     <string name="page_7_btxt_4">비콘 검색</string>-->
 
 
@@ -124,4 +124,10 @@
     <string name="vip_name_beacon_txt_2">입력하시겠습니까?</string>
     <string name="vip_name_beacon_txt_3">수정하시겠습니까?</string>
 
+
+    <string name="page_main_top_txt_1">총 출역 현황(%1$d)</string>
+    <string name="page_main_top_txt_2">터널 내 총 인원(%1$d)</string>
+    <string name="page_main_top_txt_3">터널 내 근로자(%1$d)</string>
+    <string name="page_main_top_txt_4">터널 내 관리자(%1$d)</string>
+    <string name="page_main_top_txt_5">외부 방문자(%1$d)</string>
 </resources>

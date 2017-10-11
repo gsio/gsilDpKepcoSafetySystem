@@ -335,16 +335,32 @@ public class MainActivity extends BaseActivity
                 showToast("서비스 준비중 입니다.");
                 break;
             case R.id.btn_main_pan_item_2:
-                showToast("서비스 준비중 입니다.");
+                //showToast("서비스 준비중 입니다.");
+                target = new Intent(this, MainTopPersonListActivity.class);
+                target.putExtra("persionCnt", kepcoRecoDataVO.getCountTotal());//터널 내 총 인원
+                target.putExtra("kind", "kind_2");
+                startActivity(target);
                 break;
             case R.id.btn_main_pan_item_3:
-                showToast("서비스 준비중 입니다.");
+                //showToast("서비스 준비중 입니다.");
+                target = new Intent(this, MainTopPersonListActivity.class);
+                target.putExtra("persionCnt", kepcoRecoDataVO.getCountWorker());//터널 내 근로자
+                target.putExtra("kind", "kind_3");
+                startActivity(target);
                 break;
             case R.id.btn_main_pan_item_4:
-                showToast("서비스 준비중 입니다.");
+                //showToast("서비스 준비중 입니다.");
+                target = new Intent(this, MainTopPersonListActivity.class);
+                target.putExtra("persionCnt", kepcoRecoDataVO.getCountManager());//터널 내 관리자
+                target.putExtra("kind", "kind_4");
+                startActivity(target);
                 break;
             case R.id.btn_main_pan_item_5:
-                showToast("서비스 준비중 입니다.");
+                //showToast("서비스 준비중 입니다.");
+                target = new Intent(this, MainTopPersonListActivity.class);
+                target.putExtra("persionCnt", kepcoRecoDataVO.getCountVip());//외부 방문자
+                target.putExtra("kind", "kind_5");
+                startActivity(target);
                 break;
             case R.id.btn_main_1:
                 target = new Intent(this, DrillingStatusActivity.class);
@@ -362,6 +378,7 @@ public class MainActivity extends BaseActivity
                 finish();
                 break;
             case R.id.btn_main_4:
+
                 PackageManager pm = getPackageManager();
                 Intent intent = pm.getLaunchIntentForPackage("com.fnsys.mprms");
                 if( intent != null  ) {
@@ -408,7 +425,7 @@ public class MainActivity extends BaseActivity
                 finish();
                 break;
             case R.id.btn_main_9:
-                mCDialog = new CDialogAlertSos(this, alimiClickListener , sosOkClickListener , missionClickListener);
+                mCDialog = new CDialogAlertSos(this, null , sosOkClickListener , null);
                 mCDialog.show();
                 break;
         }
@@ -443,6 +460,7 @@ public class MainActivity extends BaseActivity
                         showToast("로그아웃 되었습니다.");
 
                         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         finish();
                     }})
@@ -473,10 +491,11 @@ public class MainActivity extends BaseActivity
     }
 
     CDialogAlertSos mCDialog = null;
-    private View.OnClickListener alimiClickListener = new View.OnClickListener() {
+/*    private View.OnClickListener alimiClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             showToast("서비스 준비중 입니다.");
+
             mCDialog.dismiss();
         }
     };
@@ -486,29 +505,29 @@ public class MainActivity extends BaseActivity
             showToast("서비스 준비중 입니다.");
             mCDialog.dismiss();
         }
-    };
+    };*/
     private View.OnClickListener sosOkClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //showToast("서비스 준비중 입니다.");
+
             new AlertDialog.Builder(MainActivity.this)
                     .setTitle("응급구조요청")
                     .setMessage("응급 구조 비상 전화를 사용하시겠습니까?")
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setPositiveButton("요청", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            warningpush();
-                            mCDialog.dismiss();
+                            //warningpush(app.getSite_id(), app.getCont_id(), app.getName(), app.getPhone(), app.getId());
                         }})
                     .setNegativeButton("취소", null).show();
-
+            mCDialog.dismiss();
         }
     };
 
-
-    public void warningpush() {
+    public void warningpush(final String site_id, final String cont_id, final String name, final String phone, final String id) {
         startThread(new Runnable() {
             public void run() {
-                api.waringPush(MainActivity.this, app.getSite_id(), app.getCont_id(),app.getName(),app.getPhone(), app.getId(),"1");
+                api.waringPush(getBaseContext(), site_id, cont_id,name,phone, id,"1");
                 runOnUiThread(new Runnable() {
                     public void run() {
                         Toast.makeText(MainActivity.this, "응급 구조 요청을 하였습니다.", Toast.LENGTH_SHORT);
@@ -517,4 +536,6 @@ public class MainActivity extends BaseActivity
             }
         });
     }
+
 }
+

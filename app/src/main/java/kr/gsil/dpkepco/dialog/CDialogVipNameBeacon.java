@@ -34,8 +34,9 @@ public class CDialogVipNameBeacon extends Dialog {
     private String mInfo;
     private String mData;
     private String mDate;
+    private String mUserid;
     private boolean isNew = true;
-    private int id = -1;
+    private String id = "";
 
     public CDialogVipNameBeacon(@NonNull Context context) {
         // Dialog 배경을 투명 처리 해준다.
@@ -44,7 +45,7 @@ public class CDialogVipNameBeacon extends Dialog {
     }
 
     public CDialogVipNameBeacon(@NonNull Context context, boolean isNew, String title, String date, String data, String info
-            , View.OnClickListener leftListener , View.OnClickListener centerListener , View.OnClickListener rightListener, int id) {
+            , View.OnClickListener leftListener , View.OnClickListener centerListener , View.OnClickListener rightListener, String id, String userid) {
         super(context , android.R.style.Theme_Translucent_NoTitleBar);
         this.mLeftClickListener = leftListener;
         this.mCenterClickListener = centerListener;
@@ -54,10 +55,11 @@ public class CDialogVipNameBeacon extends Dialog {
         this.mDate = date;
         this.mData = data;
         this.isNew = isNew;
+        this.mUserid = userid;
         this.id = id;
     }
     public CDialogVipNameBeacon(@NonNull Context context, boolean isNew, int titleId, String date, String data, int infoId
-            , View.OnClickListener leftListener , View.OnClickListener centerListener , View.OnClickListener rightListener, int id) {
+            , View.OnClickListener leftListener , View.OnClickListener centerListener , View.OnClickListener rightListener, String id, String userid) {
         super(context , android.R.style.Theme_Translucent_NoTitleBar);
         this.mLeftClickListener = leftListener;
         this.mCenterClickListener = centerListener;
@@ -67,6 +69,7 @@ public class CDialogVipNameBeacon extends Dialog {
         this.mDate = date;
         this.mData = data;
         this.isNew = isNew;
+        this.mUserid = userid;
         this.id = id;
     }
     @Override
@@ -107,13 +110,15 @@ public class CDialogVipNameBeacon extends Dialog {
         cdialog_et_data.setSelection(cdialog_et_data.getText().length());
     }
 
-    public float getData(){
-        String data = cdialog_et_data.getText().toString();
-        return Float.valueOf(data);
+    public String getData(){
+        return cdialog_et_data.getText().toString();
     }
 
-    public int getId(){
+    public String getId(){
         return id;
+    }
+    public String getUserid(){
+        return mUserid;
     }
 
     public boolean isNew(){

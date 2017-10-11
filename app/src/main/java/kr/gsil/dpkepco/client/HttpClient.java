@@ -32,6 +32,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import kr.gsil.dpkepco.UserSystemApplication;
+import kr.gsil.dpkepco.model.AcceptPhoneVO;
 import kr.gsil.dpkepco.model.DailyValueVO;
 import kr.gsil.dpkepco.model.KepcoMonitorVO;
 import kr.gsil.dpkepco.model.KepcoSensorVO;
@@ -70,6 +71,136 @@ public class HttpClient {
 		return _instance = new HttpClient();
 	}
 
+	public AcceptPhoneVO getAcceptPhoneList( final Context context, String user_id) {
+		AcceptPhoneVO acceptPhone = null;
+
+		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.GET_ACCEPT_PHONE_LIST) + "?user_id=" + user_id);
+		Log.e("getAcceptPhoneList","result = "+result+" user_id = "+user_id);
+		Log.i("GET_ACCEPT_PHONE_LIST", result);
+		if( result != null && !result.equals("") ) {
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+				acceptPhone = new AcceptPhoneVO();
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				if( item.getString("result").equals("true") ) {
+					if( item.getString("needDiff").equals("true") ) {
+						ArrayList<String> list = new ArrayList<String>();
+						String[] array = item.getString("list").replace("[","").replace("]","").split(",");
+						for ( int i = 0; i < array.length; i++ ){
+							list.add(array[i].replaceAll("-", ""));
+						}
+						acceptPhone.setNeedDiff(true);
+						acceptPhone.setList(list);
+					}
+				}
+
+			} catch(Exception e) {
+				//e.printStackTrace();
+				return null;
+			}
+
+		}
+
+		return acceptPhone;
+	}
+
+	public String updateVersionInfo(final Context context, String user_id
+														, String app_ver
+														, String android_ver
+														, String browser_ver
+														, String etc){
+		String resultString = "";
+		String isMobile = "1";
+		//"?user_id=" + userid + "&app_ver=" + app_ver + "&android_ver=" + android_ver + "&browser_ver=" + browser_ver+ "&etc="+userAgentName + "||"+ userAgent ;
+		ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("user_id", user_id));
+		params.add(new BasicNameValuePair("app_ver", app_ver));
+		params.add(new BasicNameValuePair("android_ver", android_ver));
+		params.add(new BasicNameValuePair("browser_ver", browser_ver));
+		params.add(new BasicNameValuePair("etc", etc));
+		params.add(new BasicNameValuePair("isMobile", isMobile ));
+
+		String result = postHttpParameterData( HttpUrl.getUrl( context, HttpUrl.CONSMAN_INSERT_APP_VERSION_CHECK), params );
+		Log.e("updateUserName","result = "+result+" user_id = "+user_id+" app_ver = "+app_ver+" android_ver = "+android_ver+" browser_ver = "+browser_ver+" etc = "+etc);
+		Log.i("CONSMAN_INSERT_APP_VERSION_CHECK", result);
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				if( item.getString("result").equals("true") ) {
+					resultString  = "true";
+				} else {
+					resultString  = "";
+				}
+
+			} catch(Exception e) {
+				//e.printStackTrace();
+				return null;
+			}
+
+		}
+
+		return resultString;
+	}
+
+	public String getAppVersionCheck( final Context context, String user_id){
+		String reString = "";
+		String result = getHttpData(HttpUrl.getUrl(context, HttpUrl.GET_APP_VERSION_CHECK) + "?user_id=" + user_id);
+		Log.e("getAppVersionCheck","result = "+result+" user_id = "+user_id);
+		if( result != null && !result.equals("")){
+			try{
+				JSONObject jsonObject = new JSONObject(result);
+				Log.e("VO1", jsonObject.toString());
+				if(jsonObject.has("app_ver")) reString = jsonObject.getString("app_ver");
+				else reString = "";
+
+			} catch(Exception e){
+				e.printStackTrace();
+				return "";
+			}
+		}
+		return reString;
+	}
+
+	public String updateUserName( final Context context,
+									 String id,
+									 String name
+	)  {
+
+		String resultString = "";
+		String isMobile = "1";
+		ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("id", id));
+		params.add(new BasicNameValuePair("name", name));
+		params.add(new BasicNameValuePair("isMobile", isMobile ));
+
+		String result = postHttpParameterData( HttpUrl.getUrl( context, HttpUrl.KEPCO_UPDATE_VIP_USER_NAME), params );
+		Log.e("updateUserName","result = "+result+" id = "+id+" name = "+name);
+		Log.i("KEPCO_UPDATE_VIP_USER_NAME", result);
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				if( item.getString("result").equals("true") ) {
+					resultString  = "true";
+				} else {
+					resultString  = "";
+				}
+
+			} catch(Exception e) {
+				//e.printStackTrace();
+				return null;
+			}
+
+		}
+
+		return resultString;
+	}
+
 	public ArrayList<MobileUserVO> getUserListByContType(final Context context, int site_id, int cont_type){
 		ArrayList<MobileUserVO> wlist = null;
 		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_GET_USER_LIST_BY_CONTTYPE) + "?site_id=8&cont_type=99" );
@@ -90,11 +221,11 @@ public class HttpClient {
 						mobileVo.setCont_id(items.getString("cont_id"));
 						mobileVo.setId(items.getString("id"));
 						if(items.has("recoid")) mobileVo.setRecoid(items.getString("recoid"));
-						mobileVo.setName(items.getString("name"));
+						if(items.has("name")) mobileVo.setName(items.getString("name"));
 						if(items.has("cname")) mobileVo.setCname(items.getString("cname"));
 						if(items.has("gubun")) mobileVo.setGubun(items.getString("gubun"));
 						else mobileVo.setGubun("99");
-						mobileVo.setUserid(items.getString("userid"));
+						if(items.has("userid")) mobileVo.setUserid(items.getString("userid"));
 						mobileVo.setGrade(items.getString("grade"));
 						mobileVo.setUseyn(items.getString("useyn"));
 						if(items.has("countdata")) mobileVo.setCountdata(items.getString("countdata"));
@@ -110,6 +241,62 @@ public class HttpClient {
 				return null;
 			}
 
+		}
+
+		return wlist;
+	}
+	public ArrayList<MobileUserVO> getRecoDataAll(final Context context, int site_id){
+		ArrayList<MobileUserVO> wlist = null;
+		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_MAIN_RECO_DATA) + "?site_id=8" );
+		Log.e("getRecoDataAll","result = "+result+" site_id = "+site_id);
+		if( result != null && !result.equals("") ) {
+
+			try {
+				JSONObject jsonObj = new JSONObject(result);
+
+				CustomJsonObject item = new CustomJsonObject(jsonObj);
+				wlist = new ArrayList<MobileUserVO>();
+				if( item.getString("result").equals("true") ) {
+					JSONArray jArr = new JSONArray(item.getString("item"));
+					for ( int i = 0; i < jArr.length(); i++ ){
+						CustomJsonObject items = new CustomJsonObject(jArr.getJSONObject(i));
+						MobileUserVO mobileVo = new MobileUserVO();
+						if(items.has("cont_id")) mobileVo.setCont_id(items.getString("cont_id"));
+						if(items.has("id")) mobileVo.setId(items.getString("id"));
+						if(items.has("recoid")) mobileVo.setRecoid(items.getString("recoid"));
+
+
+						if(items.has("cname")) mobileVo.setCname(items.getString("cname"));
+						if(items.has("gubun")) mobileVo.setGubun(items.getString("gubun"));
+						else mobileVo.setGubun("99");
+						if(items.has("t_gubun")) mobileVo.setT_gubun(items.getString("t_gubun"));
+						if(items.has("userid")) mobileVo.setUserid(items.getString("userid"));
+						if(items.has("grade")) mobileVo.setGrade(items.getString("grade"));
+						if(items.has("useyn")) mobileVo.setUseyn(items.getString("useyn"));
+						if(items.has("countdata")) mobileVo.setCountdata(items.getString("countdata"));
+						if(items.has("name")) mobileVo.setName(items.getString("name"));
+						if(items.has("t_name")) mobileVo.setT_name(items.getString("t_name"));
+						if(items.has("cont_name")) mobileVo.setCont_name(items.getString("cont_name"));
+
+						if(items.has("btype")) mobileVo.setBtype(items.getString("btype"));
+						if(items.has("site_id")) mobileVo.setSite_id(items.getString("site_id"));
+						if(items.has("age")) mobileVo.setAge(items.getString("age"));
+
+/**
+,{"gps_place":0,"no":0,"role":"2","distance":0,"checktime":"2017-09-28 13:54:41.0",
+ "year":0,"isForeign":0,"btype":"","isHighpress":0,"section":998,"cont_type":1,"t_gubun":2
+ ,"t_name":"그라우팅","isNotEdu":0,"cont_name":"강릉건설","jumin_back":0,"count":0,"workerList":[]
+ ,"disaster_hour":0,"t_id":0,"month":0,"place_gubun":1,"isOldage":0,"name":"MYOMINHTET"
+ ,"site_id":-1,"age":53}
+/**/
+						wlist.add(mobileVo);
+					}
+				} else {
+					wlist = null;
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		return wlist;

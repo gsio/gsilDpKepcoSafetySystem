@@ -46,9 +46,12 @@ public class DataInputDrillingActivity extends BaseActivity implements View.OnCl
     Intent target = null;
     @Override
     public void init() {
+
         btn_current_date  = (Button)findViewById(R.id.btn_current_date);
         btn_input_data  = (Button)findViewById(R.id.btn_input_data);
         lv_data_list  = (ListView)findViewById(R.id.lv_data_list);
+        View header = getLayoutInflater().inflate(R.layout.data_input_drilling_header, null, false);
+        lv_data_list.addHeaderView(header);
         rAdapter = new MainListViewAdapter();
         lv_data_list.setAdapter(rAdapter);
 
@@ -59,8 +62,6 @@ public class DataInputDrillingActivity extends BaseActivity implements View.OnCl
 
     @Override
     public void setData() {
-
-        list = null;
         if( list == null ) list = new ArrayList<DailyValueVO>();
         SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy-MM-dd", Locale.KOREA );
         Date currentTime = new Date ( );
@@ -122,7 +123,7 @@ public class DataInputDrillingActivity extends BaseActivity implements View.OnCl
                     public void run() {
                         String dateStr = btn_current_date.getText().toString();
                         final String result = api.insertDailyValue(getBaseContext(),dateStr
-                                , String.valueOf((int)mCDialog.getData()), app.getId());
+                                , String.valueOf(mCDialog.getData()), app.getId());
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 pHide();
@@ -139,7 +140,7 @@ public class DataInputDrillingActivity extends BaseActivity implements View.OnCl
 
                     public void run() {
                         final String result = api.updateDailyValue(getBaseContext(),String.valueOf(mCDialog.getId())
-                                ,String.valueOf((int)mCDialog.getData()));
+                                ,String.valueOf(mCDialog.getData()));
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 pHide();
@@ -167,6 +168,7 @@ public class DataInputDrillingActivity extends BaseActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_input_drilling);
+
         activity = this;
         setToolbar();
         init();
@@ -179,6 +181,13 @@ public class DataInputDrillingActivity extends BaseActivity implements View.OnCl
         }else {
             target = new Intent(activity, NumericalManagementActivity.class);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(list != null) list = null;
+        if(rAdapter != null) rAdapter = null;
     }
 
     private void setToolbar(){
@@ -287,10 +296,10 @@ public class DataInputDrillingActivity extends BaseActivity implements View.OnCl
             holder.btn_motify = (Button) convertView.findViewById(R.id.btn_motify);
             if( list != null && list.size() > 0 ) {
                 holder.tv_date.setText(list.get(position).getInput_date().toString());
-                holder.tv_today_value.setText(String.valueOf((int)list.get(position).getValue()));
-                holder.tv_total_value.setText(String.valueOf((int)list.get(position).getSum_value()));
-                holder.tv_av_today_value.setText(String.valueOf((int)list.get(position).getAvg_value()));
-                holder.tv_av_month_value.setText(String.valueOf(0));//(int)list.get(position).getAvg_value()
+                holder.tv_today_value.setText(String.valueOf(list.get(position).getValue()));
+                holder.tv_total_value.setText(String.valueOf(list.get(position).getSum_value()));
+                holder.tv_av_today_value.setText(String.valueOf(list.get(position).getAvg_value()));
+                holder.tv_av_month_value.setText(String.valueOf(list.get(position).getMonth_avg_value()));
                 holder.tv_name.setText(list.get(position).getWriter_user_name().toString());
                 //holder.tv_date.setText(list.get(position).getWrite_date().toString());
                 holder.btn_motify.setOnClickListener(new View.OnClickListener() {

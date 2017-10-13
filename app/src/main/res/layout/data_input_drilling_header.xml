@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:id="@+id/slMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/list_header"
+        app:scale_base_height="180"
+        app:scale_base_width="1080">
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/page_data_input_txt_10"
+            android:textColor="@color/item_text"
+            app:scale_height="90"
+            app:scale_left="10"
+            app:scale_textsize="42"
+            app:scale_top="40"
+            app:scale_width="230" />
+
+        <TextView
+            android:id="@+id/tv_today_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/page_data_input_txt_11"
+            android:textColor="@color/item_text"
+            app:scale_height="70"
+            app:scale_left="245"
+            app:scale_textsize="42"
+            app:scale_top="20"
+            app:scale_width="230" />
+
+        <TextView
+            android:id="@+id/tv_total_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/page_data_input_txt_12"
+            android:textColor="@color/item_text"
+            app:scale_height="70"
+            app:scale_left="245"
+            app:scale_textsize="42"
+            app:scale_top="90"
+            app:scale_width="230" />
+
+        <TextView
+            android:id="@+id/tv_av_today_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/page_data_input_txt_13"
+            android:textColor="@color/item_text"
+            app:scale_height="70"
+            app:scale_left="480"
+            app:scale_textsize="42"
+            app:scale_top="20"
+            app:scale_width="230" />
+
+        <TextView
+            android:id="@+id/tv_av_month_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/page_data_input_txt_14"
+            android:textColor="@color/item_text"
+            app:scale_height="70"
+            app:scale_left="480"
+            app:scale_textsize="42"
+            app:scale_top="90"
+            app:scale_width="230" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/page_data_input_txt_15"
+            android:textColor="@color/item_text"
+            app:scale_height="90"
+            app:scale_left="715"
+            app:scale_textsize="42"
+            app:scale_top="40"
+            app:scale_width="230" />
+
+        <Button
+            android:id="@+id/btn_motify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_basic_selector"
+            android:text="@string/btxt_modify"
+            android:textColor="#333333"
+            android:visibility="invisible"
+            app:scale_height="90"
+            app:scale_left="950"
+            app:scale_textsize="28"
+            app:scale_top="40"
+            app:scale_width="120" />
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+</LinearLayout>

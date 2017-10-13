@@ -19,4 +19,5 @@
 
     <color name="test_txt">#0000ff</color>
     <color name="page_data_input_content_txt">#000000</color>
+    <color name="list_header">#d9edf7</color>
 </resources>

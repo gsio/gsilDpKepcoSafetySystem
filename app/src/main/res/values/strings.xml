@@ -88,10 +88,12 @@
     <string name="page_data_input_txt_2">입력일자</string>
     <string name="page_data_input_txt_3">작성자</string>
     <string name="page_data_input_txt_4">수정</string>
-    <string name="page_data_input_txt_11">금일 굴진량(m)</string>
-    <string name="page_data_input_txt_12">누적 굴진량(m)</string>
-    <string name="page_data_input_txt_13">일 평균 굴진량(m)</string>
-    <string name="page_data_input_txt_14">월 평균 굴진량(m)</string>
+    <string name="page_data_input_txt_10">일력일자</string>
+    <string name="page_data_input_txt_11">금일(m)</string>
+    <string name="page_data_input_txt_12">누적(m)</string>
+    <string name="page_data_input_txt_13">일 평균(m)</string>
+    <string name="page_data_input_txt_14">월 평균(m)</string>
+    <string name="page_data_input_txt_15">작성자</string>
     <string name="page_data_input_txt_21">종류</string>
     <string name="page_data_input_txt_22">입력시간</string>
     <string name="page_data_input_txt_23">수치</string>

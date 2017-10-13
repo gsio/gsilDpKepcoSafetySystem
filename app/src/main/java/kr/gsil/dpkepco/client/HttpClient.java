@@ -692,7 +692,7 @@ public class HttpClient {
 	public ArrayList<DailyValueVO> getDailyValueList(final Context context){
 		ArrayList<DailyValueVO> daillylist = null;
 		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_GET_DRILLING_DAILY_VALUE) + "?site_id=8&type=-1" );
-		//Log.e("getTimelyValueList","result = "+result);
+		Log.e("getTimelyValueList","result = "+result);
 		if( result != null && !result.equals("") ) {
 
 			try {
@@ -717,6 +717,7 @@ public class HttpClient {
 						dailyVo.setIsMobile(items.getInt("isMobile"));
 						dailyVo.setSum_value(items.getDouble("sum_value"));
 						dailyVo.setAvg_value(items.getDouble("avg_value"));
+						dailyVo.setMonth_avg_value(items.getDouble("month_avg_value"));
 						dailyVo.setDay_count(items.getInt("day_count"));
 
 						daillylist.add(dailyVo);

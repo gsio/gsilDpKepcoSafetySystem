@@ -26,6 +26,7 @@ public class DailyValueVO implements Serializable{
 
     private double sum_value;//누적 굴진량
     private double avg_value;//
+    private double month_avg_value;//
     private int day_count;//
     public int getId() {
         return id;
@@ -106,5 +107,13 @@ public class DailyValueVO implements Serializable{
         this.day_count = day_count;
     }
 
+
+    public double getMonth_avg_value() {
+        return month_avg_value;
+    }
+
+    public void setMonth_avg_value(double month_avg_value) {
+        this.month_avg_value = month_avg_value;
+    }
 
 }

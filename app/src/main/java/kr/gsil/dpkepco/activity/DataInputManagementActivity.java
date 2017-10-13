@@ -2,6 +2,7 @@ package kr.gsil.dpkepco.activity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -53,6 +54,8 @@ public class DataInputManagementActivity extends BaseActivity implements View.On
         btn_current_date  = (Button)findViewById(R.id.btn_current_date);
         btn_input_data  = (Button)findViewById(R.id.btn_input_data);
         lv_data_list  = (ListView)findViewById(R.id.lv_data_list);
+        View header = getLayoutInflater().inflate(R.layout.item_insert_default_header, null, false);
+        lv_data_list.addHeaderView(header);
         rAdapter = new MainListViewAdapter();
         lv_data_list.setAdapter(rAdapter);
 
@@ -63,20 +66,19 @@ public class DataInputManagementActivity extends BaseActivity implements View.On
 
     @Override
     public void setData() {
-        list = null;
         if( list == null ) list = new ArrayList<TimelyValueVO>();
         SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy-MM-dd", Locale.KOREA );
         Date currentTime = new Date ( );
         final String today = mSimpleDateFormat.format ( currentTime );
         btn_current_date.setText(today);
-        pShow();
+        //pShow();
         startThread(new Runnable() {
             public void run() {
                 list = api.getTimelyValueList(getBaseContext(),inputType);
                 if( list == null ) list = new ArrayList<TimelyValueVO>();
                 runOnUiThread(new Runnable() {
                     public void run() {
-                        pHide();
+                        //pHide();
                         if( list != null && list.size() > 0 ) {
                             rAdapter.notifyDataSetChanged();
                         }
@@ -84,7 +86,6 @@ public class DataInputManagementActivity extends BaseActivity implements View.On
                 });
             }
         });
-
     }
 
     private View.OnClickListener leftClickListener = new View.OnClickListener() {
@@ -171,6 +172,7 @@ public class DataInputManagementActivity extends BaseActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_input_management);
+
         activity = this;
         Intent intent = getIntent();
         inputType = intent.getIntExtra("inputType", 5);
@@ -184,6 +186,13 @@ public class DataInputManagementActivity extends BaseActivity implements View.On
         }
         setToolbar(target);
         init();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(list != null) list = null;
+        if(rAdapter != null) rAdapter = null;
     }
 
     private void setToolbar(final Intent target){

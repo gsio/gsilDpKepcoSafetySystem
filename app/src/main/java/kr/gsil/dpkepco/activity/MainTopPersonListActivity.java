@@ -191,7 +191,7 @@ public class MainTopPersonListActivity extends BaseActivity {
 
                 String name = "이름 : " + templist.get(position).getName();
                 if(!templist.get(position).getBtype().equals("")) name += " / " + templist.get(position).getBtype()+"형";
-                if(!templist.get(position).getAge().equals("")) name += " (" + templist.get(position).getAge()+"세)";
+                if(!templist.get(position).getAge().equals("") && !templist.get(position).getAge().equals("0")) name += " (" + templist.get(position).getAge()+"세)";
                 listTitleText.setText(name);
                 String infor = "";
 

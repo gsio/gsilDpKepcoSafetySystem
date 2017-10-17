@@ -140,6 +140,7 @@ public class UserSystemApplication extends Application {
     }
 
     public void setKepcoRecoData(KepcoRecoDataVO kepcoRecoDataVO){
+        this.kepcoRecoDataVO = null;
         this.kepcoRecoDataVO = kepcoRecoDataVO;
     }
 

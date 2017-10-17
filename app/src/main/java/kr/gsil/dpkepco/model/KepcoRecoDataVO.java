@@ -10,6 +10,13 @@ public class KepcoRecoDataVO {
     int countManager = 0;
     int countVip = 0;
 
+    public KepcoRecoDataVO(){
+        countTotal = 0;
+        countWorker = 0;
+        countManager = 0;
+        countVip = 0;
+    }
+
     public int getCountTotal() {
         return countTotal;
     }

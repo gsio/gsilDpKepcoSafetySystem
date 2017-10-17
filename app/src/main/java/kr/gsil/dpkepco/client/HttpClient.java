@@ -306,9 +306,9 @@ public class HttpClient {
 		KepcoRecoDataVO recoData = null;
 		String result = getHttpData( HttpUrl.getUrl( context, HttpUrl.KEPCO_MAIN_RECO_DATA) + "?site_id=8" );
 		Log.e("getMainRecoData","result = "+result+" site_id = "+site_id);
-		recoData = new KepcoRecoDataVO();
-		if( result != null && !result.equals("") ) {
 
+		if( result != null && !result.equals("") ) {
+			recoData = new KepcoRecoDataVO();
 			try {
 				JSONObject jsonObj = new JSONObject(result);
 				CustomJsonObject item = new CustomJsonObject(jsonObj);

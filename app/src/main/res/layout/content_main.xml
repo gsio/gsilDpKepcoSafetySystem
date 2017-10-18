@@ -8,10 +8,25 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_main">
 
-    <com.ssomai.android.scalablelayout.ScalableLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btm_bar"
+            app:scale_base_height="100"
+            app:scale_base_width="1080">
+            </com.ssomai.android.scalablelayout.ScalableLayout>
+    </LinearLayout>
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
         android:id="@+id/slMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@android:color/white"
         app:scale_base_height="1700"
         app:scale_base_width="1080">
@@ -56,11 +71,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textScaleX="0.8"
             android:baselineAligned="false"
+            android:gravity="center"
             android:text="대체로 맑음"
+            android:textScaleX="0.8"
+            android:textStyle="bold"
             app:scale_height="72"
             app:scale_left="136"
             app:scale_textsize="48"
@@ -73,12 +88,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/bg_subsi_do"
-            android:gravity="center"
-            android:paddingRight="10dp"
-            android:textStyle="bold"
-            android:textScaleX="0.9"
             android:baselineAligned="false"
+            android:gravity="center"
+            android:paddingRight="12dp"
             android:text="00"
+            android:textScaleX="0.9"
+            android:textStyle="bold"
             app:scale_height="72"
             app:scale_left="315"
             app:scale_textsize="68"
@@ -91,17 +106,27 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/bg_weather_percent_0"
-            android:gravity="right|top"
-            android:paddingRight="9dp"
-            android:textStyle="bold"
-            android:textScaleX="0.8"
             android:baselineAligned="false"
+            android:gravity="right|top"
+            android:paddingLeft="2dp"
             android:text="00"
+            android:textScaleX="0.8"
+            android:textStyle="bold"
             app:scale_height="72"
             app:scale_left="475"
             app:scale_textsize="68"
             app:scale_top="40"
-            app:scale_width="233" />
+            app:scale_width="208" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:scale_height="72"
+            app:scale_left="683"
+            app:scale_top="40"
+            app:scale_width="25"
+            app:srcCompat="@drawable/bg_weather_percent_tail" />
 
         <ImageView
             android:id="@+id/img_drilling_status"
@@ -120,9 +145,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_btn_main_top_a"
             android:scaleType="fitXY"
+            app:scale_height="192"
             app:scale_left="30"
             app:scale_top="172"
-            app:scale_height="192"
             app:scale_width="246"
             app:srcCompat="@drawable/img_btn_main_top_1" />
 
@@ -132,9 +157,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_btn_main_top_a"
             android:scaleType="fitXY"
+            app:scale_height="192"
             app:scale_left="294"
             app:scale_top="172"
-            app:scale_height="192"
             app:scale_width="246"
             app:srcCompat="@drawable/img_btn_main_top_2" />
 
@@ -144,9 +169,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_btn_main_top_b"
             android:scaleType="fitXY"
+            app:scale_height="192"
             app:scale_left="562"
             app:scale_top="172"
-            app:scale_height="192"
             app:scale_width="154"
             app:srcCompat="@drawable/img_btn_main_top_3" />
 
@@ -156,9 +181,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_btn_main_top_b"
             android:scaleType="fitXY"
+            app:scale_height="192"
             app:scale_left="730"
             app:scale_top="172"
-            app:scale_height="192"
             app:scale_width="154"
             app:srcCompat="@drawable/img_btn_main_top_4" />
 
@@ -168,9 +193,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_btn_main_top_b"
             android:scaleType="fitXY"
+            app:scale_height="192"
             app:scale_left="896"
             app:scale_top="172"
-            app:scale_height="192"
             app:scale_width="154"
             app:srcCompat="@drawable/img_btn_main_top_5" />
 
@@ -195,8 +220,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="00"
-            android:textStyle="bold"
             android:textColor="#1071B9"
+            android:textStyle="bold"
             app:scale_height="100"
             app:scale_left="338"
             app:scale_textsize="90"
@@ -254,6 +279,7 @@
             app:scale_left="0"
             app:scale_top="400"
             app:scale_width="1080"></LinearLayout>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -396,19 +422,4 @@
 
 
     </com.ssomai.android.scalablelayout.ScalableLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:orientation="horizontal">
-        <com.ssomai.android.scalablelayout.ScalableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btm_bar"
-            app:scale_base_height="100"
-            app:scale_base_width="1080">
-            </com.ssomai.android.scalablelayout.ScalableLayout>
-    </LinearLayout>
 </FrameLayout>

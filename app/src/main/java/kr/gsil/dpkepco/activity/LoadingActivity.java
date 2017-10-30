@@ -62,7 +62,7 @@ public class LoadingActivity extends BaseActivity {
 		protected void onPostExecute(Integer msg){
 			Context context = getApplicationContext();
 			String appVersion = Utility.getAppVersion(context);
-			//Log.e("serviceVersion", "serviceVersion : " + serviceVersion+ " appVersion: "+ appVersion+ " msg: "+ msg);
+			Log.e("serviceVersion", "serviceVersion : " + serviceVersion+ " appVersion: "+ appVersion+ " msg: "+ msg);
 			if(msg > -1){
 
 				if(serviceVersion == "" || appVersion.equals(serviceVersion)) {

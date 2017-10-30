@@ -21,12 +21,16 @@ public class DrillingDriveStateActivity extends BaseActivity implements View.OnC
     public static final int STATE_DRILLING = 1;//굴진
     public static final int STATE_CONSTRUCTION = 2;//조립
     public static final int STATE_CHECKING = 3;//정비
+    public static final int STATE_PAUSE = 4;//굴진대기
+    public static final int STATE_BRAKTIME = 5;//휴식
     KepcoMonitorVO kepcoMonitorVO = null;
     KepcoSensorVO kepcoSensorVO = null;
 
     Button btn_drilling_state_0  = null;
     Button btn_drilling_state_1  = null;
     Button btn_drilling_state_2  = null;
+    Button btn_drilling_state_3  = null;
+    Button btn_drilling_state_4  = null;
     public int drillingDriveState = STATE_CONSTRUCTION;
     public int changeState = STATE_CONSTRUCTION;
 
@@ -40,9 +44,13 @@ public class DrillingDriveStateActivity extends BaseActivity implements View.OnC
         btn_drilling_state_0  = (Button)findViewById(R.id.btn_drilling_state_0);
         btn_drilling_state_1  = (Button)findViewById(R.id.btn_drilling_state_1);
         btn_drilling_state_2  = (Button)findViewById(R.id.btn_drilling_state_2);
+        btn_drilling_state_3  = (Button)findViewById(R.id.btn_drilling_state_3);
+        btn_drilling_state_4  = (Button)findViewById(R.id.btn_drilling_state_4);
         btn_drilling_state_0.setOnClickListener(this);
         btn_drilling_state_1.setOnClickListener(this);
         btn_drilling_state_2.setOnClickListener(this);
+        btn_drilling_state_3.setOnClickListener(this);
+        btn_drilling_state_4.setOnClickListener(this);
         isChange = false;
         setData();
     }
@@ -83,17 +91,15 @@ public class DrillingDriveStateActivity extends BaseActivity implements View.OnC
 
     private void setButton(int stat){
         if(stat == DrillingDriveStateActivity.STATE_DRILLING){
-            btn_drilling_state_0.setBackgroundResource(R.drawable.bg_btn_drilling_state_lv_0_on);
-            btn_drilling_state_1.setBackgroundResource(R.drawable.bg_btn_drilling_state_lv_1_off);
-            btn_drilling_state_2.setBackgroundResource(R.drawable.bg_btn_drilling_state_lv_2_off);
+            btn_drilling_state_0.setSelected(true);
         }else if(stat == DrillingDriveStateActivity.STATE_CONSTRUCTION){
-            btn_drilling_state_0.setBackgroundResource(R.drawable.bg_btn_drilling_state_lv_0_off);
-            btn_drilling_state_1.setBackgroundResource(R.drawable.bg_btn_drilling_state_lv_1_on);
-            btn_drilling_state_2.setBackgroundResource(R.drawable.bg_btn_drilling_state_lv_2_off);
+            btn_drilling_state_1.setSelected(true);
+        }else if(stat == DrillingDriveStateActivity.STATE_CHECKING){
+            btn_drilling_state_3.setSelected(true);
+        }else if(stat == DrillingDriveStateActivity.STATE_PAUSE){
+            btn_drilling_state_3.setSelected(true);
         }else{
-            btn_drilling_state_0.setBackgroundResource(R.drawable.bg_btn_drilling_state_lv_0_off);
-            btn_drilling_state_1.setBackgroundResource(R.drawable.bg_btn_drilling_state_lv_1_off);
-            btn_drilling_state_2.setBackgroundResource(R.drawable.bg_btn_drilling_state_lv_2_on);
+            btn_drilling_state_4.setSelected(true);
         }
     }
 
@@ -146,6 +152,22 @@ public class DrillingDriveStateActivity extends BaseActivity implements View.OnC
                 if(drillingDriveState != STATE_CHECKING){
                     changeState = STATE_CHECKING;
                     mCDialog = new CDialogSelectData(this, R.string.drilling_state_title_txt, R.string.drilling_state_txt_2, R.string.page_popup_input_txt_3,
+                            leftClickListener, rightClickListener);
+                    mCDialog.show();
+                }
+                break;
+            case R.id.btn_drilling_state_3:
+                if(drillingDriveState != STATE_PAUSE){
+                    changeState = STATE_PAUSE;
+                    mCDialog = new CDialogSelectData(this, R.string.drilling_state_title_txt, R.string.drilling_state_txt_3, R.string.page_popup_input_txt_3,
+                            leftClickListener, rightClickListener);
+                    mCDialog.show();
+                }
+                break;
+            case R.id.btn_drilling_state_4:
+                if(drillingDriveState != STATE_BRAKTIME){
+                    changeState = STATE_BRAKTIME;
+                    mCDialog = new CDialogSelectData(this, R.string.drilling_state_title_txt, R.string.drilling_state_txt_4, R.string.page_popup_input_txt_3,
                             leftClickListener, rightClickListener);
                     mCDialog.show();
                 }

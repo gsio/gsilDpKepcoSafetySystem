@@ -13,6 +13,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.AudioManager;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -38,6 +41,13 @@ public class LoadingActivity extends BaseActivity {
 
 		//handler.postDelayed(run, 2000);
 		//setData();
+
+//		AudioManager manager = (AudioManager)getBaseContext().getSystemService(AUDIO_SERVICE);
+//		int max = manager.getStreamMaxVolume(AudioManager.RINGER_MODE_NORMAL);
+//		manager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+//		manager.setStreamVolume(AudioManager.STREAM_RING, max, AudioManager.FLAG_PLAY_SOUND);
+//		Ringtone mRing = RingtoneManager.getRingtone(getBaseContext(),Uri.parse("android.resource://" + getBaseContext().getPackageName() + "/" +R.raw.ping));
+//		mRing.play();
 
 		RunAppversion task = new RunAppversion();
 		task.execute();

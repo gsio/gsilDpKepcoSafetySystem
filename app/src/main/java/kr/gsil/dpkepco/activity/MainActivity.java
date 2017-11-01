@@ -529,10 +529,11 @@ public class MainActivity extends BaseActivity
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setPositiveButton("요청", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            //warningpush(app.getSite_id(), app.getCont_id(), app.getName(), app.getPhone(), app.getId());
+                            warningpush(app.getSite_id(), app.getCont_id(), app.getName(), app.getPhone(), app.getId());
+                            mCDialog.dismiss();
                         }})
                     .setNegativeButton("취소", null).show();
-            mCDialog.dismiss();
+
         }
     };
 

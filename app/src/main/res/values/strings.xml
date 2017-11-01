@@ -105,6 +105,8 @@
     <string name="drilling_state_txt_0">굴진 중</string>
     <string name="drilling_state_txt_1">세그먼트 조립</string>
     <string name="drilling_state_txt_2">기계 정비</string>
+    <string name="drilling_state_txt_3">굴진 대기</string>
+    <string name="drilling_state_txt_4">휴식</string>
 
     <string name="nav_txt_1">총 인력 입력</string>
     <string name="nav_txt_11">외부방문용 비콘배정</string>

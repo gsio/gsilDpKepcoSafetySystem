@@ -131,8 +131,12 @@ public class MainActivity extends BaseActivity
                                 img_drilling_status.setImageResource(R.drawable.img_drilling_status_lv_0);
                             }else if(drillingDriveState == DrillingDriveStateActivity.STATE_CONSTRUCTION){
                                 img_drilling_status.setImageResource(R.drawable.img_drilling_status_lv_1);
-                            }else{
+                            }else if(drillingDriveState == DrillingDriveStateActivity.STATE_CHECKING){
                                 img_drilling_status.setImageResource(R.drawable.img_drilling_status_lv_2);
+                            }else if(drillingDriveState == DrillingDriveStateActivity.STATE_PAUSE){
+                                img_drilling_status.setImageResource(R.drawable.img_drilling_status_lv_3);
+                            }else{
+                                img_drilling_status.setImageResource(R.drawable.img_drilling_status_lv_4);
                             }
 
                         }
@@ -169,6 +173,7 @@ public class MainActivity extends BaseActivity
         ((ImageButton)findViewById(R.id.btn_main_pan_item_3)).setOnClickListener(this);
         ((ImageButton)findViewById(R.id.btn_main_pan_item_4)).setOnClickListener(this);
         ((ImageButton)findViewById(R.id.btn_main_pan_item_5)).setOnClickListener(this);
+        ((ImageView)findViewById(R.id.img_drilling_status)).setOnClickListener(this);
 
         ((ImageButton)findViewById(R.id.btn_main_1)).setOnClickListener(this);
         ((ImageButton)findViewById(R.id.btn_main_2)).setOnClickListener(this);
@@ -331,6 +336,13 @@ public class MainActivity extends BaseActivity
     public void onClick(View v) {
         Intent target = null;
         switch(v.getId()){
+            case R.id.img_drilling_status:
+                target = new Intent(this, DrillingDriveStateActivity.class);
+                target.putExtra("inputType", 4);//type 4 굴진상태
+                target.putExtra("comeFrom", "home");
+                startActivity(target);
+                finish();
+                break;
             case R.id.btn_main_pan_item_1:
                 showToast("서비스 준비중 입니다.");
                 break;

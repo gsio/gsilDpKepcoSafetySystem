@@ -153,8 +153,12 @@ public class HttpClient {
 			try{
 				JSONObject jsonObject = new JSONObject(result);
 				Log.e("VO1", jsonObject.toString());
-				if(jsonObject.has("app_ver")) reString = jsonObject.getString("app_ver");
-				else reString = "";
+                /**/
+				if(jsonObject.getString("result").equals("true")){
+					reString = jsonObject.getString("app_ver");
+				}else{
+					reString = "";
+				}/**/
 
 			} catch(Exception e){
 				e.printStackTrace();

@@ -676,7 +676,7 @@ public class UserSystemApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        pref = getBaseContext().getSharedPreferences("gsilsamsungsystem", Activity.MODE_PRIVATE);
+        pref = getBaseContext().getSharedPreferences("gsildangjinsystem", Activity.MODE_PRIVATE);
         editer = pref.edit();
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())

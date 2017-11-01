@@ -9,6 +9,7 @@ import kr.gsil.dpkepco.util.Utility;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -146,16 +147,27 @@ public class LoadingActivity extends BaseActivity {
             	//showToast(Integer.toString(grantResults[1]));
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // 권한 허가
-            		if( app.isLogin() ) {
-						Intent intent = new Intent(this, MainActivity.class);
+					NotificationManager n = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+							&& !n.isNotificationPolicyAccessGranted()) {
+						Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
 						startActivity(intent);
-            			finish();
-            		} else {
-            			//app.setPid(myDeviceId);
-            			Intent intent = new Intent(this, LoginActivity.class);
-            			startActivity(intent);
-            			finish();
-            		}
+
+						Intent intents = new Intent(this, LoginActivity.class);
+						startActivity(intents);
+						finish();
+					} else {
+						if( app.isLogin() ) {
+							Intent intent = new Intent(this, MainActivity.class);
+							startActivity(intent);
+							finish();
+						} else {
+							//app.setPid(myDeviceId);
+							Intent intent = new Intent(this, LoginActivity.class);
+							startActivity(intent);
+							finish();
+						}
+					}
                 }
                 return;
         }
@@ -178,10 +190,15 @@ public class LoadingActivity extends BaseActivity {
                 checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
                 checkSelfPermission(Manifest.permission.ACCESS_WIFI_STATE) != PackageManager.PERMISSION_GRANTED ||
                 checkSelfPermission(Manifest.permission.CHANGE_WIFI_STATE) != PackageManager.PERMISSION_GRANTED ||
+						checkSelfPermission(Manifest.permission.ACCESS_NOTIFICATION_POLICY) != PackageManager.PERMISSION_GRANTED ||
+
+
 				//checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED ||
                 checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED
 
                 ) {
+
+
             requestPermissions(new String[]{
                             Manifest.permission.READ_PHONE_STATE,
                             Manifest.permission.CALL_PHONE,
@@ -197,6 +214,7 @@ public class LoadingActivity extends BaseActivity {
                             Manifest.permission.ACCESS_FINE_LOCATION,
                             Manifest.permission.ACCESS_WIFI_STATE,
                             Manifest.permission.CHANGE_WIFI_STATE,
+							Manifest.permission.ACCESS_NOTIFICATION_POLICY,
 							//Manifest.permission.RECORD_AUDIO,
                             Manifest.permission.READ_PHONE_STATE
             },

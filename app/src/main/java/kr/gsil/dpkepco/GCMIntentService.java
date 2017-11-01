@@ -31,7 +31,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 		int icon = R.mipmap.ic_launcher;
 		long when = System.currentTimeMillis();
 
-		SharedPreferences pref = context.getSharedPreferences("gsilsamsungsystem", Activity.MODE_PRIVATE);
+		SharedPreferences pref = context.getSharedPreferences("gsildangjinsystem", Activity.MODE_PRIVATE);
 
 		NotificationManager notificationManager = (NotificationManager) context
 				.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -52,13 +52,9 @@ public class GCMIntentService extends GCMBaseIntentService {
 			notificationIntent = new Intent(context, LoginActivity.class);
 		}
 
+
 		//if( message.indexOf("/W") >= 0 ) {
-			AudioManager manager = (AudioManager)context.getSystemService(AUDIO_SERVICE);
-			int max = manager.getStreamMaxVolume(AudioManager.RINGER_MODE_NORMAL);
-			manager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-			manager.setStreamVolume(AudioManager.STREAM_RING, max, AudioManager.FLAG_PLAY_SOUND);
-			Ringtone mRing = RingtoneManager.getRingtone(context,Uri.parse("android.resource://" + context.getPackageName() + "/" +R.raw.ping));
-			mRing.play();
+
 		//}
 
 		NotificationManager nm = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);

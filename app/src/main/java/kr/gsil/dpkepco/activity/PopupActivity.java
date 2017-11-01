@@ -6,6 +6,9 @@ import kr.gsil.dpkepco.R.layout;
 import kr.gsil.dpkepco.base.BaseActivity;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +27,14 @@ public class PopupActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_popup);
+
+		AudioManager manager = (AudioManager)getBaseContext().getSystemService(AUDIO_SERVICE);
+		int max = manager.getStreamMaxVolume(AudioManager.RINGER_MODE_NORMAL);
+		manager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+		manager.setStreamVolume(AudioManager.STREAM_RING, max, AudioManager.FLAG_PLAY_SOUND);
+		Ringtone mRing = RingtoneManager.getRingtone(getBaseContext(),Uri.parse("android.resource://" + getBaseContext().getPackageName() + "/" +R.raw.ping));
+		mRing.play();
+
 	    getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
 		        // 키잠금 해제하기
 		        | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD

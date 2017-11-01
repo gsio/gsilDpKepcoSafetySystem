@@ -90,12 +90,17 @@ public class DrillingDriveStateActivity extends BaseActivity implements View.OnC
     }
 
     private void setButton(int stat){
+        btn_drilling_state_0.setSelected(false);
+        btn_drilling_state_1.setSelected(false);
+        btn_drilling_state_2.setSelected(false);
+        btn_drilling_state_3.setSelected(false);
+        btn_drilling_state_4.setSelected(false);
         if(stat == DrillingDriveStateActivity.STATE_DRILLING){
             btn_drilling_state_0.setSelected(true);
         }else if(stat == DrillingDriveStateActivity.STATE_CONSTRUCTION){
             btn_drilling_state_1.setSelected(true);
         }else if(stat == DrillingDriveStateActivity.STATE_CHECKING){
-            btn_drilling_state_3.setSelected(true);
+            btn_drilling_state_2.setSelected(true);
         }else if(stat == DrillingDriveStateActivity.STATE_PAUSE){
             btn_drilling_state_3.setSelected(true);
         }else{

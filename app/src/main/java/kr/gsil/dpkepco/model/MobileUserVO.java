@@ -56,9 +56,9 @@ public class MobileUserVO {
 	private String title;
 	private String index;
 
-	private String age;
-	private String btype;
-	private String cont_name;
+	private String age = "";
+	private String btype = "";
+	private String cont_name = "";
 
 
 

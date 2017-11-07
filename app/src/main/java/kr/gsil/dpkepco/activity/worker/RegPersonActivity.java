@@ -509,7 +509,7 @@ public class RegPersonActivity extends BaseActivity {
 			return;
 		}
 		String bType = s.replace("형","");
-		showToast(bType);
+		//showToast(bType);
 		/*
 		if( s.equals("비신고") ) {
 			singoyn = "N";

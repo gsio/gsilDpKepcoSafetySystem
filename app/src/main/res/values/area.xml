@@ -2,11 +2,12 @@
 <resources
   xmlns:tools="http://schemas.android.com/tools"
   tools:ignore="MissingTranslation">
-    <string-array translatable="false" name="singo">
+    <string-array translatable="false" name="btype">
         <item>O형</item>
         <item>A형</item>
         <item>B형</item>
         <item>AB형</item>
+        <item>미정</item>
 	</string-array>
 	
     

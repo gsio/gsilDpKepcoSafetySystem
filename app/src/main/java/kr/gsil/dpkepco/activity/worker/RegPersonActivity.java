@@ -166,7 +166,7 @@ public class RegPersonActivity extends BaseActivity {
 			}
 		});
 		
-		slist = Arrays.asList(getResources().getStringArray(R.array.singo));
+		slist = Arrays.asList(getResources().getStringArray(R.array.btype));
 		
 
 		firstdateBtn.setOnClickListener(new OnClickListener() {
@@ -305,13 +305,17 @@ public class RegPersonActivity extends BaseActivity {
 					}
 				}
 			}
-
-			
+			if(vo.getBtype().equals("O")) overselect.setSelection(0);
+			else if(vo.getBtype().equals("A")) overselect.setSelection(1);
+			else if(vo.getBtype().equals("B")) overselect.setSelection(2);
+			else if(vo.getBtype().equals("AB")) overselect.setSelection(3);
+			else overselect.setSelection(4);
+			/*
 			if( vo.getSingoyn().equals("N") ) {
 				overselect.setSelection(0);
 			} else {
 				overselect.setSelection(1);
-			}
+			}*/
 
 			
 		} else {
@@ -389,12 +393,17 @@ public class RegPersonActivity extends BaseActivity {
 //				}
 //			}
 
-			
+
+			if(vo.getBtype().equals("O")) overselect.setSelection(0);
+			else if(vo.getBtype().equals("A")) overselect.setSelection(1);
+			else if(vo.getBtype().equals("B")) overselect.setSelection(2);
+			else if(vo.getBtype().equals("AB")) overselect.setSelection(3);
+			/*
 			if( vo.getSingoyn().equals("N") ) {
 				overselect.setSelection(0);
 			} else {
 				overselect.setSelection(1);
-			}
+			}*/
 			
 
 			
@@ -495,17 +504,25 @@ public class RegPersonActivity extends BaseActivity {
 		}
 		
 		String s = ( String ) overselect.getSelectedItem();
+		if(s.equals("미정")){
+			showToast("혈액형을 선택해주세요.");
+			return;
+		}
+		String bType = s.replace("형","");
+		showToast(bType);
+		/*
 		if( s.equals("비신고") ) {
 			singoyn = "N";
 		} else {
 			singoyn = "Y";			
-		}
-		
+		}*/
+
+		singoyn = "Y";
+
 		if( app.getMv() != null && app.getMv().getImage() != null ) {
 			imagename = "P_" + phoneText.getText().toString();
 			app.getMv().setImageName(imagename);
 		}
-		
 		
 		if( ( modifyGubun.equals("1") || modifyGubun.equals("4") ) && app.getMv() != null ) {
 			eventUpdateWorker(
@@ -521,6 +538,7 @@ public class RegPersonActivity extends BaseActivity {
 					, phoneText.getText().toString()
 					, app.getSite_id(),edudate,firstdate
 					, imagename
+					,bType
 					);
 		} else {
 			eventInsertWorker(phoneText.getText().toString()
@@ -533,7 +551,7 @@ public class RegPersonActivity extends BaseActivity {
 					, t_id
 					, cont_id
 					, singoyn
-					, app.getSite_id(),edudate,firstdate,imagename);
+					, app.getSite_id(),edudate,firstdate,imagename,bType);
 		}
 
 	}
@@ -645,11 +663,11 @@ public class RegPersonActivity extends BaseActivity {
 	
 	public void eventInsertWorker(final String phone,final String gubun,final String name,
 			final String jumin,final String country,final String passno,final String first,
-			final String t_id,final String cont_id,final String singoyn, final String site_id, final String edudate, final String firstdate, final String imagename) {
+			final String t_id,final String cont_id,final String singoyn, final String site_id, final String edudate, final String firstdate, final String imagename, final String bType) {
 		pShow();
 		startThread(new Runnable() {
 			public void run() {
-				final String m = api.insertWorker(getBaseContext(), phone, gubun, name, jumin, country, passno, first, t_id, cont_id, singoyn, site_id,edudate,firstdate, imagename);
+				final String m = api.insertWorker(getBaseContext(), phone, gubun, name, jumin, country, passno, first, t_id, cont_id, singoyn, site_id,edudate,firstdate, imagename, bType);
 				runOnUiThread(new Runnable() {
 					public void run() {
 						pHide();
@@ -680,11 +698,11 @@ public class RegPersonActivity extends BaseActivity {
 	
 	public void eventUpdateWorker(final String id,final String phone,final String gubun,final String name,
 			final String jumin,final String country,final String passno, final String t_id,final String singoyn,final String cphone
-			,final String site_id, final String edudate, final String firstdate, final String imagename) {
+			,final String site_id, final String edudate, final String firstdate, final String imagename, final String bType) {
 		pShow();
 		startThread(new Runnable() {
 			public void run() {
-				final String m = api.updateWorker(getBaseContext(), id, phone, gubun, name, jumin, country, passno, t_id, singoyn, cphone,site_id,edudate,firstdate,imagename);
+				final String m = api.updateWorker(getBaseContext(), id, phone, gubun, name, jumin, country, passno, t_id, singoyn, cphone,site_id,edudate,firstdate,imagename,bType);
 				runOnUiThread(new Runnable() {
 					public void run() {
 						pHide();

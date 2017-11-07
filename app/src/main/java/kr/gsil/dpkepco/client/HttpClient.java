@@ -2480,7 +2480,8 @@ public class HttpClient {
 			String site_id,
 			String edudate,
 			String firstdate,
-			String imagename)  {
+			String imagename,
+			String bType)  {
 		String resultString = "";
 
 		
@@ -2500,6 +2501,7 @@ public class HttpClient {
 		params.add(new BasicNameValuePair("edudate", edudate ));
 		params.add(new BasicNameValuePair("firstdate", firstdate ));
 		params.add(new BasicNameValuePair("imagename", imagename ));
+		params.add(new BasicNameValuePair("btype", bType ));
 
 
 		String result = postHttpParameterData( HttpUrl.getUrl( context, HttpUrl.CONSMAN_WORKER_INSERT), params );
@@ -2541,7 +2543,8 @@ public class HttpClient {
 			String site_id,
 			String edudate,
 			String firstdate,
-			String imagename)  {
+			String imagename,
+			String bType)  {
 		String resultString = "";
 
 		
@@ -2561,6 +2564,7 @@ public class HttpClient {
 		params.add(new BasicNameValuePair("edudate", edudate ));
 		params.add(new BasicNameValuePair("firstdate", firstdate ));
 		params.add(new BasicNameValuePair("imagename", imagename ));
+		params.add(new BasicNameValuePair("btype", bType ));
 
 		String result = postHttpParameterData( HttpUrl.getUrl( context, HttpUrl.CONSMAN_WORKER_UPDATE), params );
 		
@@ -2709,6 +2713,7 @@ public class HttpClient {
 						mobileVo.setPno(items.getString("pno"));
 						mobileVo.setEdudate(items.getString("edudate"));
 						mobileVo.setImageName(items.getString("eduimage"));
+						mobileVo.setBtype(items.getString("btype"));
 						
 						wlist.add(mobileVo);
 					}
@@ -2780,6 +2785,7 @@ public class HttpClient {
 							mobileVo.setYa(1);
 						}
 						mobileVo.setU_id(items.getString("u_id"));
+						mobileVo.setBtype(items.getString("btype"));
 						wlist.add(mobileVo);
 					}
 				} else {

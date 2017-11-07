@@ -47,6 +47,7 @@ public class MobileWorkerVO {
 	
 	private Bitmap image;
 	private String imageName;
+	private String btype;
 	
 	public String getImageName() {
 		return imageName;
@@ -283,6 +284,9 @@ public class MobileWorkerVO {
 	public void setSingoyn(String singoyn) {
 		this.singoyn = singoyn;
 	}
+
+	public String getBtype() {return btype;}
+	public void setBtype(String btype){this.btype = btype;}
 	
 	
 }

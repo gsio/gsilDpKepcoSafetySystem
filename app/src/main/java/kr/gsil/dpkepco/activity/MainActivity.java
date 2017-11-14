@@ -61,6 +61,8 @@ public class MainActivity extends BaseActivity
 
     @Override
     public void init() {
+        weatherCallCnt = app.getWeatherCallCnt();
+        weather = app.getWeatherInfo();
         weather_addr = getResources().getString(R.string.weather_addr);
         img_weather = (ImageView)findViewById(R.id.img_weather);
         tv_weather_state = (TextView)findViewById(R.id.tv_weather_state);
@@ -73,6 +75,7 @@ public class MainActivity extends BaseActivity
         tv_main_pan_item_4 = (TextView)findViewById(R.id.tv_main_pan_item_4);
         tv_main_pan_item_5 = (TextView)findViewById(R.id.tv_main_pan_item_5);
 
+
         setData();
     }
 
@@ -80,20 +83,28 @@ public class MainActivity extends BaseActivity
     public void setData() {
         tv_nav_name.setText("이름:"+app.getName());
         tv_nav_state.setText("소속:"+app.getCname());
-        pShow();
+        //pShow();
+        weather = app.getWeatherInfo();
+        weatherCallCnt = app.getWeatherCallCnt();
+        if(System.currentTimeMillis () >= app.getWeatherCallTime()) pShow();
         startThread(new Runnable() {
             public void run() {
                 api.getKepcoData(getBaseContext());
                 api.getRecoData(getBaseContext(), 8);
-                if(weather == null) weather = api.getWeatherInfo(getBaseContext(), weather_addr);
-                weatherCallCnt = app.getWeatherCallCnt();
-                if(weatherCallCnt >= WEATHER_CALL_BASE_CNT) {
+
+                if(System.currentTimeMillis () >= app.getWeatherCallTime()) {
                     weather = api.getWeatherInfo(getBaseContext(), weather_addr);
+                    if(weather != null) app.setWeatherInfo(weather);
+                    long time = (long)(System.currentTimeMillis () + (1000*60*30));
+                    app.setWeatherCallTime(time);
+                    Log.e("doTheAutoRefresh","setData1 ================WEATHER_CALL_BASE_CNT = "+WEATHER_CALL_BASE_CNT +" weatherCallCnt = "+weatherCallCnt);
                     weatherCallCnt = 0;
+                    app.setWeatherCallCnt(weatherCallCnt);
                 }
+
                 runOnUiThread(new Runnable() {
                     public void run() {
-                        pHide();
+                        if(pIsShow()) pHide();
                         kepcoMonitorVO = app.getKepcoMonitor();
                         kepcoSensorVO = app.getKepcoSensor();
                         kepcoRecoDataVO = app.getKepcoRecoData();
@@ -149,14 +160,17 @@ public class MainActivity extends BaseActivity
                             tv_weather_state.setText(weather.getToday_text());
                             tv_weather_subsi_do.setText(weather.getToday_temp());
                             tv_weather_percent.setText(weather.getHumidity());
+                        }else{
+                            img_weather.setImageResource(R.drawable.icon_weather_30);
+                            tv_weather_state.setText("--");
+                            tv_weather_subsi_do.setText("--");
+                            tv_weather_percent.setText("--");
                         }
                         if(kepcoRecoDataVO == null) kepcoRecoDataVO = new KepcoRecoDataVO();
                         tv_main_pan_item_2.setText(String.valueOf(kepcoRecoDataVO.getCountTotal()));//터널 내 총 인원
                         tv_main_pan_item_3.setText(String.valueOf(kepcoRecoDataVO.getCountWorker()));//터널 내 근로자
                         tv_main_pan_item_4.setText(String.valueOf(kepcoRecoDataVO.getCountManager()));//터널 내 관리자
                         tv_main_pan_item_5.setText(String.valueOf(kepcoRecoDataVO.getCountVip()));//외부 방문자
-
-
                     }
                 });
             }
@@ -229,7 +243,7 @@ public class MainActivity extends BaseActivity
     @Override
     protected void onResume() {
         super.onResume();
-
+        weatherCallCnt = app.getWeatherCallCnt();
         doTheAutoRefresh();
     }
     @Override
@@ -483,23 +497,23 @@ public class MainActivity extends BaseActivity
 
     private final Handler handler = new Handler();
     Runnable runnable = null;
-    static int WEATHER_CALL_BASE_CNT = 60; //1시간에 한번씩 호출
+    static int WEATHER_CALL_BASE_CNT = 60*3; //1시간에 한번씩 호출
 
     private void doTheAutoRefresh() {
         runnable=new Runnable() {
             @Override
             public void run() {
                 setData();
-                Log.e("doTheAutoRefresh","doTheAutoRefresh ================weatherCallCnt = "+weatherCallCnt);
+
                 //app.setKepcoData(null, null);
 
                 doTheAutoRefresh();
-
-                app.setWeatherCallCnt(weatherCallCnt);
                 weatherCallCnt++;
+                app.setWeatherCallCnt(weatherCallCnt);
+                Log.e("doTheAutoRefresh","doTheAutoRefresh ================WEATHER_CALL_BASE_CNT = "+WEATHER_CALL_BASE_CNT +" weatherCallCnt = "+weatherCallCnt);
             }
         };
-        handler.postDelayed(runnable, 1000*60);
+        handler.postDelayed(runnable, 1000*20);
     }
 
     CDialogAlertSos mCDialog = null;

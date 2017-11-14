@@ -937,10 +937,10 @@ public class UserSystemApplication extends Application {
      * Weather Info
      */
     private WeatherInfoVO weatherInfo = null;
-    public void setWeatjerInfo(WeatherInfoVO info){
+    public void setWeatherInfo(WeatherInfoVO info){
         this.weatherInfo = info;
     }
-    public WeatherInfoVO getWeatjerInfo(){
+    public WeatherInfoVO getWeatherInfo(){
         return weatherInfo;
     }
     int weatherCallCnt = 0;
@@ -949,7 +949,20 @@ public class UserSystemApplication extends Application {
     }
 
     public void setWeatherCallCnt(int weatherCallCnt) {
+        this.weatherCallCnt = weatherCallCnt;
         editer.putInt("weatherCallCnt", weatherCallCnt);
+        editer.commit();
+    }
+
+    long weatherCallTime = 0L;
+    public long getWeatherCallTime(){
+        weatherCallTime = pref.getLong("weatherCallTime", weatherCallTime);
+        return weatherCallTime;
+    }
+
+    public void setWeatherCallTime(long time){
+        weatherCallTime = time;
+        editer.putLong("weatherCallTime", weatherCallTime);
         editer.commit();
     }
 }

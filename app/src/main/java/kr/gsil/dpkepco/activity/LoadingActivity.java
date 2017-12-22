@@ -245,25 +245,6 @@ public class LoadingActivity extends BaseActivity {
 	public void setData() {
 
 	}
-	
-	public String getPhoneNumber() { 
-		TelephonyManager mgr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE); 
-		//
-		String phone = mgr.getLine1Number();
-		if( phone.indexOf("+82") == 0 ) {
-			phone = "0" + phone.substring(3);
-		}
-		
-		app.setPhone(phone);
-		
-		return phone;
-	}
-	
 
-	// 장치 아이디 얻기 
-	public String getDeviceId(){ 
-		TelephonyManager mgr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE); 
-		return mgr.getDeviceId(); 
-	}
 
 }

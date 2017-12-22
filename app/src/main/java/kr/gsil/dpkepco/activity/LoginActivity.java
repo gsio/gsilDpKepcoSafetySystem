@@ -45,7 +45,7 @@ public class LoginActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		phone=getPhoneNumber();
-		registerGcm();
+//		registerGcm();
 		init();
 		backPressCloseHandler = new BackPressCloseHandler(this);
 	}
@@ -112,7 +112,7 @@ public class LoginActivity extends BaseActivity {
 				return;
 			}
 		}
-		
+//
 		pShow();
 		startThread(new Runnable() {
 			public void run() {

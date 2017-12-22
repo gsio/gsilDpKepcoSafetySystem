@@ -72,38 +72,38 @@ public class UserSystemApplication extends Application {
     private String etc;
     /////////////////////////
 
-    private MobileMetaVO oneMeta = null;
-    private MobileMetaVO twoMeta = null;
-    private MobileRiskVO tempRisk = null;
-    private MobileRiskVO selectedRiskVo = null;
-    private MobileSpotVO tempSpot = null;
-    private MobileMeasureVO tempMea = null;
+    //private MobileMetaVO oneMeta = null;
+    //private MobileMetaVO twoMeta = null;
+    //private MobileRiskVO tempRisk = null;
+    //private MobileRiskVO selectedRiskVo = null;
+    //private MobileSpotVO tempSpot = null;
+    //private MobileMeasureVO tempMea = null;
     private MobileWorkerVO mv = null;
     private MobileUserVO mu = null;
-    private MobileEquipVO eq = null;
-    private MobileTunelVO t = null;
-    private MobileEquipVO eItem = null;
+    //private MobileEquipVO eq = null;
+    //private MobileTunelVO t = null;
+    //private MobileEquipVO eItem = null;
     private MobileUserVO gsil = null;
 
-    private MobileInfoVO mi = null;
-    private MobileNoticeVO mn = null;
+    //private MobileInfoVO mi = null;
+    //private MobileNoticeVO mn = null;
 
-    public ArrayList<Activity> dList = new ArrayList<Activity>();
+/*    public ArrayList<Activity> dList = new ArrayList<Activity>();
     ArrayList<MobileVO> qList = new ArrayList<MobileVO>();
     ArrayList<MobileMetaVO> saveMetaList = new ArrayList<MobileMetaVO>();
     ArrayList<MobileMetaVO> teamMetaList = new ArrayList<MobileMetaVO>();
     ArrayList<MobileRiskVO> saveRiskCheckList = new ArrayList<MobileRiskVO>();
     ArrayList<MobileEquipVO> eList = new ArrayList<MobileEquipVO>();
-    ArrayList<MobileWorkerVO> locationWorkerList = new ArrayList<MobileWorkerVO>();
+    ArrayList<MobileWorkerVO> locationWorkerList = new ArrayList<MobileWorkerVO>();*/
     ArrayList<MobileUserVO> beaconlist = new ArrayList<MobileUserVO>();
 
     //
 
-    ArrayList<MobileEquipVO> dailyEquipList = new ArrayList<MobileEquipVO>();
+/*    ArrayList<MobileEquipVO> dailyEquipList = new ArrayList<MobileEquipVO>();
     ArrayList<MobileWorkerVO> dailyWorkerList = new ArrayList<MobileWorkerVO>();
     ArrayList<MobileUserVO> dailyUserList = new ArrayList<MobileUserVO>();
     ArrayList<MobileWorkerVO> searchWorkerList = new ArrayList<MobileWorkerVO>();
-    ArrayList<MobileUserVO> searchUserList = new ArrayList<MobileUserVO>();
+    ArrayList<MobileUserVO> searchUserList = new ArrayList<MobileUserVO>();*/
 
     ArrayList<MobileVO> mainContent = new ArrayList<MobileVO>();
 
@@ -209,7 +209,7 @@ public class UserSystemApplication extends Application {
     public void setMu(MobileUserVO mu) {
         this.mu = mu;
     }
-
+/*
     public void setIdlist(String idlist) {
         this.idlist = idlist;
     }
@@ -308,7 +308,7 @@ public class UserSystemApplication extends Application {
 
     public void setOneImage(Bitmap oneImage) {
         this.oneImage = oneImage;
-    }
+    }*/
 
     public String getTag_id() {
         return tag_id;
@@ -317,6 +317,7 @@ public class UserSystemApplication extends Application {
     public void setTag_id(String tag_id) {
         this.tag_id = tag_id;
     }
+/*
 
     public String getStatus() {
         return status;
@@ -553,8 +554,9 @@ public class UserSystemApplication extends Application {
 
         return false;
     }
+*/
 
-    public String getSpot_id() {
+/*    public String getSpot_id() {
         return spot_id;
     }
 
@@ -584,7 +586,7 @@ public class UserSystemApplication extends Application {
 
     public void setChasu(String chasu) {
         this.chasu = chasu;
-    }
+    }*/
 
     public MobileWorkerVO getMv() {
         return mv;
@@ -639,6 +641,7 @@ public class UserSystemApplication extends Application {
 
 
 
+/*
 
     public MobileEquipVO geteItem() {
         return eItem;
@@ -647,6 +650,7 @@ public class UserSystemApplication extends Application {
     public void seteItem(MobileEquipVO eItem) {
         this.eItem = eItem;
     }
+*/
 
     public MobileVO getItem() {
         return item;
@@ -656,6 +660,7 @@ public class UserSystemApplication extends Application {
         this.item = item;
     }
 
+/*
     public void initQlist() {
         qList = null;
         qList = new ArrayList<MobileVO>();
@@ -672,6 +677,7 @@ public class UserSystemApplication extends Application {
     public void setDlist(Activity act) {
         this.dList.add(act);
     }
+*/
 
     @Override
     public void onCreate() {
@@ -719,6 +725,7 @@ public class UserSystemApplication extends Application {
         editer.commit();
     }
 
+/*
 
 
     public boolean isGps() {
@@ -738,6 +745,7 @@ public class UserSystemApplication extends Application {
         editer.putString("pid", pid);
         editer.commit();
     }
+*/
 
 
     public String getUserid() {
@@ -776,6 +784,7 @@ public class UserSystemApplication extends Application {
         editer.putString("rtype", rtype);
         editer.commit();
     }
+
 
 
     public String getCname() {
@@ -830,6 +839,7 @@ public class UserSystemApplication extends Application {
         editer.putString("phone", phone);
         editer.commit();
     }
+/*
 
     public String getDaily() {
         return pref.getString("daily", daily);
@@ -902,6 +912,7 @@ public class UserSystemApplication extends Application {
         editer.putString("etc", etc);
         editer.commit();
     }
+*/
 
     @SuppressWarnings("deprecation")
     public static void showNotification(Context ctx, int nIDIcon, int id, String strTicker, String strTitle, String strText, Intent intent, boolean fSound, int number) {

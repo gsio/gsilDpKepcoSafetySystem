@@ -5,6 +5,8 @@
     <string-array translatable="false" name="gsilsafety_url">
        
         <!-- AMAZON-->
+
+
         <item>http://14.63.198.88/KEPCO/json/mobiledevicelist</item>
         <item>http://14.63.198.88/KEPCO/json/mobilenfcInsert</item>
         <item>http://14.63.198.88/KEPCO/json/mobileDeviceInfo</item>

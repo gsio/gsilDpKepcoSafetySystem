@@ -277,6 +277,8 @@ public class MainActivity extends BaseActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            showToast("새로고침 진행합니다.");
+            setData();
             return true;
         }
 

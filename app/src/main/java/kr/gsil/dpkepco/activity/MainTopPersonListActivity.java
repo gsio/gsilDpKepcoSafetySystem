@@ -27,19 +27,25 @@ import kr.gsil.dpkepco.util.ListViewAdapter;
 public class MainTopPersonListActivity extends BaseActivity {
     public MainTopPersonListActivity activity = null;
     ListView listview = null;
-    MainListViewAdapter rAdapter;
-    ArrayList<MobileUserVO> list  = new ArrayList<MobileUserVO>();
-    ArrayList<MobileUserVO> templist  = new ArrayList<MobileUserVO>();
+    MainListViewAdapter rAdapter = null;
+    ArrayList<MobileUserVO> list = null;//= new ArrayList<MobileUserVO>();
+    ArrayList<MobileUserVO> templist = null;//= new ArrayList<MobileUserVO>();
     int persionCnt = 0;
     String kind = "";
     String contName = "";
     int titleId = -1;
+    private void initVar() {
+        rAdapter = null;
+        rAdapter = new MainListViewAdapter();
+        list = null;
+        list = new ArrayList<MobileUserVO>();
+        templist = null;
+        templist = new ArrayList<MobileUserVO>();
+    }
     @Override
     public void init() {
         listview= (ListView) findViewById(R.id.personlist);
-        rAdapter = new MainListViewAdapter();
         listview.setAdapter(rAdapter);
-
         contName = app.getCont_id();
         setData();
     }
@@ -77,12 +83,10 @@ public class MainTopPersonListActivity extends BaseActivity {
                                         if(m.getT_gubun().equals("6")) templist.add(m);
                                         break;
                                 }
-
                             }
-
                             //app.setBeaconlist(list);
                         }
-                        rAdapter.notifyDataSetChanged();
+                        if(rAdapter != null) rAdapter.notifyDataSetChanged();
                     }
                 });
             }
@@ -110,6 +114,7 @@ public class MainTopPersonListActivity extends BaseActivity {
             titleId = R.string.page_main_top_txt_5;
         }
         setToolbar(titleId, persionCnt);
+        initVar();
         init();
     }
 
@@ -123,7 +128,7 @@ public class MainTopPersonListActivity extends BaseActivity {
 
         //layout을 가지고 와서 actionbar에 포팅을 시킵니다.
         LayoutInflater inflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
-        View actionbar = inflater.inflate(R.layout.custom_actionbar, null);
+        View actionbar = inflater.inflate(R.layout.custom_actionbar_reflash, null);
         TextView title = (TextView)actionbar.findViewById(R.id.title_text);
         ((Button) actionbar.findViewById(R.id.btn_title_left)).setOnClickListener(new View.OnClickListener(){
             @Override
@@ -131,6 +136,13 @@ public class MainTopPersonListActivity extends BaseActivity {
                 //Intent target = new Intent(activity, MainActivity.class);
                 //startActivity(target);
                 finish();
+            }
+        });
+        ((Button) actionbar.findViewById(R.id.btn_title_right)).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                initVar();
+                setData();
             }
         });
         Resources res = getResources();
@@ -171,22 +183,15 @@ public class MainTopPersonListActivity extends BaseActivity {
     class MainListViewAdapter extends ListViewAdapter {
 
         @Override
-        public View setListGetView(final int position, View convertView,
-                                   ViewGroup parent) {
+        public View setListGetView(final int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
-                convertView = inflater.inflate(R.layout.row_person_list,
-                        null);
+                convertView = inflater.inflate(R.layout.row_person_list, null);
             }
 
+            TextView listTitleText = (TextView) convertView.findViewById(R.id.wname);
+            TextView subTitleText = (TextView) convertView.findViewById(R.id.infoname);
+            TextView statusTitleText = (TextView) convertView.findViewById(R.id.statusname);
 
-            TextView listTitleText = (TextView) convertView
-                    .findViewById(R.id.wname);
-
-            TextView subTitleText = (TextView) convertView
-                    .findViewById(R.id.infoname);
-
-            TextView statusTitleText = (TextView) convertView
-                    .findViewById(R.id.statusname);
             if( templist != null && templist.size() > 0 ) {
 
                 String name = "이름 : " + templist.get(position).getName();
@@ -199,7 +204,7 @@ public class MainTopPersonListActivity extends BaseActivity {
                     subTitleText.setVisibility(View.GONE);
                 } else {
                     subTitleText.setVisibility(View.VISIBLE);
-                    infor = "직종 : " + templist.get(position).getT_name() + " / 회사 : " + list.get(position).getCont_name();
+                    infor = "직종 : " + templist.get(position).getT_name() + " / 회사 : " + templist.get(position).getCont_name();
                     subTitleText.setText(infor);
                 }
                     /*터널내 근로자 : t_gubun이 1,2인것(1:근로자,2;장비)
@@ -227,7 +232,6 @@ public class MainTopPersonListActivity extends BaseActivity {
                     statusTitleText.setText("미배정");
                     statusTitleText.setTextColor(Color.RED);
                 }
-
             }
 
             convertView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -257,8 +261,7 @@ public class MainTopPersonListActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     if (!templist.isEmpty() && !templist.get(position).getName().equals("") ) {
-                        //
-                        showToast("선택 되었습니다.");
+                        //showToast("선택 되었습니다.");
                     }
                 }
             });
